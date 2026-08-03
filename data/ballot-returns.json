@@ -1,46 +1,46 @@
 {
   "schemaVersion": 1,
   "meta": {
-    "reportDate": "2026-08-01",
-    "reportTimestamp": "2026-08-01T03:11:25-10:00",
+    "reportDate": "2026-08-03",
+    "reportTimestamp": "2026-08-03T03:11:31-10:00",
     "source": "Hawaiʻi Office of Elections absentee reconciliation reports",
     "officialReportPage": "https://elections.hawaii.gov/resources/absentee-voting-report/",
     "totals": {
       "statewide": {
         "precincts": 247,
-        "sent": 735154,
-        "returned": 136926,
-        "invalid": 1287,
-        "rate": 18.63
+        "sent": 735653,
+        "returned": 145485,
+        "invalid": 1352,
+        "rate": 19.78
       },
       "counties": {
         "HAWAII": {
           "precincts": 42,
-          "sent": 112834,
-          "returned": 22299,
+          "sent": 112864,
+          "returned": 22329,
           "invalid": 251,
-          "rate": 19.76
+          "rate": 19.78
         },
         "MAUI": {
           "precincts": 35,
-          "sent": 98116,
-          "returned": 14295,
-          "invalid": 295,
-          "rate": 14.57
+          "sent": 98167,
+          "returned": 15747,
+          "invalid": 330,
+          "rate": 16.04
         },
         "KAUAI": {
           "precincts": 16,
-          "sent": 41859,
-          "returned": 8479,
-          "invalid": 81,
-          "rate": 20.26
+          "sent": 41898,
+          "returned": 9294,
+          "invalid": 88,
+          "rate": 22.18
         },
         "OAHU": {
           "precincts": 154,
-          "sent": 482345,
-          "returned": 91853,
-          "invalid": 660,
-          "rate": 19.04
+          "sent": 482724,
+          "returned": 98115,
+          "invalid": 683,
+          "rate": 20.33
         }
       }
     }
@@ -52,14 +52,14 @@
       "electronicSent": 8,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 4,
+      "earlyReturned": 7,
       "mailSent": 5670,
       "mailReturned": 1232,
       "mailInvalid": 13,
-      "returned": 1236,
-      "sent": 5682,
+      "returned": 1239,
+      "sent": 5685,
       "invalid": 13,
-      "rate": 21.75
+      "rate": 21.79
     },
     {
       "county": "HAWAII",
@@ -67,14 +67,14 @@
       "electronicSent": 10,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 11,
+      "earlyReturned": 12,
       "mailSent": 3753,
       "mailReturned": 766,
       "mailInvalid": 15,
-      "returned": 777,
-      "sent": 3774,
+      "returned": 778,
+      "sent": 3775,
       "invalid": 15,
-      "rate": 20.59
+      "rate": 20.61
     },
     {
       "county": "HAWAII",
@@ -142,14 +142,14 @@
       "electronicSent": 6,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 11,
+      "earlyReturned": 13,
       "mailSent": 6536,
       "mailReturned": 1784,
       "mailInvalid": 17,
-      "returned": 1796,
-      "sent": 6553,
+      "returned": 1798,
+      "sent": 6555,
       "invalid": 17,
-      "rate": 27.41
+      "rate": 27.43
     },
     {
       "county": "HAWAII",
@@ -187,14 +187,14 @@
       "electronicSent": 10,
       "electronicReturned": 3,
       "electronicInvalid": 0,
-      "earlyReturned": 6,
+      "earlyReturned": 7,
       "mailSent": 5280,
       "mailReturned": 1073,
       "mailInvalid": 14,
-      "returned": 1082,
-      "sent": 5296,
+      "returned": 1083,
+      "sent": 5297,
       "invalid": 14,
-      "rate": 20.43
+      "rate": 20.45
     },
     {
       "county": "HAWAII",
@@ -232,14 +232,14 @@
       "electronicSent": 10,
       "electronicReturned": 2,
       "electronicInvalid": 0,
-      "earlyReturned": 10,
+      "earlyReturned": 14,
       "mailSent": 7578,
       "mailReturned": 1220,
       "mailInvalid": 12,
-      "returned": 1232,
-      "sent": 7598,
+      "returned": 1236,
+      "sent": 7602,
       "invalid": 12,
-      "rate": 16.21
+      "rate": 16.26
     },
     {
       "county": "HAWAII",
@@ -337,14 +337,14 @@
       "electronicSent": 7,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 7,
+      "earlyReturned": 10,
       "mailSent": 4503,
       "mailReturned": 710,
       "mailInvalid": 9,
-      "returned": 718,
-      "sent": 4517,
+      "returned": 721,
+      "sent": 4520,
       "invalid": 9,
-      "rate": 15.9
+      "rate": 15.95
     },
     {
       "county": "HAWAII",
@@ -367,14 +367,14 @@
       "electronicSent": 4,
       "electronicReturned": 2,
       "electronicInvalid": 0,
-      "earlyReturned": 3,
+      "earlyReturned": 5,
       "mailSent": 689,
       "mailReturned": 153,
       "mailInvalid": 1,
-      "returned": 158,
-      "sent": 696,
+      "returned": 160,
+      "sent": 698,
       "invalid": 1,
-      "rate": 22.7
+      "rate": 22.92
     },
     {
       "county": "HAWAII",
@@ -457,14 +457,14 @@
       "electronicSent": 6,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 3,
+      "earlyReturned": 4,
       "mailSent": 2955,
       "mailReturned": 580,
       "mailInvalid": 3,
-      "returned": 583,
-      "sent": 2964,
+      "returned": 584,
+      "sent": 2965,
       "invalid": 3,
-      "rate": 19.67
+      "rate": 19.7
     },
     {
       "county": "HAWAII",
@@ -472,14 +472,14 @@
       "electronicSent": 10,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 8,
+      "earlyReturned": 10,
       "mailSent": 3267,
       "mailReturned": 713,
       "mailInvalid": 4,
-      "returned": 721,
-      "sent": 3285,
+      "returned": 723,
+      "sent": 3287,
       "invalid": 4,
-      "rate": 21.95
+      "rate": 22.0
     },
     {
       "county": "HAWAII",
@@ -487,14 +487,14 @@
       "electronicSent": 28,
       "electronicReturned": 5,
       "electronicInvalid": 0,
-      "earlyReturned": 22,
+      "earlyReturned": 25,
       "mailSent": 7639,
       "mailReturned": 1470,
       "mailInvalid": 14,
-      "returned": 1497,
-      "sent": 7689,
+      "returned": 1500,
+      "sent": 7692,
       "invalid": 14,
-      "rate": 19.47
+      "rate": 19.5
     },
     {
       "county": "HAWAII",
@@ -562,14 +562,14 @@
       "electronicSent": 15,
       "electronicReturned": 3,
       "electronicInvalid": 0,
-      "earlyReturned": 18,
+      "earlyReturned": 21,
       "mailSent": 7554,
       "mailReturned": 1141,
       "mailInvalid": 10,
-      "returned": 1162,
-      "sent": 7587,
+      "returned": 1165,
+      "sent": 7590,
       "invalid": 10,
-      "rate": 15.32
+      "rate": 15.35
     },
     {
       "county": "HAWAII",
@@ -622,14 +622,14 @@
       "electronicSent": 13,
       "electronicReturned": 5,
       "electronicInvalid": 0,
-      "earlyReturned": 1,
+      "earlyReturned": 3,
       "mailSent": 3890,
       "mailReturned": 788,
       "mailInvalid": 12,
-      "returned": 794,
-      "sent": 3904,
+      "returned": 796,
+      "sent": 3906,
       "invalid": 12,
-      "rate": 20.34
+      "rate": 20.38
     },
     {
       "county": "HAWAII",
@@ -637,14 +637,14 @@
       "electronicSent": 23,
       "electronicReturned": 2,
       "electronicInvalid": 0,
-      "earlyReturned": 11,
+      "earlyReturned": 12,
       "mailSent": 6425,
       "mailReturned": 1241,
       "mailInvalid": 19,
-      "returned": 1254,
-      "sent": 6459,
+      "returned": 1255,
+      "sent": 6460,
       "invalid": 19,
-      "rate": 19.41
+      "rate": 19.43
     },
     {
       "county": "HAWAII",
@@ -667,14 +667,14 @@
       "electronicSent": 1,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 1,
+      "earlyReturned": 3,
       "mailSent": 2145,
       "mailReturned": 414,
       "mailInvalid": 0,
-      "returned": 415,
-      "sent": 2147,
+      "returned": 417,
+      "sent": 2149,
       "invalid": 0,
-      "rate": 19.33
+      "rate": 19.4
     },
     {
       "county": "MAUI",
@@ -683,13 +683,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 3,
-      "mailSent": 3565,
-      "mailReturned": 515,
-      "mailInvalid": 11,
-      "returned": 518,
-      "sent": 3576,
-      "invalid": 11,
-      "rate": 14.49
+      "mailSent": 3567,
+      "mailReturned": 570,
+      "mailInvalid": 12,
+      "returned": 573,
+      "sent": 3578,
+      "invalid": 12,
+      "rate": 16.01
     },
     {
       "county": "MAUI",
@@ -698,13 +698,13 @@
       "electronicReturned": 2,
       "electronicInvalid": 0,
       "earlyReturned": 3,
-      "mailSent": 3752,
-      "mailReturned": 611,
-      "mailInvalid": 9,
-      "returned": 616,
-      "sent": 3763,
-      "invalid": 9,
-      "rate": 16.37
+      "mailSent": 3754,
+      "mailReturned": 669,
+      "mailInvalid": 11,
+      "returned": 674,
+      "sent": 3765,
+      "invalid": 11,
+      "rate": 17.9
     },
     {
       "county": "MAUI",
@@ -712,14 +712,14 @@
       "electronicSent": 5,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 1,
-      "mailSent": 2717,
-      "mailReturned": 437,
-      "mailInvalid": 8,
-      "returned": 439,
-      "sent": 2723,
-      "invalid": 8,
-      "rate": 16.12
+      "earlyReturned": 3,
+      "mailSent": 2718,
+      "mailReturned": 479,
+      "mailInvalid": 10,
+      "returned": 483,
+      "sent": 2726,
+      "invalid": 10,
+      "rate": 17.72
     },
     {
       "county": "MAUI",
@@ -728,13 +728,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 4,
-      "mailSent": 2923,
-      "mailReturned": 442,
-      "mailInvalid": 7,
-      "returned": 446,
-      "sent": 2938,
-      "invalid": 7,
-      "rate": 15.18
+      "mailSent": 2924,
+      "mailReturned": 475,
+      "mailInvalid": 8,
+      "returned": 479,
+      "sent": 2939,
+      "invalid": 8,
+      "rate": 16.3
     },
     {
       "county": "MAUI",
@@ -744,12 +744,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 1274,
-      "mailReturned": 175,
-      "mailInvalid": 5,
-      "returned": 175,
+      "mailReturned": 185,
+      "mailInvalid": 4,
+      "returned": 185,
       "sent": 1275,
-      "invalid": 5,
-      "rate": 13.73
+      "invalid": 4,
+      "rate": 14.51
     },
     {
       "county": "MAUI",
@@ -759,12 +759,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 3,
       "mailSent": 1413,
-      "mailReturned": 173,
+      "mailReturned": 183,
       "mailInvalid": 2,
-      "returned": 176,
+      "returned": 186,
       "sent": 1420,
       "invalid": 2,
-      "rate": 12.39
+      "rate": 13.1
     },
     {
       "county": "MAUI",
@@ -774,12 +774,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 1128,
-      "mailReturned": 253,
+      "mailReturned": 267,
       "mailInvalid": 5,
-      "returned": 254,
+      "returned": 268,
       "sent": 1132,
       "invalid": 5,
-      "rate": 22.44
+      "rate": 23.67
     },
     {
       "county": "MAUI",
@@ -787,14 +787,14 @@
       "electronicSent": 13,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 8,
-      "mailSent": 5525,
-      "mailReturned": 1161,
-      "mailInvalid": 14,
-      "returned": 1169,
-      "sent": 5546,
-      "invalid": 14,
-      "rate": 21.08
+      "earlyReturned": 9,
+      "mailSent": 5526,
+      "mailReturned": 1219,
+      "mailInvalid": 15,
+      "returned": 1228,
+      "sent": 5548,
+      "invalid": 15,
+      "rate": 22.13
     },
     {
       "county": "MAUI",
@@ -804,12 +804,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 4,
       "mailSent": 2311,
-      "mailReturned": 380,
+      "mailReturned": 413,
       "mailInvalid": 9,
-      "returned": 385,
+      "returned": 418,
       "sent": 2323,
       "invalid": 9,
-      "rate": 16.57
+      "rate": 17.99
     },
     {
       "county": "MAUI",
@@ -817,14 +817,14 @@
       "electronicSent": 9,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 6,
+      "earlyReturned": 7,
       "mailSent": 3720,
-      "mailReturned": 551,
-      "mailInvalid": 22,
-      "returned": 557,
-      "sent": 3735,
-      "invalid": 22,
-      "rate": 14.91
+      "mailReturned": 585,
+      "mailInvalid": 23,
+      "returned": 592,
+      "sent": 3736,
+      "invalid": 23,
+      "rate": 15.85
     },
     {
       "county": "MAUI",
@@ -832,14 +832,14 @@
       "electronicSent": 4,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 0,
+      "earlyReturned": 3,
       "mailSent": 1367,
-      "mailReturned": 218,
+      "mailReturned": 228,
       "mailInvalid": 6,
-      "returned": 219,
-      "sent": 1371,
+      "returned": 232,
+      "sent": 1374,
       "invalid": 6,
-      "rate": 15.97
+      "rate": 16.89
     },
     {
       "county": "MAUI",
@@ -849,12 +849,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 2,
       "mailSent": 2338,
-      "mailReturned": 415,
-      "mailInvalid": 10,
-      "returned": 417,
+      "mailReturned": 453,
+      "mailInvalid": 11,
+      "returned": 455,
       "sent": 2348,
-      "invalid": 10,
-      "rate": 17.76
+      "invalid": 11,
+      "rate": 19.38
     },
     {
       "county": "MAUI",
@@ -862,14 +862,14 @@
       "electronicSent": 12,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 3,
-      "mailSent": 4138,
-      "mailReturned": 583,
+      "earlyReturned": 4,
+      "mailSent": 4140,
+      "mailReturned": 673,
       "mailInvalid": 8,
-      "returned": 587,
-      "sent": 4153,
+      "returned": 678,
+      "sent": 4156,
       "invalid": 8,
-      "rate": 14.13
+      "rate": 16.31
     },
     {
       "county": "MAUI",
@@ -878,13 +878,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 3364,
-      "mailReturned": 497,
-      "mailInvalid": 9,
-      "returned": 497,
-      "sent": 3378,
-      "invalid": 9,
-      "rate": 14.71
+      "mailSent": 3368,
+      "mailReturned": 562,
+      "mailInvalid": 10,
+      "returned": 562,
+      "sent": 3382,
+      "invalid": 10,
+      "rate": 16.62
     },
     {
       "county": "MAUI",
@@ -892,14 +892,14 @@
       "electronicSent": 18,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 2,
-      "mailSent": 6459,
-      "mailReturned": 727,
-      "mailInvalid": 16,
-      "returned": 730,
-      "sent": 6479,
-      "invalid": 16,
-      "rate": 11.27
+      "earlyReturned": 3,
+      "mailSent": 6460,
+      "mailReturned": 817,
+      "mailInvalid": 17,
+      "returned": 821,
+      "sent": 6481,
+      "invalid": 17,
+      "rate": 12.67
     },
     {
       "county": "MAUI",
@@ -907,14 +907,14 @@
       "electronicSent": 10,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 3,
-      "mailSent": 2848,
-      "mailReturned": 340,
+      "earlyReturned": 5,
+      "mailSent": 2850,
+      "mailReturned": 373,
       "mailInvalid": 9,
-      "returned": 344,
-      "sent": 2861,
+      "returned": 379,
+      "sent": 2865,
       "invalid": 9,
-      "rate": 12.02
+      "rate": 13.23
     },
     {
       "county": "MAUI",
@@ -923,13 +923,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 1,
-      "mailSent": 3828,
-      "mailReturned": 571,
-      "mailInvalid": 10,
-      "returned": 572,
-      "sent": 3836,
-      "invalid": 10,
-      "rate": 14.91
+      "mailSent": 3830,
+      "mailReturned": 635,
+      "mailInvalid": 11,
+      "returned": 636,
+      "sent": 3838,
+      "invalid": 11,
+      "rate": 16.57
     },
     {
       "county": "MAUI",
@@ -939,12 +939,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 2,
       "mailSent": 2801,
-      "mailReturned": 414,
-      "mailInvalid": 0,
-      "returned": 418,
+      "mailReturned": 465,
+      "mailInvalid": 2,
+      "returned": 469,
       "sent": 2814,
-      "invalid": 0,
-      "rate": 14.85
+      "invalid": 2,
+      "rate": 16.67
     },
     {
       "county": "MAUI",
@@ -952,14 +952,14 @@
       "electronicSent": 11,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 5,
-      "mailSent": 5537,
-      "mailReturned": 977,
-      "mailInvalid": 12,
-      "returned": 982,
-      "sent": 5553,
-      "invalid": 12,
-      "rate": 17.68
+      "earlyReturned": 7,
+      "mailSent": 5538,
+      "mailReturned": 1065,
+      "mailInvalid": 16,
+      "returned": 1072,
+      "sent": 5556,
+      "invalid": 16,
+      "rate": 19.29
     },
     {
       "county": "MAUI",
@@ -967,14 +967,14 @@
       "electronicSent": 22,
       "electronicReturned": 4,
       "electronicInvalid": 0,
-      "earlyReturned": 6,
-      "mailSent": 6588,
-      "mailReturned": 1150,
-      "mailInvalid": 25,
-      "returned": 1160,
-      "sent": 6616,
-      "invalid": 25,
-      "rate": 17.53
+      "earlyReturned": 7,
+      "mailSent": 6590,
+      "mailReturned": 1263,
+      "mailInvalid": 27,
+      "returned": 1274,
+      "sent": 6619,
+      "invalid": 27,
+      "rate": 19.25
     },
     {
       "county": "MAUI",
@@ -984,12 +984,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 158,
-      "mailReturned": 25,
+      "mailReturned": 27,
       "mailInvalid": 2,
-      "returned": 25,
+      "returned": 27,
       "sent": 159,
       "invalid": 2,
-      "rate": 15.72
+      "rate": 16.98
     },
     {
       "county": "MAUI",
@@ -999,12 +999,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 1,
       "mailSent": 2004,
-      "mailReturned": 225,
-      "mailInvalid": 3,
-      "returned": 228,
+      "mailReturned": 254,
+      "mailInvalid": 6,
+      "returned": 257,
       "sent": 2012,
-      "invalid": 3,
-      "rate": 11.33
+      "invalid": 6,
+      "rate": 12.77
     },
     {
       "county": "MAUI",
@@ -1013,13 +1013,13 @@
       "electronicReturned": 4,
       "electronicInvalid": 0,
       "earlyReturned": 4,
-      "mailSent": 7562,
-      "mailReturned": 708,
-      "mailInvalid": 19,
-      "returned": 716,
-      "sent": 7600,
-      "invalid": 19,
-      "rate": 9.42
+      "mailSent": 7564,
+      "mailReturned": 840,
+      "mailInvalid": 21,
+      "returned": 848,
+      "sent": 7602,
+      "invalid": 21,
+      "rate": 11.15
     },
     {
       "county": "MAUI",
@@ -1027,14 +1027,14 @@
       "electronicSent": 4,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 0,
+      "earlyReturned": 5,
       "mailSent": 1407,
-      "mailReturned": 188,
+      "mailReturned": 208,
       "mailInvalid": 7,
-      "returned": 188,
-      "sent": 1411,
+      "returned": 213,
+      "sent": 1416,
       "invalid": 7,
-      "rate": 13.32
+      "rate": 15.04
     },
     {
       "county": "MAUI",
@@ -1044,12 +1044,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 1917,
-      "mailReturned": 207,
+      "mailReturned": 218,
       "mailInvalid": 8,
-      "returned": 207,
+      "returned": 218,
       "sent": 1918,
       "invalid": 8,
-      "rate": 10.79
+      "rate": 11.37
     },
     {
       "county": "MAUI",
@@ -1059,12 +1059,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 529,
-      "mailReturned": 73,
+      "mailReturned": 77,
       "mailInvalid": 2,
-      "returned": 73,
+      "returned": 77,
       "sent": 530,
       "invalid": 2,
-      "rate": 13.77
+      "rate": 14.53
     },
     {
       "county": "MAUI",
@@ -1073,13 +1073,13 @@
       "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 1900,
-      "mailReturned": 253,
+      "mailSent": 1901,
+      "mailReturned": 271,
       "mailInvalid": 6,
-      "returned": 254,
-      "sent": 1906,
+      "returned": 272,
+      "sent": 1907,
       "invalid": 6,
-      "rate": 13.33
+      "rate": 14.26
     },
     {
       "county": "MAUI",
@@ -1088,13 +1088,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 380,
-      "mailReturned": 55,
+      "mailSent": 381,
+      "mailReturned": 57,
       "mailInvalid": 0,
-      "returned": 55,
-      "sent": 381,
+      "returned": 57,
+      "sent": 382,
       "invalid": 0,
-      "rate": 14.44
+      "rate": 14.92
     },
     {
       "county": "MAUI",
@@ -1103,13 +1103,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 1179,
-      "mailReturned": 129,
+      "mailSent": 1180,
+      "mailReturned": 151,
       "mailInvalid": 5,
-      "returned": 129,
-      "sent": 1182,
+      "returned": 151,
+      "sent": 1183,
       "invalid": 5,
-      "rate": 10.91
+      "rate": 12.76
     },
     {
       "county": "MAUI",
@@ -1133,13 +1133,13 @@
       "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 1674,
-      "mailReturned": 238,
-      "mailInvalid": 2,
-      "returned": 239,
-      "sent": 1685,
-      "invalid": 2,
-      "rate": 14.18
+      "mailSent": 1675,
+      "mailReturned": 269,
+      "mailInvalid": 3,
+      "returned": 270,
+      "sent": 1686,
+      "invalid": 3,
+      "rate": 16.01
     },
     {
       "county": "MAUI",
@@ -1149,12 +1149,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 1753,
-      "mailReturned": 197,
+      "mailReturned": 216,
       "mailInvalid": 6,
-      "returned": 197,
+      "returned": 216,
       "sent": 1759,
       "invalid": 6,
-      "rate": 11.2
+      "rate": 12.28
     },
     {
       "county": "MAUI",
@@ -1164,12 +1164,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 1195,
-      "mailReturned": 151,
-      "mailInvalid": 3,
-      "returned": 152,
+      "mailReturned": 179,
+      "mailInvalid": 4,
+      "returned": 180,
       "sent": 1204,
-      "invalid": 3,
-      "rate": 12.62
+      "invalid": 4,
+      "rate": 14.95
     },
     {
       "county": "MAUI",
@@ -1178,13 +1178,13 @@
       "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 5865,
-      "mailReturned": 745,
-      "mailInvalid": 17,
-      "returned": 746,
-      "sent": 5893,
-      "invalid": 17,
-      "rate": 12.66
+      "mailSent": 5869,
+      "mailReturned": 849,
+      "mailInvalid": 24,
+      "returned": 850,
+      "sent": 5897,
+      "invalid": 24,
+      "rate": 14.41
     },
     {
       "county": "MAUI",
@@ -1192,14 +1192,14 @@
       "electronicSent": 9,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 5,
+      "earlyReturned": 6,
       "mailSent": 2605,
-      "mailReturned": 415,
-      "mailInvalid": 18,
-      "returned": 420,
-      "sent": 2619,
-      "invalid": 18,
-      "rate": 16.04
+      "mailReturned": 436,
+      "mailInvalid": 20,
+      "returned": 442,
+      "sent": 2620,
+      "invalid": 20,
+      "rate": 16.87
     },
     {
       "county": "KAUAI",
@@ -1208,13 +1208,13 @@
       "electronicReturned": 2,
       "electronicInvalid": 0,
       "earlyReturned": 11,
-      "mailSent": 2437,
-      "mailReturned": 393,
+      "mailSent": 2438,
+      "mailReturned": 431,
       "mailInvalid": 6,
-      "returned": 406,
-      "sent": 2455,
+      "returned": 444,
+      "sent": 2456,
       "invalid": 6,
-      "rate": 16.54
+      "rate": 18.08
     },
     {
       "county": "KAUAI",
@@ -1222,14 +1222,14 @@
       "electronicSent": 11,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 9,
-      "mailSent": 2564,
-      "mailReturned": 368,
-      "mailInvalid": 1,
-      "returned": 377,
-      "sent": 2584,
-      "invalid": 1,
-      "rate": 14.59
+      "earlyReturned": 10,
+      "mailSent": 2565,
+      "mailReturned": 405,
+      "mailInvalid": 0,
+      "returned": 415,
+      "sent": 2586,
+      "invalid": 0,
+      "rate": 16.05
     },
     {
       "county": "KAUAI",
@@ -1237,14 +1237,14 @@
       "electronicSent": 2,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 1,
+      "earlyReturned": 3,
       "mailSent": 1632,
-      "mailReturned": 250,
+      "mailReturned": 284,
       "mailInvalid": 3,
-      "returned": 251,
-      "sent": 1635,
+      "returned": 287,
+      "sent": 1637,
       "invalid": 3,
-      "rate": 15.35
+      "rate": 17.53
     },
     {
       "county": "KAUAI",
@@ -1252,14 +1252,14 @@
       "electronicSent": 4,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 16,
-      "mailSent": 5544,
-      "mailReturned": 1034,
-      "mailInvalid": 10,
-      "returned": 1050,
-      "sent": 5564,
-      "invalid": 10,
-      "rate": 18.87
+      "earlyReturned": 18,
+      "mailSent": 5548,
+      "mailReturned": 1133,
+      "mailInvalid": 9,
+      "returned": 1151,
+      "sent": 5570,
+      "invalid": 9,
+      "rate": 20.66
     },
     {
       "county": "KAUAI",
@@ -1267,14 +1267,14 @@
       "electronicSent": 4,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 3,
-      "mailSent": 1830,
-      "mailReturned": 368,
+      "earlyReturned": 4,
+      "mailSent": 1831,
+      "mailReturned": 417,
       "mailInvalid": 4,
-      "returned": 372,
-      "sent": 1837,
+      "returned": 422,
+      "sent": 1839,
       "invalid": 4,
-      "rate": 20.25
+      "rate": 22.95
     },
     {
       "county": "KAUAI",
@@ -1282,14 +1282,14 @@
       "electronicSent": 13,
       "electronicReturned": 2,
       "electronicInvalid": 0,
-      "earlyReturned": 11,
-      "mailSent": 4204,
-      "mailReturned": 854,
-      "mailInvalid": 7,
-      "returned": 867,
-      "sent": 4228,
-      "invalid": 7,
-      "rate": 20.51
+      "earlyReturned": 14,
+      "mailSent": 4205,
+      "mailReturned": 932,
+      "mailInvalid": 10,
+      "returned": 948,
+      "sent": 4232,
+      "invalid": 10,
+      "rate": 22.4
     },
     {
       "county": "KAUAI",
@@ -1298,13 +1298,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 3,
-      "mailSent": 2193,
-      "mailReturned": 356,
-      "mailInvalid": 3,
-      "returned": 359,
-      "sent": 2201,
-      "invalid": 3,
-      "rate": 16.31
+      "mailSent": 2195,
+      "mailReturned": 389,
+      "mailInvalid": 2,
+      "returned": 392,
+      "sent": 2203,
+      "invalid": 2,
+      "rate": 17.79
     },
     {
       "county": "KAUAI",
@@ -1312,14 +1312,14 @@
       "electronicSent": 4,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 14,
-      "mailSent": 2998,
-      "mailReturned": 788,
+      "earlyReturned": 18,
+      "mailSent": 3000,
+      "mailReturned": 854,
       "mailInvalid": 4,
-      "returned": 802,
-      "sent": 3016,
+      "returned": 872,
+      "sent": 3022,
       "invalid": 4,
-      "rate": 26.59
+      "rate": 28.86
     },
     {
       "county": "KAUAI",
@@ -1327,14 +1327,14 @@
       "electronicSent": 7,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 6,
+      "earlyReturned": 10,
       "mailSent": 3805,
-      "mailReturned": 886,
-      "mailInvalid": 8,
-      "returned": 892,
-      "sent": 3818,
-      "invalid": 8,
-      "rate": 23.36
+      "mailReturned": 977,
+      "mailInvalid": 12,
+      "returned": 987,
+      "sent": 3822,
+      "invalid": 12,
+      "rate": 25.82
     },
     {
       "county": "KAUAI",
@@ -1343,13 +1343,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 2,
-      "mailSent": 453,
-      "mailReturned": 95,
+      "mailSent": 454,
+      "mailReturned": 103,
       "mailInvalid": 2,
-      "returned": 97,
-      "sent": 455,
+      "returned": 105,
+      "sent": 456,
       "invalid": 2,
-      "rate": 21.32
+      "rate": 23.03
     },
     {
       "county": "KAUAI",
@@ -1358,13 +1358,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 7,
-      "mailSent": 3424,
-      "mailReturned": 607,
-      "mailInvalid": 7,
-      "returned": 614,
-      "sent": 3445,
-      "invalid": 7,
-      "rate": 17.82
+      "mailSent": 3425,
+      "mailReturned": 687,
+      "mailInvalid": 8,
+      "returned": 694,
+      "sent": 3446,
+      "invalid": 8,
+      "rate": 20.14
     },
     {
       "county": "KAUAI",
@@ -1372,14 +1372,14 @@
       "electronicSent": 12,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 8,
-      "mailSent": 4246,
-      "mailReturned": 962,
-      "mailInvalid": 10,
-      "returned": 970,
-      "sent": 4266,
-      "invalid": 10,
-      "rate": 22.74
+      "earlyReturned": 10,
+      "mailSent": 4248,
+      "mailReturned": 1029,
+      "mailInvalid": 11,
+      "returned": 1039,
+      "sent": 4270,
+      "invalid": 11,
+      "rate": 24.33
     },
     {
       "county": "KAUAI",
@@ -1388,13 +1388,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 4,
-      "mailSent": 3187,
-      "mailReturned": 701,
-      "mailInvalid": 7,
-      "returned": 705,
-      "sent": 3193,
-      "invalid": 7,
-      "rate": 22.08
+      "mailSent": 3189,
+      "mailReturned": 767,
+      "mailInvalid": 9,
+      "returned": 771,
+      "sent": 3195,
+      "invalid": 9,
+      "rate": 24.13
     },
     {
       "county": "KAUAI",
@@ -1403,13 +1403,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 1199,
-      "mailReturned": 278,
+      "mailSent": 1200,
+      "mailReturned": 301,
       "mailInvalid": 2,
-      "returned": 278,
-      "sent": 1202,
+      "returned": 301,
+      "sent": 1203,
       "invalid": 2,
-      "rate": 23.13
+      "rate": 25.02
     },
     {
       "county": "KAUAI",
@@ -1418,13 +1418,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 8,
-      "mailSent": 1904,
-      "mailReturned": 429,
-      "mailInvalid": 7,
-      "returned": 437,
-      "sent": 1916,
-      "invalid": 7,
-      "rate": 22.81
+      "mailSent": 1905,
+      "mailReturned": 456,
+      "mailInvalid": 6,
+      "returned": 464,
+      "sent": 1917,
+      "invalid": 6,
+      "rate": 24.2
     },
     {
       "county": "KAUAI",
@@ -1448,13 +1448,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 2,
-      "mailSent": 4072,
-      "mailReturned": 993,
-      "mailInvalid": 9,
-      "returned": 995,
-      "sent": 4079,
-      "invalid": 9,
-      "rate": 24.39
+      "mailSent": 4073,
+      "mailReturned": 1075,
+      "mailInvalid": 8,
+      "returned": 1077,
+      "sent": 4080,
+      "invalid": 8,
+      "rate": 26.4
     },
     {
       "county": "OAHU",
@@ -1463,13 +1463,13 @@
       "electronicReturned": 3,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 2580,
-      "mailReturned": 589,
+      "mailSent": 2582,
+      "mailReturned": 618,
       "mailInvalid": 4,
-      "returned": 592,
-      "sent": 2588,
+      "returned": 621,
+      "sent": 2590,
       "invalid": 4,
-      "rate": 22.87
+      "rate": 23.98
     },
     {
       "county": "OAHU",
@@ -1478,13 +1478,13 @@
       "electronicReturned": 2,
       "electronicInvalid": 0,
       "earlyReturned": 1,
-      "mailSent": 3951,
-      "mailReturned": 907,
-      "mailInvalid": 7,
-      "returned": 910,
-      "sent": 3965,
-      "invalid": 7,
-      "rate": 22.95
+      "mailSent": 3953,
+      "mailReturned": 973,
+      "mailInvalid": 9,
+      "returned": 976,
+      "sent": 3967,
+      "invalid": 9,
+      "rate": 24.6
     },
     {
       "county": "OAHU",
@@ -1493,13 +1493,13 @@
       "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 3498,
-      "mailReturned": 723,
+      "mailSent": 3499,
+      "mailReturned": 792,
       "mailInvalid": 5,
-      "returned": 724,
-      "sent": 3504,
+      "returned": 793,
+      "sent": 3505,
       "invalid": 5,
-      "rate": 20.66
+      "rate": 22.62
     },
     {
       "county": "OAHU",
@@ -1508,13 +1508,13 @@
       "electronicReturned": 5,
       "electronicInvalid": 0,
       "earlyReturned": 3,
-      "mailSent": 4087,
-      "mailReturned": 993,
-      "mailInvalid": 3,
-      "returned": 1001,
-      "sent": 4110,
-      "invalid": 3,
-      "rate": 24.36
+      "mailSent": 4088,
+      "mailReturned": 1056,
+      "mailInvalid": 4,
+      "returned": 1064,
+      "sent": 4111,
+      "invalid": 4,
+      "rate": 25.88
     },
     {
       "county": "OAHU",
@@ -1523,13 +1523,13 @@
       "electronicReturned": 4,
       "electronicInvalid": 0,
       "earlyReturned": 1,
-      "mailSent": 4565,
-      "mailReturned": 1029,
+      "mailSent": 4568,
+      "mailReturned": 1099,
       "mailInvalid": 6,
-      "returned": 1034,
-      "sent": 4588,
+      "returned": 1104,
+      "sent": 4591,
       "invalid": 6,
-      "rate": 22.54
+      "rate": 24.05
     },
     {
       "county": "OAHU",
@@ -1537,14 +1537,14 @@
       "electronicSent": 10,
       "electronicReturned": 2,
       "electronicInvalid": 0,
-      "earlyReturned": 5,
-      "mailSent": 6124,
-      "mailReturned": 1500,
+      "earlyReturned": 8,
+      "mailSent": 6128,
+      "mailReturned": 1609,
       "mailInvalid": 14,
-      "returned": 1507,
-      "sent": 6139,
+      "returned": 1619,
+      "sent": 6146,
       "invalid": 14,
-      "rate": 24.55
+      "rate": 26.34
     },
     {
       "county": "OAHU",
@@ -1552,14 +1552,14 @@
       "electronicSent": 20,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 8,
-      "mailSent": 7317,
-      "mailReturned": 1863,
-      "mailInvalid": 17,
-      "returned": 1872,
-      "sent": 7345,
-      "invalid": 17,
-      "rate": 25.49
+      "earlyReturned": 11,
+      "mailSent": 7320,
+      "mailReturned": 2020,
+      "mailInvalid": 20,
+      "returned": 2032,
+      "sent": 7351,
+      "invalid": 20,
+      "rate": 27.64
     },
     {
       "county": "OAHU",
@@ -1579,17 +1579,17 @@
     {
       "county": "OAHU",
       "dp": "20-01",
-      "electronicSent": 14,
+      "electronicSent": 15,
       "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 2,
-      "mailSent": 3061,
-      "mailReturned": 698,
-      "mailInvalid": 8,
-      "returned": 701,
-      "sent": 3077,
-      "invalid": 8,
-      "rate": 22.78
+      "mailSent": 3062,
+      "mailReturned": 744,
+      "mailInvalid": 10,
+      "returned": 747,
+      "sent": 3079,
+      "invalid": 10,
+      "rate": 24.26
     },
     {
       "county": "OAHU",
@@ -1598,13 +1598,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 2,
-      "mailSent": 3418,
-      "mailReturned": 763,
-      "mailInvalid": 5,
-      "returned": 765,
-      "sent": 3429,
-      "invalid": 5,
-      "rate": 22.31
+      "mailSent": 3421,
+      "mailReturned": 818,
+      "mailInvalid": 6,
+      "returned": 820,
+      "sent": 3432,
+      "invalid": 6,
+      "rate": 23.89
     },
     {
       "county": "OAHU",
@@ -1613,13 +1613,13 @@
       "electronicReturned": 4,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 3134,
-      "mailReturned": 568,
-      "mailInvalid": 3,
-      "returned": 572,
-      "sent": 3152,
-      "invalid": 3,
-      "rate": 18.15
+      "mailSent": 3136,
+      "mailReturned": 615,
+      "mailInvalid": 5,
+      "returned": 619,
+      "sent": 3154,
+      "invalid": 5,
+      "rate": 19.63
     },
     {
       "county": "OAHU",
@@ -1628,13 +1628,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 1,
-      "mailSent": 2852,
-      "mailReturned": 573,
+      "mailSent": 2853,
+      "mailReturned": 605,
       "mailInvalid": 1,
-      "returned": 574,
-      "sent": 2863,
+      "returned": 606,
+      "sent": 2864,
       "invalid": 1,
-      "rate": 20.05
+      "rate": 21.16
     },
     {
       "county": "OAHU",
@@ -1643,43 +1643,43 @@
       "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 3,
-      "mailSent": 3209,
-      "mailReturned": 681,
-      "mailInvalid": 4,
-      "returned": 685,
-      "sent": 3219,
-      "invalid": 4,
-      "rate": 21.28
+      "mailSent": 3211,
+      "mailReturned": 725,
+      "mailInvalid": 3,
+      "returned": 729,
+      "sent": 3221,
+      "invalid": 3,
+      "rate": 22.63
     },
     {
       "county": "OAHU",
       "dp": "21-01",
-      "electronicSent": 22,
+      "electronicSent": 23,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 3,
-      "mailSent": 5557,
-      "mailReturned": 1174,
+      "earlyReturned": 6,
+      "mailSent": 5558,
+      "mailReturned": 1281,
       "mailInvalid": 10,
-      "returned": 1178,
-      "sent": 5582,
+      "returned": 1288,
+      "sent": 5587,
       "invalid": 10,
-      "rate": 21.1
+      "rate": 23.05
     },
     {
       "county": "OAHU",
       "dp": "21-02",
-      "electronicSent": 10,
+      "electronicSent": 11,
       "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 4,
-      "mailSent": 3544,
-      "mailReturned": 703,
+      "mailSent": 3547,
+      "mailReturned": 757,
       "mailInvalid": 6,
-      "returned": 708,
-      "sent": 3558,
+      "returned": 762,
+      "sent": 3562,
       "invalid": 6,
-      "rate": 19.9
+      "rate": 21.39
     },
     {
       "county": "OAHU",
@@ -1687,14 +1687,14 @@
       "electronicSent": 6,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 3,
+      "earlyReturned": 5,
       "mailSent": 3179,
-      "mailReturned": 692,
-      "mailInvalid": 3,
-      "returned": 695,
-      "sent": 3188,
-      "invalid": 3,
-      "rate": 21.8
+      "mailReturned": 748,
+      "mailInvalid": 4,
+      "returned": 753,
+      "sent": 3190,
+      "invalid": 4,
+      "rate": 23.61
     },
     {
       "county": "OAHU",
@@ -1704,12 +1704,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 2,
       "mailSent": 2545,
-      "mailReturned": 560,
-      "mailInvalid": 6,
-      "returned": 564,
+      "mailReturned": 616,
+      "mailInvalid": 7,
+      "returned": 620,
       "sent": 2560,
-      "invalid": 6,
-      "rate": 22.03
+      "invalid": 7,
+      "rate": 24.22
     },
     {
       "county": "OAHU",
@@ -1734,12 +1734,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 963,
-      "mailReturned": 149,
+      "mailReturned": 160,
       "mailInvalid": 2,
-      "returned": 149,
+      "returned": 160,
       "sent": 967,
       "invalid": 2,
-      "rate": 15.41
+      "rate": 16.55
     },
     {
       "county": "OAHU",
@@ -1749,27 +1749,27 @@
       "electronicInvalid": 0,
       "earlyReturned": 1,
       "mailSent": 1660,
-      "mailReturned": 395,
+      "mailReturned": 423,
       "mailInvalid": 3,
-      "returned": 398,
+      "returned": 426,
       "sent": 1668,
       "invalid": 3,
-      "rate": 23.86
+      "rate": 25.54
     },
     {
       "county": "OAHU",
       "dp": "22-04",
       "electronicSent": 20,
-      "electronicReturned": 5,
+      "electronicReturned": 6,
       "electronicInvalid": 0,
-      "earlyReturned": 4,
-      "mailSent": 6200,
-      "mailReturned": 1665,
-      "mailInvalid": 14,
-      "returned": 1674,
-      "sent": 6224,
-      "invalid": 14,
-      "rate": 26.9
+      "earlyReturned": 5,
+      "mailSent": 6202,
+      "mailReturned": 1754,
+      "mailInvalid": 13,
+      "returned": 1765,
+      "sent": 6227,
+      "invalid": 13,
+      "rate": 28.34
     },
     {
       "county": "OAHU",
@@ -1777,14 +1777,14 @@
       "electronicSent": 23,
       "electronicReturned": 4,
       "electronicInvalid": 0,
-      "earlyReturned": 11,
-      "mailSent": 5744,
-      "mailReturned": 1212,
+      "earlyReturned": 18,
+      "mailSent": 5749,
+      "mailReturned": 1313,
       "mailInvalid": 5,
-      "returned": 1227,
-      "sent": 5778,
+      "returned": 1335,
+      "sent": 5790,
       "invalid": 5,
-      "rate": 21.24
+      "rate": 23.06
     },
     {
       "county": "OAHU",
@@ -1793,13 +1793,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 627,
-      "mailReturned": 100,
-      "mailInvalid": 1,
-      "returned": 100,
-      "sent": 628,
-      "invalid": 1,
-      "rate": 15.92
+      "mailSent": 628,
+      "mailReturned": 108,
+      "mailInvalid": 0,
+      "returned": 108,
+      "sent": 629,
+      "invalid": 0,
+      "rate": 17.17
     },
     {
       "county": "OAHU",
@@ -1808,13 +1808,13 @@
       "electronicReturned": 2,
       "electronicInvalid": 0,
       "earlyReturned": 8,
-      "mailSent": 4700,
-      "mailReturned": 944,
+      "mailSent": 4702,
+      "mailReturned": 1007,
       "mailInvalid": 9,
-      "returned": 954,
-      "sent": 4737,
+      "returned": 1017,
+      "sent": 4739,
       "invalid": 9,
-      "rate": 20.14
+      "rate": 21.46
     },
     {
       "county": "OAHU",
@@ -1823,28 +1823,28 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 2,
-      "mailSent": 1879,
-      "mailReturned": 326,
+      "mailSent": 1881,
+      "mailReturned": 344,
       "mailInvalid": 2,
-      "returned": 328,
-      "sent": 1893,
+      "returned": 346,
+      "sent": 1895,
       "invalid": 2,
-      "rate": 17.33
+      "rate": 18.26
     },
     {
       "county": "OAHU",
       "dp": "23-04",
-      "electronicSent": 19,
+      "electronicSent": 20,
       "electronicReturned": 2,
       "electronicInvalid": 0,
       "earlyReturned": 2,
-      "mailSent": 3286,
-      "mailReturned": 689,
-      "mailInvalid": 6,
-      "returned": 693,
-      "sent": 3307,
-      "invalid": 6,
-      "rate": 20.96
+      "mailSent": 3294,
+      "mailReturned": 724,
+      "mailInvalid": 7,
+      "returned": 728,
+      "sent": 3316,
+      "invalid": 7,
+      "rate": 21.95
     },
     {
       "county": "OAHU",
@@ -1854,12 +1854,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 4,
       "mailSent": 1244,
-      "mailReturned": 334,
+      "mailReturned": 350,
       "mailInvalid": 1,
-      "returned": 340,
+      "returned": 356,
       "sent": 1255,
       "invalid": 1,
-      "rate": 27.09
+      "rate": 28.37
     },
     {
       "county": "OAHU",
@@ -1868,28 +1868,28 @@
       "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 5,
-      "mailSent": 4826,
-      "mailReturned": 954,
-      "mailInvalid": 10,
-      "returned": 960,
-      "sent": 4878,
-      "invalid": 10,
-      "rate": 19.68
+      "mailSent": 4829,
+      "mailReturned": 1014,
+      "mailInvalid": 11,
+      "returned": 1020,
+      "sent": 4881,
+      "invalid": 11,
+      "rate": 20.9
     },
     {
       "county": "OAHU",
       "dp": "24-02",
-      "electronicSent": 39,
+      "electronicSent": 40,
       "electronicReturned": 9,
       "electronicInvalid": 0,
-      "earlyReturned": 4,
-      "mailSent": 4141,
-      "mailReturned": 836,
-      "mailInvalid": 3,
-      "returned": 849,
-      "sent": 4184,
-      "invalid": 3,
-      "rate": 20.29
+      "earlyReturned": 5,
+      "mailSent": 4143,
+      "mailReturned": 886,
+      "mailInvalid": 4,
+      "returned": 900,
+      "sent": 4188,
+      "invalid": 4,
+      "rate": 21.49
     },
     {
       "county": "OAHU",
@@ -1899,57 +1899,57 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 1373,
-      "mailReturned": 266,
-      "mailInvalid": 6,
-      "returned": 268,
+      "mailReturned": 288,
+      "mailInvalid": 5,
+      "returned": 290,
       "sent": 1386,
-      "invalid": 6,
-      "rate": 19.34
+      "invalid": 5,
+      "rate": 20.92
     },
     {
       "county": "OAHU",
       "dp": "24-04",
-      "electronicSent": 13,
+      "electronicSent": 14,
       "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 2,
       "mailSent": 2432,
-      "mailReturned": 491,
-      "mailInvalid": 2,
-      "returned": 494,
-      "sent": 2447,
-      "invalid": 2,
-      "rate": 20.19
+      "mailReturned": 525,
+      "mailInvalid": 3,
+      "returned": 528,
+      "sent": 2448,
+      "invalid": 3,
+      "rate": 21.57
     },
     {
       "county": "OAHU",
       "dp": "25-01",
-      "electronicSent": 41,
+      "electronicSent": 42,
       "electronicReturned": 4,
       "electronicInvalid": 0,
-      "earlyReturned": 7,
-      "mailSent": 5783,
-      "mailReturned": 1211,
-      "mailInvalid": 9,
-      "returned": 1222,
-      "sent": 5831,
-      "invalid": 9,
-      "rate": 20.96
+      "earlyReturned": 9,
+      "mailSent": 5787,
+      "mailReturned": 1288,
+      "mailInvalid": 10,
+      "returned": 1301,
+      "sent": 5838,
+      "invalid": 10,
+      "rate": 22.29
     },
     {
       "county": "OAHU",
       "dp": "25-02",
-      "electronicSent": 5,
+      "electronicSent": 6,
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 4,
       "mailSent": 909,
-      "mailReturned": 215,
+      "mailReturned": 228,
       "mailInvalid": 2,
-      "returned": 219,
-      "sent": 918,
+      "returned": 232,
+      "sent": 919,
       "invalid": 2,
-      "rate": 23.86
+      "rate": 25.24
     },
     {
       "county": "OAHU",
@@ -1957,14 +1957,14 @@
       "electronicSent": 14,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 5,
-      "mailSent": 2027,
-      "mailReturned": 439,
+      "earlyReturned": 6,
+      "mailSent": 2030,
+      "mailReturned": 467,
       "mailInvalid": 2,
-      "returned": 445,
-      "sent": 2046,
+      "returned": 474,
+      "sent": 2050,
       "invalid": 2,
-      "rate": 21.75
+      "rate": 23.12
     },
     {
       "county": "OAHU",
@@ -1972,14 +1972,14 @@
       "electronicSent": 32,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 7,
-      "mailSent": 5754,
-      "mailReturned": 1209,
+      "earlyReturned": 10,
+      "mailSent": 5759,
+      "mailReturned": 1289,
       "mailInvalid": 11,
-      "returned": 1217,
-      "sent": 5793,
+      "returned": 1300,
+      "sent": 5801,
       "invalid": 11,
-      "rate": 21.01
+      "rate": 22.41
     },
     {
       "county": "OAHU",
@@ -1987,14 +1987,14 @@
       "electronicSent": 33,
       "electronicReturned": 3,
       "electronicInvalid": 0,
-      "earlyReturned": 10,
-      "mailSent": 6838,
-      "mailReturned": 1624,
-      "mailInvalid": 18,
-      "returned": 1637,
-      "sent": 6881,
-      "invalid": 18,
-      "rate": 23.79
+      "earlyReturned": 15,
+      "mailSent": 6842,
+      "mailReturned": 1716,
+      "mailInvalid": 19,
+      "returned": 1734,
+      "sent": 6890,
+      "invalid": 19,
+      "rate": 25.17
     },
     {
       "county": "OAHU",
@@ -2002,14 +2002,14 @@
       "electronicSent": 18,
       "electronicReturned": 3,
       "electronicInvalid": 0,
-      "earlyReturned": 9,
-      "mailSent": 4184,
-      "mailReturned": 1004,
-      "mailInvalid": 7,
-      "returned": 1016,
-      "sent": 4211,
-      "invalid": 7,
-      "rate": 24.13
+      "earlyReturned": 12,
+      "mailSent": 4185,
+      "mailReturned": 1084,
+      "mailInvalid": 8,
+      "returned": 1099,
+      "sent": 4215,
+      "invalid": 8,
+      "rate": 26.07
     },
     {
       "county": "OAHU",
@@ -2019,12 +2019,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 1,
       "mailSent": 1313,
-      "mailReturned": 265,
+      "mailReturned": 281,
       "mailInvalid": 2,
-      "returned": 266,
+      "returned": 282,
       "sent": 1318,
       "invalid": 2,
-      "rate": 20.18
+      "rate": 21.4
     },
     {
       "county": "OAHU",
@@ -2032,14 +2032,14 @@
       "electronicSent": 7,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 1,
+      "earlyReturned": 2,
       "mailSent": 1192,
-      "mailReturned": 206,
+      "mailReturned": 221,
       "mailInvalid": 1,
-      "returned": 207,
-      "sent": 1200,
+      "returned": 223,
+      "sent": 1201,
       "invalid": 1,
-      "rate": 17.25
+      "rate": 18.57
     },
     {
       "county": "OAHU",
@@ -2049,12 +2049,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 2,
       "mailSent": 441,
-      "mailReturned": 76,
+      "mailReturned": 79,
       "mailInvalid": 0,
-      "returned": 78,
+      "returned": 81,
       "sent": 443,
       "invalid": 0,
-      "rate": 17.61
+      "rate": 18.28
     },
     {
       "county": "OAHU",
@@ -2062,29 +2062,29 @@
       "electronicSent": 5,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 6,
+      "earlyReturned": 9,
       "mailSent": 3832,
-      "mailReturned": 869,
-      "mailInvalid": 2,
-      "returned": 876,
-      "sent": 3843,
-      "invalid": 2,
-      "rate": 22.79
+      "mailReturned": 930,
+      "mailInvalid": 4,
+      "returned": 940,
+      "sent": 3846,
+      "invalid": 4,
+      "rate": 24.44
     },
     {
       "county": "OAHU",
       "dp": "27-03",
-      "electronicSent": 26,
+      "electronicSent": 27,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 6,
-      "mailSent": 8438,
-      "mailReturned": 2182,
-      "mailInvalid": 15,
-      "returned": 2189,
-      "sent": 8470,
-      "invalid": 15,
-      "rate": 25.84
+      "earlyReturned": 9,
+      "mailSent": 8441,
+      "mailReturned": 2324,
+      "mailInvalid": 14,
+      "returned": 2334,
+      "sent": 8477,
+      "invalid": 14,
+      "rate": 27.53
     },
     {
       "county": "OAHU",
@@ -2093,13 +2093,13 @@
       "electronicReturned": 3,
       "electronicInvalid": 0,
       "earlyReturned": 1,
-      "mailSent": 2809,
-      "mailReturned": 635,
+      "mailSent": 2811,
+      "mailReturned": 677,
       "mailInvalid": 2,
-      "returned": 639,
-      "sent": 2819,
+      "returned": 681,
+      "sent": 2821,
       "invalid": 2,
-      "rate": 22.67
+      "rate": 24.14
     },
     {
       "county": "OAHU",
@@ -2108,13 +2108,13 @@
       "electronicReturned": 3,
       "electronicInvalid": 0,
       "earlyReturned": 6,
-      "mailSent": 5472,
-      "mailReturned": 1082,
+      "mailSent": 5476,
+      "mailReturned": 1136,
       "mailInvalid": 11,
-      "returned": 1091,
-      "sent": 5511,
+      "returned": 1145,
+      "sent": 5515,
       "invalid": 11,
-      "rate": 19.8
+      "rate": 20.76
     },
     {
       "county": "OAHU",
@@ -2122,14 +2122,14 @@
       "electronicSent": 13,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 1,
-      "mailSent": 3786,
-      "mailReturned": 521,
+      "earlyReturned": 4,
+      "mailSent": 3788,
+      "mailReturned": 550,
       "mailInvalid": 3,
-      "returned": 523,
-      "sent": 3800,
+      "returned": 555,
+      "sent": 3805,
       "invalid": 3,
-      "rate": 13.76
+      "rate": 14.59
     },
     {
       "county": "OAHU",
@@ -2139,12 +2139,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 274,
-      "mailReturned": 32,
+      "mailReturned": 37,
       "mailInvalid": 1,
-      "returned": 32,
+      "returned": 37,
       "sent": 275,
       "invalid": 1,
-      "rate": 11.64
+      "rate": 13.45
     },
     {
       "county": "OAHU",
@@ -2169,12 +2169,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 2,
       "mailSent": 2445,
-      "mailReturned": 400,
-      "mailInvalid": 4,
-      "returned": 402,
+      "mailReturned": 434,
+      "mailInvalid": 5,
+      "returned": 436,
       "sent": 2459,
-      "invalid": 4,
-      "rate": 16.35
+      "invalid": 5,
+      "rate": 17.73
     },
     {
       "county": "OAHU",
@@ -2182,14 +2182,14 @@
       "electronicSent": 14,
       "electronicReturned": 2,
       "electronicInvalid": 0,
-      "earlyReturned": 1,
-      "mailSent": 4547,
-      "mailReturned": 746,
-      "mailInvalid": 5,
-      "returned": 749,
-      "sent": 4562,
-      "invalid": 5,
-      "rate": 16.42
+      "earlyReturned": 2,
+      "mailSent": 4549,
+      "mailReturned": 803,
+      "mailInvalid": 6,
+      "returned": 807,
+      "sent": 4565,
+      "invalid": 6,
+      "rate": 17.68
     },
     {
       "county": "OAHU",
@@ -2199,12 +2199,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 1205,
-      "mailReturned": 161,
-      "mailInvalid": 0,
-      "returned": 161,
+      "mailReturned": 173,
+      "mailInvalid": 1,
+      "returned": 173,
       "sent": 1212,
-      "invalid": 0,
-      "rate": 13.28
+      "invalid": 1,
+      "rate": 14.27
     },
     {
       "county": "OAHU",
@@ -2213,28 +2213,28 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 2212,
-      "mailReturned": 259,
+      "mailSent": 2213,
+      "mailReturned": 275,
       "mailInvalid": 3,
-      "returned": 259,
-      "sent": 2222,
+      "returned": 275,
+      "sent": 2223,
       "invalid": 3,
-      "rate": 11.66
+      "rate": 12.37
     },
     {
       "county": "OAHU",
       "dp": "30-01",
-      "electronicSent": 12,
+      "electronicSent": 13,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 2,
-      "mailSent": 3921,
-      "mailReturned": 478,
+      "earlyReturned": 3,
+      "mailSent": 3924,
+      "mailReturned": 526,
       "mailInvalid": 6,
-      "returned": 480,
-      "sent": 3935,
+      "returned": 529,
+      "sent": 3940,
       "invalid": 6,
-      "rate": 12.2
+      "rate": 13.43
     },
     {
       "county": "OAHU",
@@ -2244,12 +2244,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 3,
       "mailSent": 1211,
-      "mailReturned": 115,
+      "mailReturned": 135,
       "mailInvalid": 1,
-      "returned": 118,
+      "returned": 138,
       "sent": 1222,
       "invalid": 1,
-      "rate": 9.66
+      "rate": 11.29
     },
     {
       "county": "OAHU",
@@ -2257,29 +2257,29 @@
       "electronicSent": 7,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 2,
-      "mailSent": 2922,
-      "mailReturned": 392,
-      "mailInvalid": 1,
-      "returned": 394,
-      "sent": 2931,
-      "invalid": 1,
-      "rate": 13.44
+      "earlyReturned": 3,
+      "mailSent": 2923,
+      "mailReturned": 412,
+      "mailInvalid": 2,
+      "returned": 415,
+      "sent": 2933,
+      "invalid": 2,
+      "rate": 14.15
     },
     {
       "county": "OAHU",
       "dp": "30-04",
-      "electronicSent": 7,
+      "electronicSent": 8,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 1,
+      "earlyReturned": 3,
       "mailSent": 977,
-      "mailReturned": 68,
+      "mailReturned": 72,
       "mailInvalid": 0,
-      "returned": 70,
-      "sent": 985,
+      "returned": 76,
+      "sent": 988,
       "invalid": 0,
-      "rate": 7.11
+      "rate": 7.69
     },
     {
       "county": "OAHU",
@@ -2289,12 +2289,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 689,
-      "mailReturned": 40,
+      "mailReturned": 42,
       "mailInvalid": 1,
-      "returned": 41,
+      "returned": 43,
       "sent": 694,
       "invalid": 1,
-      "rate": 5.91
+      "rate": 6.2
     },
     {
       "county": "OAHU",
@@ -2303,13 +2303,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 4,
-      "mailSent": 4604,
-      "mailReturned": 1036,
+      "mailSent": 4608,
+      "mailReturned": 1097,
       "mailInvalid": 3,
-      "returned": 1040,
-      "sent": 4625,
+      "returned": 1101,
+      "sent": 4629,
       "invalid": 3,
-      "rate": 22.49
+      "rate": 23.78
     },
     {
       "county": "OAHU",
@@ -2317,14 +2317,14 @@
       "electronicSent": 14,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 4,
-      "mailSent": 5634,
-      "mailReturned": 1134,
-      "mailInvalid": 11,
-      "returned": 1138,
-      "sent": 5652,
-      "invalid": 11,
-      "rate": 20.13
+      "earlyReturned": 10,
+      "mailSent": 5638,
+      "mailReturned": 1223,
+      "mailInvalid": 12,
+      "returned": 1233,
+      "sent": 5662,
+      "invalid": 12,
+      "rate": 21.78
     },
     {
       "county": "OAHU",
@@ -2334,12 +2334,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 2,
       "mailSent": 1242,
-      "mailReturned": 154,
+      "mailReturned": 162,
       "mailInvalid": 2,
-      "returned": 156,
+      "returned": 164,
       "sent": 1249,
       "invalid": 2,
-      "rate": 12.49
+      "rate": 13.13
     },
     {
       "county": "OAHU",
@@ -2349,12 +2349,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 251,
-      "mailReturned": 36,
+      "mailReturned": 37,
       "mailInvalid": 0,
-      "returned": 36,
+      "returned": 37,
       "sent": 251,
       "invalid": 0,
-      "rate": 14.34
+      "rate": 14.74
     },
     {
       "county": "OAHU",
@@ -2363,13 +2363,13 @@
       "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 6,
-      "mailSent": 4237,
-      "mailReturned": 1008,
-      "mailInvalid": 2,
-      "returned": 1015,
-      "sent": 4249,
-      "invalid": 2,
-      "rate": 23.89
+      "mailSent": 4241,
+      "mailReturned": 1073,
+      "mailInvalid": 5,
+      "returned": 1080,
+      "sent": 4253,
+      "invalid": 5,
+      "rate": 25.39
     },
     {
       "county": "OAHU",
@@ -2379,12 +2379,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 2,
       "mailSent": 940,
-      "mailReturned": 228,
+      "mailReturned": 240,
       "mailInvalid": 3,
-      "returned": 230,
+      "returned": 242,
       "sent": 943,
       "invalid": 3,
-      "rate": 24.39
+      "rate": 25.66
     },
     {
       "county": "OAHU",
@@ -2393,13 +2393,13 @@
       "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 1,
-      "mailSent": 4966,
-      "mailReturned": 718,
+      "mailSent": 4968,
+      "mailReturned": 777,
       "mailInvalid": 8,
-      "returned": 720,
-      "sent": 4984,
+      "returned": 779,
+      "sent": 4986,
       "invalid": 8,
-      "rate": 14.45
+      "rate": 15.62
     },
     {
       "county": "OAHU",
@@ -2408,13 +2408,13 @@
       "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 2,
-      "mailSent": 3216,
-      "mailReturned": 607,
-      "mailInvalid": 3,
-      "returned": 610,
-      "sent": 3224,
-      "invalid": 3,
-      "rate": 18.92
+      "mailSent": 3217,
+      "mailReturned": 623,
+      "mailInvalid": 4,
+      "returned": 626,
+      "sent": 3225,
+      "invalid": 4,
+      "rate": 19.41
     },
     {
       "county": "OAHU",
@@ -2423,13 +2423,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 5,
-      "mailSent": 6036,
-      "mailReturned": 1432,
+      "mailSent": 6037,
+      "mailReturned": 1537,
       "mailInvalid": 4,
-      "returned": 1437,
-      "sent": 6055,
+      "returned": 1542,
+      "sent": 6056,
       "invalid": 4,
-      "rate": 23.73
+      "rate": 25.46
     },
     {
       "county": "OAHU",
@@ -2437,14 +2437,14 @@
       "electronicSent": 12,
       "electronicReturned": 2,
       "electronicInvalid": 0,
-      "earlyReturned": 7,
-      "mailSent": 7748,
-      "mailReturned": 2191,
-      "mailInvalid": 8,
-      "returned": 2200,
-      "sent": 7767,
-      "invalid": 8,
-      "rate": 28.32
+      "earlyReturned": 10,
+      "mailSent": 7750,
+      "mailReturned": 2357,
+      "mailInvalid": 7,
+      "returned": 2369,
+      "sent": 7772,
+      "invalid": 7,
+      "rate": 30.48
     },
     {
       "county": "OAHU",
@@ -2452,14 +2452,14 @@
       "electronicSent": 3,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 1,
-      "mailSent": 1648,
-      "mailReturned": 292,
+      "earlyReturned": 2,
+      "mailSent": 1649,
+      "mailReturned": 324,
       "mailInvalid": 2,
-      "returned": 293,
-      "sent": 1652,
+      "returned": 326,
+      "sent": 1654,
       "invalid": 2,
-      "rate": 17.74
+      "rate": 19.71
     },
     {
       "county": "OAHU",
@@ -2467,14 +2467,14 @@
       "electronicSent": 3,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 1,
+      "earlyReturned": 5,
       "mailSent": 1640,
-      "mailReturned": 427,
-      "mailInvalid": 3,
-      "returned": 429,
-      "sent": 1644,
-      "invalid": 3,
-      "rate": 26.09
+      "mailReturned": 458,
+      "mailInvalid": 2,
+      "returned": 464,
+      "sent": 1648,
+      "invalid": 2,
+      "rate": 28.16
     },
     {
       "county": "OAHU",
@@ -2483,13 +2483,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 2,
-      "mailSent": 1039,
-      "mailReturned": 145,
+      "mailSent": 1040,
+      "mailReturned": 155,
       "mailInvalid": 0,
-      "returned": 147,
-      "sent": 1044,
+      "returned": 157,
+      "sent": 1045,
       "invalid": 0,
-      "rate": 14.08
+      "rate": 15.02
     },
     {
       "county": "OAHU",
@@ -2497,29 +2497,29 @@
       "electronicSent": 10,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 2,
+      "earlyReturned": 3,
       "mailSent": 4537,
-      "mailReturned": 982,
+      "mailReturned": 1048,
       "mailInvalid": 6,
-      "returned": 984,
-      "sent": 4549,
+      "returned": 1051,
+      "sent": 4550,
       "invalid": 6,
-      "rate": 21.63
+      "rate": 23.1
     },
     {
       "county": "OAHU",
       "dp": "34-03",
-      "electronicSent": 13,
+      "electronicSent": 14,
       "electronicReturned": 3,
       "electronicInvalid": 0,
       "earlyReturned": 5,
-      "mailSent": 6385,
-      "mailReturned": 1534,
-      "mailInvalid": 2,
-      "returned": 1542,
-      "sent": 6403,
-      "invalid": 2,
-      "rate": 24.08
+      "mailSent": 6387,
+      "mailReturned": 1652,
+      "mailInvalid": 3,
+      "returned": 1660,
+      "sent": 6406,
+      "invalid": 3,
+      "rate": 25.91
     },
     {
       "county": "OAHU",
@@ -2529,12 +2529,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 3,
       "mailSent": 2934,
-      "mailReturned": 671,
-      "mailInvalid": 4,
-      "returned": 676,
+      "mailReturned": 712,
+      "mailInvalid": 3,
+      "returned": 717,
       "sent": 2945,
-      "invalid": 4,
-      "rate": 22.95
+      "invalid": 3,
+      "rate": 24.35
     },
     {
       "county": "OAHU",
@@ -2544,12 +2544,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 319,
-      "mailReturned": 42,
+      "mailReturned": 45,
       "mailInvalid": 0,
-      "returned": 42,
+      "returned": 45,
       "sent": 319,
       "invalid": 0,
-      "rate": 13.17
+      "rate": 14.11
     },
     {
       "county": "OAHU",
@@ -2559,12 +2559,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 695,
-      "mailReturned": 84,
-      "mailInvalid": 1,
-      "returned": 84,
+      "mailReturned": 87,
+      "mailInvalid": 0,
+      "returned": 87,
       "sent": 696,
-      "invalid": 1,
-      "rate": 12.07
+      "invalid": 0,
+      "rate": 12.5
     },
     {
       "county": "OAHU",
@@ -2573,13 +2573,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 3445,
-      "mailReturned": 519,
+      "mailSent": 3446,
+      "mailReturned": 538,
       "mailInvalid": 5,
-      "returned": 519,
-      "sent": 3458,
+      "returned": 538,
+      "sent": 3459,
       "invalid": 5,
-      "rate": 15.01
+      "rate": 15.55
     },
     {
       "county": "OAHU",
@@ -2588,13 +2588,13 @@
       "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 3,
-      "mailSent": 3054,
-      "mailReturned": 637,
+      "mailSent": 3060,
+      "mailReturned": 685,
       "mailInvalid": 1,
-      "returned": 641,
-      "sent": 3063,
+      "returned": 689,
+      "sent": 3069,
       "invalid": 1,
-      "rate": 20.93
+      "rate": 22.45
     },
     {
       "county": "OAHU",
@@ -2603,13 +2603,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 2,
-      "mailSent": 2261,
-      "mailReturned": 404,
-      "mailInvalid": 2,
-      "returned": 406,
-      "sent": 2266,
-      "invalid": 2,
-      "rate": 17.92
+      "mailSent": 2262,
+      "mailReturned": 429,
+      "mailInvalid": 1,
+      "returned": 431,
+      "sent": 2267,
+      "invalid": 1,
+      "rate": 19.01
     },
     {
       "county": "OAHU",
@@ -2617,14 +2617,14 @@
       "electronicSent": 3,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 3,
-      "mailSent": 3032,
-      "mailReturned": 629,
-      "mailInvalid": 3,
-      "returned": 633,
-      "sent": 3038,
-      "invalid": 3,
-      "rate": 20.84
+      "earlyReturned": 6,
+      "mailSent": 3038,
+      "mailReturned": 671,
+      "mailInvalid": 4,
+      "returned": 678,
+      "sent": 3047,
+      "invalid": 4,
+      "rate": 22.25
     },
     {
       "county": "OAHU",
@@ -2632,14 +2632,14 @@
       "electronicSent": 18,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 3,
-      "mailSent": 5431,
-      "mailReturned": 712,
-      "mailInvalid": 2,
-      "returned": 715,
-      "sent": 5452,
-      "invalid": 2,
-      "rate": 13.11
+      "earlyReturned": 6,
+      "mailSent": 5433,
+      "mailReturned": 767,
+      "mailInvalid": 3,
+      "returned": 773,
+      "sent": 5457,
+      "invalid": 3,
+      "rate": 14.17
     },
     {
       "county": "OAHU",
@@ -2647,14 +2647,14 @@
       "electronicSent": 11,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 3,
+      "earlyReturned": 5,
       "mailSent": 3979,
-      "mailReturned": 517,
-      "mailInvalid": 7,
-      "returned": 521,
-      "sent": 3993,
-      "invalid": 7,
-      "rate": 13.05
+      "mailReturned": 541,
+      "mailInvalid": 6,
+      "returned": 547,
+      "sent": 3995,
+      "invalid": 6,
+      "rate": 13.69
     },
     {
       "county": "OAHU",
@@ -2664,12 +2664,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 378,
-      "mailReturned": 63,
+      "mailReturned": 67,
       "mailInvalid": 0,
-      "returned": 63,
+      "returned": 67,
       "sent": 380,
       "invalid": 0,
-      "rate": 16.58
+      "rate": 17.63
     },
     {
       "county": "OAHU",
@@ -2692,14 +2692,14 @@
       "electronicSent": 11,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 0,
-      "mailSent": 4720,
-      "mailReturned": 1083,
-      "mailInvalid": 4,
-      "returned": 1083,
-      "sent": 4731,
-      "invalid": 4,
-      "rate": 22.89
+      "earlyReturned": 3,
+      "mailSent": 4725,
+      "mailReturned": 1148,
+      "mailInvalid": 5,
+      "returned": 1151,
+      "sent": 4739,
+      "invalid": 5,
+      "rate": 24.29
     },
     {
       "county": "OAHU",
@@ -2708,13 +2708,13 @@
       "electronicReturned": 2,
       "electronicInvalid": 0,
       "earlyReturned": 6,
-      "mailSent": 8435,
-      "mailReturned": 1963,
-      "mailInvalid": 13,
-      "returned": 1971,
-      "sent": 8468,
-      "invalid": 13,
-      "rate": 23.28
+      "mailSent": 8438,
+      "mailReturned": 2098,
+      "mailInvalid": 15,
+      "returned": 2106,
+      "sent": 8471,
+      "invalid": 15,
+      "rate": 24.86
     },
     {
       "county": "OAHU",
@@ -2723,13 +2723,13 @@
       "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 4881,
-      "mailReturned": 1235,
-      "mailInvalid": 6,
-      "returned": 1236,
-      "sent": 4889,
-      "invalid": 6,
-      "rate": 25.28
+      "mailSent": 4883,
+      "mailReturned": 1339,
+      "mailInvalid": 7,
+      "returned": 1340,
+      "sent": 4891,
+      "invalid": 7,
+      "rate": 27.4
     },
     {
       "county": "OAHU",
@@ -2754,12 +2754,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 2,
       "mailSent": 2155,
-      "mailReturned": 511,
+      "mailReturned": 539,
       "mailInvalid": 2,
-      "returned": 513,
+      "returned": 541,
       "sent": 2164,
       "invalid": 2,
-      "rate": 23.71
+      "rate": 25.0
     },
     {
       "county": "OAHU",
@@ -2768,13 +2768,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 4615,
-      "mailReturned": 953,
-      "mailInvalid": 3,
-      "returned": 953,
-      "sent": 4621,
-      "invalid": 3,
-      "rate": 20.62
+      "mailSent": 4617,
+      "mailReturned": 1014,
+      "mailInvalid": 4,
+      "returned": 1014,
+      "sent": 4623,
+      "invalid": 4,
+      "rate": 21.93
     },
     {
       "county": "OAHU",
@@ -2782,14 +2782,14 @@
       "electronicSent": 6,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 1,
-      "mailSent": 5301,
-      "mailReturned": 1122,
-      "mailInvalid": 6,
-      "returned": 1124,
-      "sent": 5308,
-      "invalid": 6,
-      "rate": 21.18
+      "earlyReturned": 3,
+      "mailSent": 5304,
+      "mailReturned": 1181,
+      "mailInvalid": 5,
+      "returned": 1185,
+      "sent": 5313,
+      "invalid": 5,
+      "rate": 22.3
     },
     {
       "county": "OAHU",
@@ -2798,13 +2798,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 2,
-      "mailSent": 4612,
-      "mailReturned": 888,
-      "mailInvalid": 9,
-      "returned": 890,
-      "sent": 4627,
-      "invalid": 9,
-      "rate": 19.23
+      "mailSent": 4614,
+      "mailReturned": 961,
+      "mailInvalid": 8,
+      "returned": 963,
+      "sent": 4629,
+      "invalid": 8,
+      "rate": 20.8
     },
     {
       "county": "OAHU",
@@ -2813,28 +2813,28 @@
       "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 3,
-      "mailSent": 1082,
-      "mailReturned": 201,
-      "mailInvalid": 2,
-      "returned": 205,
-      "sent": 1087,
-      "invalid": 2,
-      "rate": 18.86
+      "mailSent": 1084,
+      "mailReturned": 208,
+      "mailInvalid": 3,
+      "returned": 212,
+      "sent": 1089,
+      "invalid": 3,
+      "rate": 19.47
     },
     {
       "county": "OAHU",
       "dp": "39-02",
-      "electronicSent": 24,
+      "electronicSent": 25,
       "electronicReturned": 2,
       "electronicInvalid": 0,
-      "earlyReturned": 12,
-      "mailSent": 7852,
-      "mailReturned": 1290,
-      "mailInvalid": 17,
-      "returned": 1304,
-      "sent": 7888,
-      "invalid": 17,
-      "rate": 16.53
+      "earlyReturned": 17,
+      "mailSent": 7857,
+      "mailReturned": 1378,
+      "mailInvalid": 14,
+      "returned": 1397,
+      "sent": 7899,
+      "invalid": 14,
+      "rate": 17.69
     },
     {
       "county": "OAHU",
@@ -2843,13 +2843,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 1,
-      "mailSent": 881,
-      "mailReturned": 134,
+      "mailSent": 882,
+      "mailReturned": 140,
       "mailInvalid": 1,
-      "returned": 135,
-      "sent": 885,
+      "returned": 141,
+      "sent": 886,
       "invalid": 1,
-      "rate": 15.25
+      "rate": 15.91
     },
     {
       "county": "OAHU",
@@ -2858,13 +2858,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 2166,
-      "mailReturned": 318,
+      "mailSent": 2167,
+      "mailReturned": 338,
       "mailInvalid": 2,
-      "returned": 318,
-      "sent": 2170,
+      "returned": 338,
+      "sent": 2171,
       "invalid": 2,
-      "rate": 14.65
+      "rate": 15.57
     },
     {
       "county": "OAHU",
@@ -2872,14 +2872,14 @@
       "electronicSent": 2,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 1,
+      "earlyReturned": 2,
       "mailSent": 803,
-      "mailReturned": 154,
+      "mailReturned": 165,
       "mailInvalid": 1,
-      "returned": 155,
-      "sent": 806,
+      "returned": 167,
+      "sent": 807,
       "invalid": 1,
-      "rate": 19.23
+      "rate": 20.69
     },
     {
       "county": "OAHU",
@@ -2888,13 +2888,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 3,
-      "mailSent": 2587,
-      "mailReturned": 296,
+      "mailSent": 2593,
+      "mailReturned": 308,
       "mailInvalid": 4,
-      "returned": 299,
-      "sent": 2595,
+      "returned": 311,
+      "sent": 2601,
       "invalid": 4,
-      "rate": 11.52
+      "rate": 11.96
     },
     {
       "county": "OAHU",
@@ -2903,13 +2903,13 @@
       "electronicReturned": 2,
       "electronicInvalid": 0,
       "earlyReturned": 8,
-      "mailSent": 4068,
-      "mailReturned": 559,
+      "mailSent": 4072,
+      "mailReturned": 595,
       "mailInvalid": 4,
-      "returned": 569,
-      "sent": 4091,
+      "returned": 605,
+      "sent": 4095,
       "invalid": 4,
-      "rate": 13.91
+      "rate": 14.77
     },
     {
       "county": "OAHU",
@@ -2918,13 +2918,13 @@
       "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 8,
-      "mailSent": 2967,
-      "mailReturned": 379,
+      "mailSent": 2969,
+      "mailReturned": 407,
       "mailInvalid": 4,
-      "returned": 388,
-      "sent": 2985,
+      "returned": 416,
+      "sent": 2987,
       "invalid": 4,
-      "rate": 13.0
+      "rate": 13.93
     },
     {
       "county": "OAHU",
@@ -2934,12 +2934,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 1,
       "mailSent": 3497,
-      "mailReturned": 441,
-      "mailInvalid": 4,
-      "returned": 442,
+      "mailReturned": 478,
+      "mailInvalid": 6,
+      "returned": 479,
       "sent": 3510,
-      "invalid": 4,
-      "rate": 12.59
+      "invalid": 6,
+      "rate": 13.65
     },
     {
       "county": "OAHU",
@@ -2947,14 +2947,14 @@
       "electronicSent": 18,
       "electronicReturned": 2,
       "electronicInvalid": 0,
-      "earlyReturned": 6,
-      "mailSent": 2887,
-      "mailReturned": 316,
-      "mailInvalid": 6,
-      "returned": 324,
-      "sent": 2911,
-      "invalid": 6,
-      "rate": 11.13
+      "earlyReturned": 7,
+      "mailSent": 2888,
+      "mailReturned": 334,
+      "mailInvalid": 5,
+      "returned": 343,
+      "sent": 2913,
+      "invalid": 5,
+      "rate": 11.77
     },
     {
       "county": "OAHU",
@@ -2962,14 +2962,14 @@
       "electronicSent": 36,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 14,
-      "mailSent": 9494,
-      "mailReturned": 1290,
+      "earlyReturned": 16,
+      "mailSent": 9499,
+      "mailReturned": 1394,
       "mailInvalid": 16,
-      "returned": 1305,
-      "sent": 9544,
+      "returned": 1411,
+      "sent": 9551,
       "invalid": 16,
-      "rate": 13.67
+      "rate": 14.77
     },
     {
       "county": "OAHU",
@@ -2977,14 +2977,14 @@
       "electronicSent": 8,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 4,
-      "mailSent": 2513,
-      "mailReturned": 363,
+      "earlyReturned": 5,
+      "mailSent": 2516,
+      "mailReturned": 383,
       "mailInvalid": 1,
-      "returned": 367,
-      "sent": 2525,
+      "returned": 388,
+      "sent": 2529,
       "invalid": 1,
-      "rate": 14.53
+      "rate": 15.34
     },
     {
       "county": "OAHU",
@@ -2994,12 +2994,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 1,
       "mailSent": 1640,
-      "mailReturned": 198,
+      "mailReturned": 216,
       "mailInvalid": 4,
-      "returned": 199,
+      "returned": 217,
       "sent": 1645,
       "invalid": 4,
-      "rate": 12.1
+      "rate": 13.19
     },
     {
       "county": "OAHU",
@@ -3024,12 +3024,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 68,
-      "mailReturned": 9,
+      "mailReturned": 11,
       "mailInvalid": 0,
-      "returned": 9,
+      "returned": 11,
       "sent": 68,
       "invalid": 0,
-      "rate": 13.24
+      "rate": 16.18
     },
     {
       "county": "OAHU",
@@ -3038,13 +3038,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 1278,
-      "mailReturned": 219,
+      "mailSent": 1280,
+      "mailReturned": 228,
       "mailInvalid": 3,
-      "returned": 219,
-      "sent": 1281,
+      "returned": 228,
+      "sent": 1283,
       "invalid": 3,
-      "rate": 17.1
+      "rate": 17.77
     },
     {
       "county": "OAHU",
@@ -3053,13 +3053,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 6,
-      "mailSent": 4429,
-      "mailReturned": 545,
+      "mailSent": 4431,
+      "mailReturned": 584,
       "mailInvalid": 3,
-      "returned": 551,
-      "sent": 4451,
+      "returned": 590,
+      "sent": 4453,
       "invalid": 3,
-      "rate": 12.38
+      "rate": 13.25
     },
     {
       "county": "OAHU",
@@ -3067,14 +3067,14 @@
       "electronicSent": 21,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 19,
-      "mailSent": 7632,
-      "mailReturned": 902,
+      "earlyReturned": 21,
+      "mailSent": 7636,
+      "mailReturned": 983,
       "mailInvalid": 7,
-      "returned": 921,
-      "sent": 7672,
+      "returned": 1004,
+      "sent": 7678,
       "invalid": 7,
-      "rate": 12.0
+      "rate": 13.08
     },
     {
       "county": "OAHU",
@@ -3094,17 +3094,17 @@
     {
       "county": "OAHU",
       "dp": "43-01",
-      "electronicSent": 20,
+      "electronicSent": 21,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 10,
-      "mailSent": 4205,
-      "mailReturned": 561,
-      "mailInvalid": 5,
-      "returned": 572,
-      "sent": 4235,
-      "invalid": 5,
-      "rate": 13.51
+      "earlyReturned": 12,
+      "mailSent": 4206,
+      "mailReturned": 598,
+      "mailInvalid": 4,
+      "returned": 611,
+      "sent": 4239,
+      "invalid": 4,
+      "rate": 14.41
     },
     {
       "county": "OAHU",
@@ -3113,13 +3113,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 6,
-      "mailSent": 2856,
-      "mailReturned": 373,
+      "mailSent": 2857,
+      "mailReturned": 402,
       "mailInvalid": 4,
-      "returned": 379,
-      "sent": 2872,
+      "returned": 408,
+      "sent": 2873,
       "invalid": 4,
-      "rate": 13.2
+      "rate": 14.2
     },
     {
       "county": "OAHU",
@@ -3127,14 +3127,14 @@
       "electronicSent": 8,
       "electronicReturned": 2,
       "electronicInvalid": 0,
-      "earlyReturned": 7,
-      "mailSent": 3442,
-      "mailReturned": 423,
-      "mailInvalid": 2,
-      "returned": 432,
-      "sent": 3457,
-      "invalid": 2,
-      "rate": 12.5
+      "earlyReturned": 13,
+      "mailSent": 3447,
+      "mailReturned": 464,
+      "mailInvalid": 3,
+      "returned": 479,
+      "sent": 3468,
+      "invalid": 3,
+      "rate": 13.81
     },
     {
       "county": "OAHU",
@@ -3143,13 +3143,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 7,
-      "mailSent": 3834,
-      "mailReturned": 647,
-      "mailInvalid": 2,
-      "returned": 654,
-      "sent": 3853,
-      "invalid": 2,
-      "rate": 16.97
+      "mailSent": 3836,
+      "mailReturned": 682,
+      "mailInvalid": 3,
+      "returned": 689,
+      "sent": 3855,
+      "invalid": 3,
+      "rate": 17.87
     },
     {
       "county": "OAHU",
@@ -3159,12 +3159,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 919,
-      "mailReturned": 112,
+      "mailReturned": 117,
       "mailInvalid": 2,
-      "returned": 112,
+      "returned": 117,
       "sent": 922,
       "invalid": 2,
-      "rate": 12.15
+      "rate": 12.69
     },
     {
       "county": "OAHU",
@@ -3172,14 +3172,14 @@
       "electronicSent": 7,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 5,
-      "mailSent": 3401,
-      "mailReturned": 489,
+      "earlyReturned": 7,
+      "mailSent": 3403,
+      "mailReturned": 529,
       "mailInvalid": 8,
-      "returned": 494,
-      "sent": 3413,
+      "returned": 536,
+      "sent": 3417,
       "invalid": 8,
-      "rate": 14.47
+      "rate": 15.69
     },
     {
       "county": "OAHU",
@@ -3188,13 +3188,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 1,
-      "mailSent": 2646,
-      "mailReturned": 263,
+      "mailSent": 2647,
+      "mailReturned": 282,
       "mailInvalid": 3,
-      "returned": 264,
-      "sent": 2655,
+      "returned": 283,
+      "sent": 2656,
       "invalid": 3,
-      "rate": 9.94
+      "rate": 10.66
     },
     {
       "county": "OAHU",
@@ -3202,14 +3202,14 @@
       "electronicSent": 15,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 18,
-      "mailSent": 5045,
-      "mailReturned": 586,
+      "earlyReturned": 20,
+      "mailSent": 5050,
+      "mailReturned": 634,
       "mailInvalid": 5,
-      "returned": 605,
-      "sent": 5078,
+      "returned": 655,
+      "sent": 5085,
       "invalid": 5,
-      "rate": 11.91
+      "rate": 12.88
     },
     {
       "county": "OAHU",
@@ -3218,13 +3218,13 @@
       "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 2775,
-      "mailReturned": 340,
-      "mailInvalid": 12,
-      "returned": 341,
-      "sent": 2791,
-      "invalid": 12,
-      "rate": 12.22
+      "mailSent": 2776,
+      "mailReturned": 356,
+      "mailInvalid": 10,
+      "returned": 357,
+      "sent": 2792,
+      "invalid": 10,
+      "rate": 12.79
     },
     {
       "county": "OAHU",
@@ -3232,14 +3232,14 @@
       "electronicSent": 20,
       "electronicReturned": 3,
       "electronicInvalid": 0,
-      "earlyReturned": 8,
-      "mailSent": 3233,
-      "mailReturned": 402,
-      "mailInvalid": 7,
-      "returned": 413,
-      "sent": 3261,
-      "invalid": 7,
-      "rate": 12.66
+      "earlyReturned": 10,
+      "mailSent": 3234,
+      "mailReturned": 427,
+      "mailInvalid": 8,
+      "returned": 440,
+      "sent": 3264,
+      "invalid": 8,
+      "rate": 13.48
     },
     {
       "county": "OAHU",
@@ -3248,13 +3248,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 1913,
-      "mailReturned": 245,
+      "mailSent": 1915,
+      "mailReturned": 255,
       "mailInvalid": 2,
-      "returned": 245,
-      "sent": 1926,
+      "returned": 255,
+      "sent": 1928,
       "invalid": 2,
-      "rate": 12.72
+      "rate": 13.23
     },
     {
       "county": "OAHU",
@@ -3264,12 +3264,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 11,
       "mailSent": 2804,
-      "mailReturned": 387,
+      "mailReturned": 406,
       "mailInvalid": 3,
-      "returned": 398,
+      "returned": 417,
       "sent": 2836,
       "invalid": 3,
-      "rate": 14.03
+      "rate": 14.7
     },
     {
       "county": "OAHU",
@@ -3278,13 +3278,13 @@
       "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 1314,
-      "mailReturned": 172,
-      "mailInvalid": 2,
-      "returned": 173,
-      "sent": 1320,
-      "invalid": 2,
-      "rate": 13.11
+      "mailSent": 1315,
+      "mailReturned": 185,
+      "mailInvalid": 3,
+      "returned": 186,
+      "sent": 1321,
+      "invalid": 3,
+      "rate": 14.08
     },
     {
       "county": "OAHU",
@@ -3294,12 +3294,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 1456,
-      "mailReturned": 85,
+      "mailReturned": 89,
       "mailInvalid": 1,
-      "returned": 85,
+      "returned": 89,
       "sent": 1467,
       "invalid": 1,
-      "rate": 5.79
+      "rate": 6.07
     },
     {
       "county": "OAHU",
@@ -3309,12 +3309,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 1,
       "mailSent": 715,
-      "mailReturned": 142,
+      "mailReturned": 146,
       "mailInvalid": 1,
-      "returned": 143,
+      "returned": 147,
       "sent": 720,
       "invalid": 1,
-      "rate": 19.86
+      "rate": 20.42
     },
     {
       "county": "OAHU",
@@ -3324,12 +3324,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 2,
       "mailSent": 980,
-      "mailReturned": 148,
+      "mailReturned": 152,
       "mailInvalid": 0,
-      "returned": 151,
+      "returned": 155,
       "sent": 989,
       "invalid": 0,
-      "rate": 15.27
+      "rate": 15.67
     },
     {
       "county": "OAHU",
@@ -3337,14 +3337,14 @@
       "electronicSent": 2,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 0,
-      "mailSent": 845,
-      "mailReturned": 129,
+      "earlyReturned": 1,
+      "mailSent": 846,
+      "mailReturned": 134,
       "mailInvalid": 0,
-      "returned": 129,
-      "sent": 847,
+      "returned": 135,
+      "sent": 849,
       "invalid": 0,
-      "rate": 15.23
+      "rate": 15.9
     },
     {
       "county": "OAHU",
@@ -3353,13 +3353,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 6,
-      "mailSent": 9369,
-      "mailReturned": 1585,
-      "mailInvalid": 7,
-      "returned": 1591,
-      "sent": 9400,
-      "invalid": 7,
-      "rate": 16.93
+      "mailSent": 9375,
+      "mailReturned": 1662,
+      "mailInvalid": 6,
+      "returned": 1668,
+      "sent": 9406,
+      "invalid": 6,
+      "rate": 17.73
     },
     {
       "county": "OAHU",
@@ -3383,13 +3383,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 1,
-      "mailSent": 3282,
-      "mailReturned": 400,
+      "mailSent": 3283,
+      "mailReturned": 422,
       "mailInvalid": 2,
-      "returned": 401,
-      "sent": 3299,
+      "returned": 423,
+      "sent": 3300,
       "invalid": 2,
-      "rate": 12.16
+      "rate": 12.82
     },
     {
       "county": "OAHU",
@@ -3397,14 +3397,14 @@
       "electronicSent": 11,
       "electronicReturned": 0,
       "electronicInvalid": 0,
-      "earlyReturned": 0,
-      "mailSent": 3135,
-      "mailReturned": 403,
-      "mailInvalid": 7,
-      "returned": 403,
-      "sent": 3146,
-      "invalid": 7,
-      "rate": 12.81
+      "earlyReturned": 2,
+      "mailSent": 3139,
+      "mailReturned": 438,
+      "mailInvalid": 5,
+      "returned": 440,
+      "sent": 3152,
+      "invalid": 5,
+      "rate": 13.96
     },
     {
       "county": "OAHU",
@@ -3413,13 +3413,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 2468,
-      "mailReturned": 246,
+      "mailSent": 2469,
+      "mailReturned": 262,
       "mailInvalid": 1,
-      "returned": 246,
-      "sent": 2477,
+      "returned": 262,
+      "sent": 2478,
       "invalid": 1,
-      "rate": 9.93
+      "rate": 10.57
     },
     {
       "county": "OAHU",
@@ -3428,13 +3428,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 4434,
-      "mailReturned": 461,
-      "mailInvalid": 2,
-      "returned": 461,
-      "sent": 4448,
-      "invalid": 2,
-      "rate": 10.36
+      "mailSent": 4435,
+      "mailReturned": 492,
+      "mailInvalid": 1,
+      "returned": 492,
+      "sent": 4449,
+      "invalid": 1,
+      "rate": 11.06
     },
     {
       "county": "OAHU",
@@ -3443,13 +3443,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 1328,
-      "mailReturned": 229,
+      "mailSent": 1329,
+      "mailReturned": 238,
       "mailInvalid": 1,
-      "returned": 229,
-      "sent": 1330,
+      "returned": 238,
+      "sent": 1331,
       "invalid": 1,
-      "rate": 17.22
+      "rate": 17.88
     },
     {
       "county": "OAHU",
@@ -3458,13 +3458,13 @@
       "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 1,
-      "mailSent": 3034,
-      "mailReturned": 519,
+      "mailSent": 3035,
+      "mailReturned": 572,
       "mailInvalid": 8,
-      "returned": 521,
-      "sent": 3037,
+      "returned": 574,
+      "sent": 3038,
       "invalid": 8,
-      "rate": 17.16
+      "rate": 18.89
     },
     {
       "county": "OAHU",
@@ -3473,13 +3473,13 @@
       "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 1,
-      "mailSent": 3513,
-      "mailReturned": 715,
+      "mailSent": 3518,
+      "mailReturned": 771,
       "mailInvalid": 0,
-      "returned": 717,
-      "sent": 3524,
+      "returned": 773,
+      "sent": 3529,
       "invalid": 0,
-      "rate": 20.35
+      "rate": 21.9
     },
     {
       "county": "OAHU",
@@ -3489,12 +3489,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 2,
       "mailSent": 3498,
-      "mailReturned": 812,
+      "mailReturned": 860,
       "mailInvalid": 4,
-      "returned": 814,
+      "returned": 862,
       "sent": 3507,
       "invalid": 4,
-      "rate": 23.21
+      "rate": 24.58
     },
     {
       "county": "OAHU",
@@ -3502,14 +3502,14 @@
       "electronicSent": 16,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 1,
-      "mailSent": 4520,
-      "mailReturned": 1018,
+      "earlyReturned": 3,
+      "mailSent": 4523,
+      "mailReturned": 1077,
       "mailInvalid": 6,
-      "returned": 1020,
-      "sent": 4537,
+      "returned": 1081,
+      "sent": 4542,
       "invalid": 6,
-      "rate": 22.48
+      "rate": 23.8
     },
     {
       "county": "OAHU",
@@ -3519,12 +3519,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 1044,
-      "mailReturned": 229,
-      "mailInvalid": 2,
-      "returned": 229,
+      "mailReturned": 241,
+      "mailInvalid": 1,
+      "returned": 241,
       "sent": 1045,
-      "invalid": 2,
-      "rate": 21.91
+      "invalid": 1,
+      "rate": 23.06
     },
     {
       "county": "OAHU",
@@ -3534,12 +3534,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 4,
       "mailSent": 2642,
-      "mailReturned": 399,
+      "mailReturned": 415,
       "mailInvalid": 6,
-      "returned": 404,
+      "returned": 420,
       "sent": 2657,
       "invalid": 6,
-      "rate": 15.21
+      "rate": 15.81
     },
     {
       "county": "OAHU",
@@ -3548,13 +3548,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 1,
-      "mailSent": 3069,
-      "mailReturned": 566,
+      "mailSent": 3071,
+      "mailReturned": 595,
       "mailInvalid": 4,
-      "returned": 567,
-      "sent": 3081,
+      "returned": 596,
+      "sent": 3083,
       "invalid": 4,
-      "rate": 18.4
+      "rate": 19.33
     },
     {
       "county": "OAHU",
@@ -3563,13 +3563,13 @@
       "electronicReturned": 2,
       "electronicInvalid": 0,
       "earlyReturned": 1,
-      "mailSent": 3308,
-      "mailReturned": 678,
+      "mailSent": 3310,
+      "mailReturned": 711,
       "mailInvalid": 7,
-      "returned": 681,
-      "sent": 3316,
+      "returned": 714,
+      "sent": 3318,
       "invalid": 7,
-      "rate": 20.54
+      "rate": 21.52
     },
     {
       "county": "OAHU",
@@ -3579,12 +3579,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 4,
       "mailSent": 3624,
-      "mailReturned": 945,
-      "mailInvalid": 8,
-      "returned": 951,
+      "mailReturned": 1007,
+      "mailInvalid": 7,
+      "returned": 1013,
       "sent": 3638,
-      "invalid": 8,
-      "rate": 26.14
+      "invalid": 7,
+      "rate": 27.84
     },
     {
       "county": "OAHU",
@@ -3594,12 +3594,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 1493,
-      "mailReturned": 393,
+      "mailReturned": 409,
       "mailInvalid": 2,
-      "returned": 393,
+      "returned": 409,
       "sent": 1495,
       "invalid": 2,
-      "rate": 26.29
+      "rate": 27.36
     },
     {
       "county": "OAHU",
@@ -3607,14 +3607,14 @@
       "electronicSent": 13,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 0,
-      "mailSent": 3942,
-      "mailReturned": 949,
+      "earlyReturned": 1,
+      "mailSent": 3944,
+      "mailReturned": 1009,
       "mailInvalid": 2,
-      "returned": 950,
-      "sent": 3955,
+      "returned": 1011,
+      "sent": 3958,
       "invalid": 2,
-      "rate": 24.02
+      "rate": 25.54
     },
     {
       "county": "OAHU",
@@ -3622,14 +3622,14 @@
       "electronicSent": 20,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 1,
-      "mailSent": 4059,
-      "mailReturned": 756,
-      "mailInvalid": 6,
-      "returned": 758,
-      "sent": 4080,
-      "invalid": 6,
-      "rate": 18.58
+      "earlyReturned": 3,
+      "mailSent": 4065,
+      "mailReturned": 808,
+      "mailInvalid": 5,
+      "returned": 812,
+      "sent": 4088,
+      "invalid": 5,
+      "rate": 19.86
     },
     {
       "county": "OAHU",
@@ -3638,28 +3638,28 @@
       "electronicReturned": 4,
       "electronicInvalid": 0,
       "earlyReturned": 4,
-      "mailSent": 7174,
-      "mailReturned": 1385,
-      "mailInvalid": 8,
-      "returned": 1393,
-      "sent": 7215,
-      "invalid": 8,
-      "rate": 19.31
+      "mailSent": 7179,
+      "mailReturned": 1480,
+      "mailInvalid": 9,
+      "returned": 1488,
+      "sent": 7220,
+      "invalid": 9,
+      "rate": 20.61
     },
     {
       "county": "OAHU",
       "dp": "50-04",
-      "electronicSent": 9,
+      "electronicSent": 10,
       "electronicReturned": 2,
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 1841,
-      "mailReturned": 358,
+      "mailReturned": 386,
       "mailInvalid": 2,
-      "returned": 360,
-      "sent": 1850,
+      "returned": 388,
+      "sent": 1851,
       "invalid": 2,
-      "rate": 19.46
+      "rate": 20.96
     },
     {
       "county": "OAHU",
@@ -3668,13 +3668,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 1093,
-      "mailReturned": 247,
+      "mailSent": 1094,
+      "mailReturned": 260,
       "mailInvalid": 2,
-      "returned": 247,
-      "sent": 1094,
+      "returned": 260,
+      "sent": 1095,
       "invalid": 2,
-      "rate": 22.58
+      "rate": 23.74
     },
     {
       "county": "OAHU",
@@ -3683,13 +3683,13 @@
       "electronicReturned": 4,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 2693,
-      "mailReturned": 618,
-      "mailInvalid": 3,
-      "returned": 622,
-      "sent": 2706,
-      "invalid": 3,
-      "rate": 22.99
+      "mailSent": 2695,
+      "mailReturned": 655,
+      "mailInvalid": 4,
+      "returned": 659,
+      "sent": 2708,
+      "invalid": 4,
+      "rate": 24.34
     },
     {
       "county": "OAHU",
@@ -3697,14 +3697,14 @@
       "electronicSent": 3,
       "electronicReturned": 1,
       "electronicInvalid": 0,
-      "earlyReturned": 6,
-      "mailSent": 4176,
-      "mailReturned": 914,
-      "mailInvalid": 9,
-      "returned": 921,
-      "sent": 4185,
-      "invalid": 9,
-      "rate": 22.01
+      "earlyReturned": 7,
+      "mailSent": 4177,
+      "mailReturned": 970,
+      "mailInvalid": 10,
+      "returned": 978,
+      "sent": 4187,
+      "invalid": 10,
+      "rate": 23.36
     },
     {
       "county": "OAHU",
@@ -3713,13 +3713,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 2,
-      "mailSent": 3454,
-      "mailReturned": 794,
-      "mailInvalid": 5,
-      "returned": 796,
-      "sent": 3461,
-      "invalid": 5,
-      "rate": 23.0
+      "mailSent": 3455,
+      "mailReturned": 838,
+      "mailInvalid": 6,
+      "returned": 840,
+      "sent": 3462,
+      "invalid": 6,
+      "rate": 24.26
     },
     {
       "county": "OAHU",
@@ -3729,12 +3729,12 @@
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 2753,
-      "mailReturned": 356,
-      "mailInvalid": 4,
-      "returned": 358,
+      "mailReturned": 383,
+      "mailInvalid": 5,
+      "returned": 385,
       "sent": 2763,
-      "invalid": 4,
-      "rate": 12.96
+      "invalid": 5,
+      "rate": 13.93
     },
     {
       "county": "OAHU",
@@ -3743,13 +3743,13 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 1,
-      "mailSent": 3120,
-      "mailReturned": 520,
+      "mailSent": 3121,
+      "mailReturned": 538,
       "mailInvalid": 6,
-      "returned": 521,
-      "sent": 3125,
+      "returned": 539,
+      "sent": 3126,
       "invalid": 6,
-      "rate": 16.67
+      "rate": 17.24
     }
   ]
 }
