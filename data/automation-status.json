@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulCheckDateHst": "2026-08-03",
-  "latestReportDate": "2026-08-03",
+  "lastSuccessfulCheckDateHst": "2026-08-04",
+  "latestReportDate": "2026-08-04",
   "recordCount": 247,
-  "mode": "network"
+  "mode": "local"
 }
