@@ -2,9 +2,14 @@
   "schemaVersion": 1,
   "reportDate": "2026-08-05",
   "reportTimestamp": "2026-08-05T03:11:36-10:00",
-  "officialPageDisplayedDate": null,
+  "officialPageDisplayedDate": "2026-08-05",
   "recordCount": 247,
   "sourceFiles": {
+    "STATEWIDE": {
+      "url": "https://elections.hawaii.gov/wp-content/uploads/AbsenteeReconState-20260805.pdf",
+      "sha256": "1b5fb67905e1d8988b9f16fc72692190a3b8214c14fff5480edef171cebe67e3",
+      "bytes": 72965
+    },
     "HAWAII": {
       "url": "https://elections.hawaii.gov/wp-content/uploads/AbsenteeReconDP-02-20260805.pdf",
       "sha256": "9f404423662e06759ff8ebd7d47c8e31da40fb5491cde9ca20b8a6e9aacab6e4",
