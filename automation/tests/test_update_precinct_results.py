@@ -191,9 +191,9 @@ class PrecinctResultsParserTests(unittest.TestCase):
                     "DOE, Jane\n(JJ)",
                     "1",
                     "",
-                    "70",
-                    "10",
-                    "80",
+                    "20",
+                    "3",
+                    "23",
                 ],
                 [
                     "10",
@@ -214,9 +214,9 @@ class PrecinctResultsParserTests(unittest.TestCase):
                     "SMITH, Alex",
                     "2",
                     "",
-                    "18",
+                    "10",
                     "2",
-                    "20",
+                    "12",
                 ],
                 [
                     "11",
@@ -237,9 +237,9 @@ class PrecinctResultsParserTests(unittest.TestCase):
                     "LEE, Taylor",
                     "1",
                     "",
-                    "9",
-                    "1",
-                    "10",
+                    "4",
+                    "0",
+                    "4",
                 ],
             ]
         )
@@ -295,13 +295,47 @@ class PrecinctResultsParserTests(unittest.TestCase):
         )
 
         mayor = next(race for race in publication["races"] if race["contestId"] == "10")
-        self.assertEqual(mayor["totalVotes"], 100)
-        self.assertEqual([candidate["votes"] for candidate in mayor["candidates"]], [80, 20])
-        self.assertEqual([candidate["percentage"] for candidate in mayor["candidates"]], [80.0, 20.0])
+        self.assertEqual(mayor["totalVotes"], 35)
+        self.assertEqual([candidate["votes"] for candidate in mayor["candidates"]], [23, 12])
+        self.assertEqual([candidate["percentage"] for candidate in mayor["candidates"]], [65.71, 34.29])
         self.assertEqual(mayor["overallTotalsSource"], "statewide-summary")
         self.assertEqual(mayor["officialCountedPrecincts"], 1)
         self.assertEqual(mayor["precincts"][0]["votes"], [23, 12])
         self.assertEqual(publication["meta"]["summaryRowCount"], 3)
+
+    def test_summary_candidate_totals_must_match_precinct_detail(self) -> None:
+        parsed = results.parse_precinct_export(self.fixture())
+        mismatched = self.summary_fixture().replace(
+            b"\t20\t3\t23\r\n", b"\t21\t3\t24\r\n", 1
+        )
+        summary = results.parse_summary_export(mismatched)
+
+        with self.assertRaisesRegex(results.ResultsError, "precinct detail totals"):
+            results.build_publication(
+                parsed,
+                summary=summary,
+                election_title="Fixture Election",
+                report_timestamp="2026-08-08T20:00:00-10:00",
+                source_url="file:///fixture/Precinct.txt",
+                source_sha256="precinct-fixture",
+                source_bytes=len(self.fixture()),
+                expected_mapped_precincts=None,
+            )
+
+    def test_race_classification_includes_levels_and_counties(self) -> None:
+        registry = {"01-01": "KAUAI"}
+        metadata = results.classify_race("Mayor", "NON", ["01-01"], registry)
+        self.assertEqual(metadata["level"], "county")
+        self.assertEqual(metadata["category"], "mayor")
+        self.assertEqual(metadata["county"], "KAUAI")
+        self.assertIn("Kauaʻi County", metadata["displayTitle"])
+
+        federal = results.classify_race(
+            "U.S. Representative, Dist II", "D", ["01-01"], registry
+        )
+        self.assertEqual(federal["level"], "federal")
+        self.assertEqual(federal["district"], "2")
+        self.assertEqual(federal["partyLabel"], "Democratic")
 
     def test_candidate_colors_are_stable_and_unique(self) -> None:
         colors = [

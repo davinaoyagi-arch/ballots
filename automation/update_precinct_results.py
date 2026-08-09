@@ -38,6 +38,35 @@ DEFAULT_ELECTION_LABEL = "2026 Primary"
 DEFAULT_ELECTION_TITLE = "2026 Primary Election"
 SCHEMA_VERSION = 1
 EXPECTED_MAPPED_PRECINCTS = 247
+EXPECTED_REPORTING_GROUPS = 249
+EXPECTED_SPLITS = 496
+EXPECTED_ROWS = 25_729
+EXPECTED_RACES = 136
+EXPECTED_CANDIDATES = 293
+EXPECTED_UNMAPPED_GROUPS = {"OS I", "OS II"}
+COUNTIES = {"HAWAII", "MAUI", "KAUAI", "OAHU"}
+PARTY_LABELS = {
+    "D": "Democratic",
+    "G": "Green",
+    "L": "Libertarian",
+    "N": "Nonpartisan",
+    "NON": "Nonpartisan",
+    "R": "Republican",
+}
+COUNTY_LABELS = {
+    "HAWAII": "Hawaiʻi County",
+    "MAUI": "Maui County",
+    "KAUAI": "Kauaʻi County",
+    "OAHU": "Honolulu County",
+}
+LEVELS = (
+    {"id": "federal", "label": "U.S. House"},
+    {"id": "statewide", "label": "Statewide"},
+    {"id": "state-senate", "label": "State Senate"},
+    {"id": "state-house", "label": "State House"},
+    {"id": "county", "label": "County"},
+    {"id": "oha", "label": "Office of Hawaiian Affairs"},
+)
 HAWAII_TIME = timezone(timedelta(hours=-10), name="HST")
 PRECINCT_PATTERN = re.compile(r"^(\d{1,2})-(\d{2})$")
 EXCEL_DATE_PRECINCT_PATTERN = re.compile(r"^(\d{1,2})-([A-Za-z]{3})$")
@@ -144,6 +173,12 @@ def parse_args() -> argparse.Namespace:
         help="Validated public precinct-results JSON.",
     )
     parser.add_argument(
+        "--public-output",
+        type=Path,
+        default=Path("public/data/precinct-results.json"),
+        help="Embedded fallback copy served with the map.",
+    )
+    parser.add_argument(
         "--manifest",
         type=Path,
         default=Path("data/precinct-results-manifest.json"),
@@ -154,6 +189,12 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=Path("data/precinct-results-status.json"),
         help="Low-frequency successful-check heartbeat.",
+    )
+    parser.add_argument(
+        "--precinct-registry",
+        type=Path,
+        default=Path("data/ballot-returns.json"),
+        help="Existing validated 247-precinct feed used for county/key joins.",
     )
     parser.add_argument(
         "--diagnostics-dir",
@@ -225,6 +266,142 @@ def normalize_precinct_name(value: str) -> str:
     if re.fullmatch(r"OS\s+[IVX]+", stripped, re.IGNORECASE):
         return stripped.upper()
     raise ResultsError(f"Unsupported precinct label {value!r}")
+
+
+def load_precinct_registry(path: Path) -> dict[str, str]:
+    """Load the established map keyset and its county for strict joins."""
+    try:
+        document = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ResultsError(f"Could not read precinct registry {path}: {exc}") from exc
+
+    raw_records: list[dict[str, Any]]
+    if isinstance(document, dict) and isinstance(document.get("records"), list):
+        raw_records = document["records"]
+    elif isinstance(document, dict) and isinstance(document.get("features"), list):
+        raw_records = [
+            feature.get("properties", {})
+            for feature in document["features"]
+            if isinstance(feature, dict)
+        ]
+    else:
+        raise ResultsError(
+            f"Precinct registry {path} must contain records or GeoJSON features"
+        )
+
+    registry: dict[str, str] = {}
+    for index, raw in enumerate(raw_records, start=1):
+        if not isinstance(raw, dict):
+            raise ResultsError(f"Precinct registry row {index} is not an object")
+        dp = normalize_precinct_name(str(raw.get("dp", "")))
+        county = normalize_whitespace(str(raw.get("county", ""))).upper()
+        if county not in COUNTIES:
+            raise ResultsError(
+                f"Precinct registry row {index} has unsupported county {county!r}"
+            )
+        previous = registry.get(dp)
+        if previous is not None and previous != county:
+            raise ResultsError(f"Precinct {dp} appears in conflicting counties")
+        registry[dp] = county
+
+    if len(registry) != EXPECTED_MAPPED_PRECINCTS:
+        raise ResultsError(
+            f"Precinct registry has {len(registry)} unique keys; "
+            f"expected {EXPECTED_MAPPED_PRECINCTS}"
+        )
+    return registry
+
+
+def roman_to_number(value: str) -> str:
+    values = {"I": 1, "V": 5, "X": 10}
+    total = 0
+    previous = 0
+    for character in reversed(value.upper()):
+        current = values.get(character)
+        if current is None:
+            raise ResultsError(f"Unsupported Roman district number {value!r}")
+        total += -current if current < previous else current
+        previous = max(previous, current)
+    return str(total)
+
+
+def classify_race(
+    title: str,
+    party: str,
+    mapped_groups: Iterable[str],
+    precinct_registry: dict[str, str] | None,
+) -> dict[str, str | None]:
+    """Classify every official contest into the map's navigation levels."""
+    county: str | None = None
+    district: str | None = None
+    if title.startswith("U.S. Representative, Dist "):
+        level, category = "federal", "us-house"
+        match = re.search(r"Dist ([IVX]+)$", title)
+        if not match:
+            raise ResultsError(f"Could not parse congressional district from {title!r}")
+        district = roman_to_number(match.group(1))
+    elif title == "Governor":
+        level, category = "statewide", "governor"
+    elif title == "Lieutenant Governor":
+        level, category = "statewide", "lieutenant-governor"
+    elif title.startswith("State Senator, Dist "):
+        level, category = "state-senate", "state-senate"
+        match = re.search(r"Dist (\d+)", title)
+        if not match:
+            raise ResultsError(f"Could not parse senate district from {title!r}")
+        district = match.group(1)
+    elif title.startswith("State Representative, Dist "):
+        level, category = "state-house", "state-house"
+        match = re.search(r"Dist (\d+)", title)
+        if not match:
+            raise ResultsError(f"Could not parse house district from {title!r}")
+        district = match.group(1)
+    elif title == "At-Large Trustee":
+        level, category, district = "oha", "oha-trustee", "At-Large"
+    elif title == "Mayor" or title.startswith("Councilmember"):
+        level = "county"
+        category = "mayor" if title == "Mayor" else "county-council"
+        if precinct_registry is not None:
+            counties = {precinct_registry[group] for group in mapped_groups}
+            if len(counties) != 1:
+                raise ResultsError(
+                    f"County contest {title!r} maps to {sorted(counties)}, "
+                    "expected one county"
+                )
+            county = next(iter(counties))
+        district_match = re.search(r"Dist ([IVX]+|\d+)", title)
+        place_match = re.search(r"\(([^)]+)\)", title)
+        if district_match:
+            raw_district = district_match.group(1)
+            district = (
+                roman_to_number(raw_district)
+                if re.fullmatch(r"[IVX]+", raw_district)
+                else str(int(raw_district))
+            )
+        elif place_match:
+            district = place_match.group(1)
+        elif title == "Councilmember":
+            district = "At-Large"
+    else:
+        raise ResultsError(f"Unclassified contest title {title!r}")
+
+    party_label = PARTY_LABELS.get(party)
+    if party_label is None:
+        raise ResultsError(f"Unsupported contest party {party!r} for {title!r}")
+    if county is not None:
+        display_title = f"{title} — {COUNTY_LABELS[county]}"
+    elif party not in {"NON"}:
+        display_title = f"{title} — {party_label}"
+    else:
+        display_title = title
+    return {
+        "displayTitle": display_title,
+        "level": level,
+        "category": category,
+        "partyLabel": party_label,
+        "county": county,
+        "district": district,
+    }
 
 
 def parse_integer(value: str, context: str) -> int:
@@ -550,6 +727,16 @@ def validate_summary_export(parsed: ParsedExport, summary: ParsedSummary) -> Non
                     f"Summary contest {contest_id} choice {choice_id} name does not "
                     "match precinct detail"
                 )
+            precinct_total = sum(
+                group_votes.get(choice_id, 0)
+                for group_votes in parsed.race_group_votes[contest_id].values()
+            )
+            if precinct_total != summary_choice["votes"]:
+                raise ResultsError(
+                    f"Summary contest {contest_id} choice {choice_id} reports "
+                    f"{summary_choice['votes']} votes; precinct detail totals "
+                    f"{precinct_total}"
+                )
 
 
 def turnout_row(parsed: ParsedExport, group_key: str) -> dict[str, Any]:
@@ -612,7 +799,9 @@ def build_publication(
     summary_source_url: str | None = None,
     summary_source_sha256: str | None = None,
     summary_source_bytes: int | None = None,
+    precinct_registry: dict[str, str] | None = None,
     expected_mapped_precincts: int | None = EXPECTED_MAPPED_PRECINCTS,
+    strict_current_report: bool = False,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     if summary is not None:
         validate_summary_export(parsed, summary)
@@ -627,8 +816,38 @@ def build_publication(
         raise ResultsError(
             f"Found {len(mapped_groups)} mapped precincts; expected {expected_mapped_precincts}"
         )
+    if precinct_registry is not None and set(mapped_groups) != set(precinct_registry):
+        missing = sorted(set(precinct_registry) - set(mapped_groups))
+        extra = sorted(set(mapped_groups) - set(precinct_registry))
+        raise ResultsError(
+            "Precinct detail keyset does not match the established map "
+            f"(missing={missing}, extra={extra})"
+        )
+    if strict_current_report:
+        if summary is None:
+            raise ResultsError("The current report requires the statewide summary export")
+        checks = {
+            "precinct rows": (parsed.rows, EXPECTED_ROWS),
+            "summary rows": (summary.rows, EXPECTED_CANDIDATES),
+            "contests": (len(parsed.races), EXPECTED_RACES),
+            "reporting groups": (len(parsed.group_splits), EXPECTED_REPORTING_GROUPS),
+            "splits": (len(parsed.splits), EXPECTED_SPLITS),
+        }
+        for label, (actual, expected) in checks.items():
+            if actual != expected:
+                raise ResultsError(
+                    f"Current report has {actual} {label}; expected {expected}"
+                )
+        if set(unmapped_groups) != EXPECTED_UNMAPPED_GROUPS:
+            raise ResultsError(
+                f"Unmapped groups are {unmapped_groups}; expected "
+                f"{sorted(EXPECTED_UNMAPPED_GROUPS)}"
+            )
 
     turnout_precincts = [turnout_row(parsed, group) for group in mapped_groups]
+    if precinct_registry is not None:
+        for row in turnout_precincts:
+            row["county"] = precinct_registry[row["dp"]]
     turnout_unmapped = [turnout_row(parsed, group) for group in unmapped_groups]
     races: list[dict[str, Any]] = []
     candidate_count = 0
@@ -687,16 +906,26 @@ def build_publication(
             result_group_row(parsed, contest_id, group, choice_ids)
             for group in mapped_result_groups
         ]
+        if precinct_registry is not None:
+            for row in precincts:
+                row["county"] = precinct_registry[row["dp"]]
         other_groups = [
             result_group_row(parsed, contest_id, group, choice_ids)
             for group in unmapped_result_groups
         ]
         all_groups = [*precincts, *other_groups]
+        classification = classify_race(
+            race_source["title"],
+            race_source["party"],
+            mapped_result_groups,
+            precinct_registry,
+        )
         races.append(
             {
                 "contestId": contest_id,
                 "title": race_source["title"],
                 "party": race_source["party"],
+                **classification,
                 "totalVotes": total_votes,
                 "overallTotalsSource": (
                     "statewide-summary" if summary_race is not None else "precinct-detail"
@@ -718,13 +947,20 @@ def build_publication(
         )
 
     races.sort(key=race_sort_key)
+    if strict_current_report and candidate_count != EXPECTED_CANDIDATES:
+        raise ResultsError(
+            f"Current report has {candidate_count} candidates; expected "
+            f"{EXPECTED_CANDIDATES}"
+        )
     registered_voters = sum(row["registeredVoters"] for row in turnout_precincts)
     ballots = sum(row["ballots"] for row in turnout_precincts)
+    report_date = parse_iso_timestamp(report_timestamp).astimezone(HAWAII_TIME).date()
     publication = {
         "schemaVersion": SCHEMA_VERSION,
         "meta": {
             "election": election_title,
             "reportTimestamp": report_timestamp,
+            "reportDate": report_date.isoformat(),
             "source": (
                 "Hawaiʻi Office of Elections statewide summary and precinct detail text files"
                 if summary is not None
@@ -755,6 +991,7 @@ def build_publication(
             "precincts": turnout_precincts,
             "otherReportingGroups": turnout_unmapped,
         },
+        "levels": list(LEVELS),
         "races": races,
     }
     manifest = {
@@ -906,7 +1143,9 @@ def load_sources(args: argparse.Namespace) -> LoadedSources:
                     f"Local summary source does not exist: {args.local_summary_file}"
                 )
             summary = args.local_summary_file.read_bytes()
-            summary_url = args.local_summary_file.resolve().as_uri()
+            summary_url = (
+                args.summary_source_url or args.local_summary_file.resolve().as_uri()
+            )
             summary_timestamp = (
                 parse_iso_timestamp(args.report_timestamp)
                 if args.report_timestamp
@@ -916,7 +1155,7 @@ def load_sources(args: argparse.Namespace) -> LoadedSources:
             )
         return LoadedSources(
             precinct=precinct,
-            precinct_url=args.local_file.resolve().as_uri(),
+            precinct_url=args.source_url or args.local_file.resolve().as_uri(),
             precinct_timestamp=precinct_timestamp,
             summary=summary,
             summary_url=summary_url,
@@ -1045,6 +1284,7 @@ def should_refresh_heartbeat(status: dict[str, Any] | None, today: date) -> bool
 def run(args: argparse.Namespace) -> int:
     reset_diagnostics_directory(args.diagnostics_dir)
     sources = load_sources(args)
+    precinct_registry = load_precinct_registry(args.precinct_registry)
     parsed = parse_precinct_export(sources.precinct)
     summary = parse_summary_export(sources.summary) if sources.summary is not None else None
     source_hash = hashlib.sha256(sources.precinct).hexdigest()
@@ -1080,6 +1320,8 @@ def run(args: argparse.Namespace) -> int:
         summary_source_bytes=(
             len(sources.summary) if sources.summary is not None else None
         ),
+        precinct_registry=precinct_registry,
+        strict_current_report=True,
     )
     validate_previous_publication(previous_publication, publication)
 
@@ -1091,9 +1333,15 @@ def run(args: argparse.Namespace) -> int:
     existing_manifest_text = (
         args.manifest.read_text(encoding="utf-8") if args.manifest.is_file() else None
     )
+    existing_public_text = (
+        args.public_output.read_text(encoding="utf-8")
+        if args.public_output.is_file()
+        else None
+    )
     data_changed = (
         publication_text != existing_publication_text
         or manifest_text != existing_manifest_text
+        or publication_text != existing_public_text
     )
 
     previous_status = load_json(args.status)
@@ -1118,6 +1366,8 @@ def run(args: argparse.Namespace) -> int:
     changed_paths: list[str] = []
     if atomic_write_if_changed(args.output, publication_text):
         changed_paths.append(str(args.output))
+    if atomic_write_if_changed(args.public_output, publication_text):
+        changed_paths.append(str(args.public_output))
     if atomic_write_if_changed(args.manifest, manifest_text):
         changed_paths.append(str(args.manifest))
     if atomic_write_if_changed(args.status, status_text):
