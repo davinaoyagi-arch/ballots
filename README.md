@@ -9,6 +9,10 @@ Public data endpoint:
 
 `https://raw.githubusercontent.com/davinaoyagi-arch/ballots/main/data/ballot-returns.json`
 
+Precinct election-results endpoint:
+
+`https://raw.githubusercontent.com/davinaoyagi-arch/ballots/main/data/precinct-results.json`
+
 ## Safety checks
 
 The updater will keep the last known-good data if any check fails. It requires:
@@ -38,4 +42,19 @@ python automation/update_reports.py `
   --local-pdf "MAUI=C:\path\Maui County.pdf" `
   --local-pdf "KAUAI=C:\path\Kauai.pdf" `
   --local-pdf "OAHU=C:\path\Honolulu.pdf"
+```
+
+## Precinct election results
+
+`automation/update_precinct_results.py` discovers the current statewide
+precinct-detail text file on the Office of Elections results page. It parses the
+tab-delimited export with CSV quoting support, discovers races and choices by
+`Contest_id` and `Choice_id`, combines mail and in-person votes, and aggregates
+MAIL and VSC split records without repeating turnout counts.
+
+Test a downloaded export locally:
+
+```powershell
+python automation/update_precinct_results.py `
+  --local-file "C:\path\Precinct.txt"
 ```

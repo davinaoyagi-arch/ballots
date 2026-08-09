@@ -1,0 +1,80 @@
+name: Refresh Hawaii precinct results
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "automation/update_precinct_results.py"
+      - "automation/tests/**"
+      - ".github/workflows/refresh-precinct-results.yml"
+  schedule:
+    - cron: "*/15 * * * *"
+      timezone: "Pacific/Honolulu"
+
+concurrency:
+  group: hawaii-precinct-results-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Test precinct parser
+        run: python -m unittest discover -s automation/tests -v
+
+      - name: Fetch, parse, and validate precinct results
+        run: >
+          python automation/update_precinct_results.py
+          --output data/precinct-results.json
+          --manifest data/precinct-results-manifest.json
+          --status data/precinct-results-status.json
+
+      - name: Detect generated changes
+        id: changes
+        shell: bash
+        run: |
+          if [[ -n "$(git status --porcelain -- \
+            data/precinct-results.json \
+            data/precinct-results-manifest.json \
+            data/precinct-results-status.json)" ]]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit validated data
+        if: steps.changes.outputs.changed == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- \
+            data/precinct-results.json \
+            data/precinct-results-manifest.json \
+            data/precinct-results-status.json
+          git diff --cached --check
+          git commit -m "data: refresh Hawaii precinct results"
+          git push
+
+      - name: Preserve failure diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: precinct-results-diagnostics-${{ github.run_id }}
+          path: tmp/precinct-results-diagnostics/
+          if-no-files-found: ignore
+          retention-days: 7

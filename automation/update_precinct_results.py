@@ -1,0 +1,838 @@
+#!/usr/bin/env python3
+"""Fetch, parse, validate, and publish Hawaii precinct election results.
+
+The Office of Elections export is tab-delimited text with quoted fields. Some
+quoted fields may contain physical line breaks, so this parser deliberately
+uses Python's CSV implementation rather than line-oriented string splitting.
+"""
+
+from __future__ import annotations
+
+import argparse
+import calendar
+import colorsys
+import csv
+import hashlib
+import io
+import json
+import os
+import re
+import shutil
+import sys
+import time
+import urllib.error
+import urllib.parse
+import urllib.request
+from collections import defaultdict
+from dataclasses import dataclass
+from datetime import date, datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
+from html.parser import HTMLParser
+from pathlib import Path
+from typing import Any, Iterable
+
+
+RESULTS_PAGE = "https://elections.hawaii.gov/election-results/"
+RESULTS_HOST = "elections.hawaii.gov"
+DEFAULT_ELECTION_LABEL = "2026 Primary"
+DEFAULT_ELECTION_TITLE = "2026 Primary Election"
+SCHEMA_VERSION = 1
+EXPECTED_MAPPED_PRECINCTS = 247
+HAWAII_TIME = timezone(timedelta(hours=-10), name="HST")
+PRECINCT_PATTERN = re.compile(r"^(\d{1,2})-(\d{2})$")
+EXCEL_DATE_PRECINCT_PATTERN = re.compile(r"^(\d{1,2})-([A-Za-z]{3})$")
+MEDIA_PATH_PATTERN = re.compile(
+    r"^/wp-content/results/([^/]+)/media\.txt$", re.IGNORECASE
+)
+REQUIRED_COLUMNS = (
+    "Precinct_Name",
+    "Split_Name",
+    "precinct_splitId",
+    "Reg_voters",
+    "Ballots",
+    "Reporting",
+    "Contest_id",
+    "Contest_title",
+    "Contest_party",
+    "Choice_id",
+    "Candidate_name",
+    "Choice_party",
+    "Candidate_Type",
+    "Mail votes",
+    "In-Person votes",
+)
+
+
+class ResultsError(RuntimeError):
+    """Raised when discovery, parsing, or validation fails."""
+
+
+class ResultsPageParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.links: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag.lower() != "a":
+            return
+        href = dict(attrs).get("href")
+        if href:
+            self.links.append(href)
+
+
+@dataclass(frozen=True)
+class SplitRecord:
+    raw_precinct: str
+    group_key: str
+    split_name: str
+    split_id: str
+    registered_voters: int
+    ballots: int
+    reporting: int
+
+
+@dataclass
+class ParsedExport:
+    rows: int
+    races: dict[str, dict[str, Any]]
+    splits: dict[str, SplitRecord]
+    group_splits: dict[str, set[str]]
+    race_group_votes: dict[str, dict[str, dict[str, int]]]
+    race_group_splits: dict[str, dict[str, set[str]]]
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=Path("data/precinct-results.json"),
+        help="Validated public precinct-results JSON.",
+    )
+    parser.add_argument(
+        "--manifest",
+        type=Path,
+        default=Path("data/precinct-results-manifest.json"),
+        help="Source URL and hash manifest.",
+    )
+    parser.add_argument(
+        "--status",
+        type=Path,
+        default=Path("data/precinct-results-status.json"),
+        help="Low-frequency successful-check heartbeat.",
+    )
+    parser.add_argument(
+        "--diagnostics-dir",
+        type=Path,
+        default=Path("tmp/precinct-results-diagnostics"),
+        help="Files retained by GitHub Actions if parsing fails.",
+    )
+    parser.add_argument(
+        "--local-file",
+        type=Path,
+        help="Parse a downloaded Precinct.txt instead of the network source.",
+    )
+    parser.add_argument(
+        "--source-url",
+        help="Use this source URL instead of discovering media.txt on the results page.",
+    )
+    parser.add_argument(
+        "--report-timestamp",
+        help="ISO timestamp override for a local file.",
+    )
+    parser.add_argument(
+        "--election-label",
+        default=DEFAULT_ELECTION_LABEL,
+        help="Official results-path label used to select the current media.txt link.",
+    )
+    parser.add_argument(
+        "--election-title",
+        default=DEFAULT_ELECTION_TITLE,
+        help="Human-readable election title stored in the public feed.",
+    )
+    return parser.parse_args()
+
+
+def normalize_whitespace(value: str) -> str:
+    return re.sub(r"\s+", " ", value).strip()
+
+
+def normalize_header(value: str) -> str:
+    return value.strip().lstrip("#").strip().strip('"')
+
+
+def normalize_precinct_name(value: str) -> str:
+    stripped = normalize_whitespace(value)
+    match = PRECINCT_PATTERN.fullmatch(stripped)
+    if match:
+        return f"{int(match.group(1)):02d}-{int(match.group(2)):02d}"
+
+    date_match = EXCEL_DATE_PRECINCT_PATTERN.fullmatch(stripped)
+    if date_match:
+        month_numbers = {
+            name.lower(): index
+            for index, name in enumerate(calendar.month_abbr)
+            if name
+        }
+        month = month_numbers.get(date_match.group(2).lower())
+        if month is None:
+            raise ResultsError(f"Unknown month abbreviation in precinct {value!r}")
+        return f"{month:02d}-{int(date_match.group(1)):02d}"
+
+    if re.fullmatch(r"OS\s+[IVX]+", stripped, re.IGNORECASE):
+        return stripped.upper()
+    raise ResultsError(f"Unsupported precinct label {value!r}")
+
+
+def parse_integer(value: str, context: str) -> int:
+    text = value.strip().replace(",", "")
+    if not re.fullmatch(r"\d+", text):
+        raise ResultsError(f"{context}: expected a nonnegative integer, got {value!r}")
+    return int(text)
+
+
+def choice_sort_key(value: str) -> tuple[int, int | str]:
+    return (0, int(value)) if value.isdigit() else (1, value.casefold())
+
+
+def race_sort_key(race: dict[str, Any]) -> tuple[str, str, tuple[int, int | str]]:
+    return (
+        str(race["title"]).casefold(),
+        str(race["party"]).casefold(),
+        choice_sort_key(str(race["contestId"])),
+    )
+
+
+def deterministic_candidate_color(contest_id: str, choice_id: str) -> str:
+    contest_seed = int(hashlib.sha256(contest_id.encode("utf-8")).hexdigest()[:8], 16)
+    if choice_id.isdigit():
+        choice_seed = max(0, int(choice_id) - 1)
+    else:
+        choice_seed = int(
+            hashlib.sha256(choice_id.encode("utf-8")).hexdigest()[:8], 16
+        )
+    hue = (contest_seed % 360 + choice_seed * 137.508) % 360
+    saturation = 0.68 + (choice_seed % 3) * 0.04
+    lightness = 0.43 + (choice_seed % 2) * 0.09
+    red, green, blue = colorsys.hls_to_rgb(hue / 360, lightness, saturation)
+    return f"#{round(red * 255):02x}{round(green * 255):02x}{round(blue * 255):02x}"
+
+
+def decode_export(source: bytes) -> str:
+    for encoding in ("utf-8-sig", "cp1252"):
+        try:
+            return source.decode(encoding)
+        except UnicodeDecodeError:
+            continue
+    raise ResultsError("Precinct export is not valid UTF-8 or Windows-1252 text")
+
+
+def parse_precinct_export(source: bytes) -> ParsedExport:
+    text = decode_export(source)
+    reader = csv.reader(io.StringIO(text, newline=""), delimiter="\t")
+    try:
+        preamble = next(reader)
+        raw_headers = next(reader)
+    except StopIteration as exc:
+        raise ResultsError("Precinct export is missing its preamble or header") from exc
+
+    if not preamble or normalize_whitespace(preamble[0]) != "#FormatVersion 1":
+        raise ResultsError("Precinct export has an unsupported format version")
+    headers = [normalize_header(value) for value in raw_headers]
+    missing = [column for column in REQUIRED_COLUMNS if column not in headers]
+    if missing:
+        raise ResultsError(f"Precinct export is missing columns: {', '.join(missing)}")
+
+    races: dict[str, dict[str, Any]] = {}
+    splits: dict[str, SplitRecord] = {}
+    group_splits: dict[str, set[str]] = defaultdict(set)
+    race_group_votes: dict[str, dict[str, dict[str, int]]] = defaultdict(
+        lambda: defaultdict(lambda: defaultdict(int))
+    )
+    race_group_splits: dict[str, dict[str, set[str]]] = defaultdict(
+        lambda: defaultdict(set)
+    )
+    logical_keys: set[tuple[str, str, str]] = set()
+    row_count = 0
+
+    for row_number, values in enumerate(reader, start=3):
+        if not values or all(not value.strip() for value in values):
+            continue
+        if len(values) != len(headers):
+            raise ResultsError(
+                f"Row {row_number}: found {len(values)} columns; expected {len(headers)}"
+            )
+        row_count += 1
+        row = dict(zip(headers, values, strict=True))
+        raw_precinct = normalize_whitespace(row["Precinct_Name"])
+        group_key = normalize_precinct_name(raw_precinct)
+        split_id = normalize_whitespace(row["precinct_splitId"])
+        if not split_id:
+            raise ResultsError(f"Row {row_number}: precinct_splitId is blank")
+
+        split = SplitRecord(
+            raw_precinct=raw_precinct,
+            group_key=group_key,
+            split_name=normalize_whitespace(row["Split_Name"]).upper(),
+            split_id=split_id,
+            registered_voters=parse_integer(
+                row["Reg_voters"], f"Row {row_number} Reg_voters"
+            ),
+            ballots=parse_integer(row["Ballots"], f"Row {row_number} Ballots"),
+            reporting=parse_integer(row["Reporting"], f"Row {row_number} Reporting"),
+        )
+        previous_split = splits.get(split_id)
+        if previous_split is not None and previous_split != split:
+            raise ResultsError(
+                f"Split {split_id} has conflicting precinct, turnout, or reporting values"
+            )
+        splits[split_id] = split
+        group_splits[group_key].add(split_id)
+
+        contest_id = normalize_whitespace(row["Contest_id"])
+        choice_id = normalize_whitespace(row["Choice_id"])
+        if not contest_id or not choice_id:
+            raise ResultsError(f"Row {row_number}: contest or choice ID is blank")
+        logical_key = (split_id, contest_id, choice_id)
+        if logical_key in logical_keys:
+            raise ResultsError(
+                f"Row {row_number}: duplicate split/contest/choice record {logical_key}"
+            )
+        logical_keys.add(logical_key)
+
+        title = normalize_whitespace(row["Contest_title"])
+        party = normalize_whitespace(row["Contest_party"])
+        race = races.setdefault(
+            contest_id,
+            {
+                "contestId": contest_id,
+                "title": title,
+                "party": party,
+                "choices": {},
+            },
+        )
+        if race["title"] != title or race["party"] != party:
+            raise ResultsError(f"Contest {contest_id} has conflicting title or party")
+
+        choice = {
+            "choiceId": choice_id,
+            "name": normalize_whitespace(row["Candidate_name"]),
+            "party": normalize_whitespace(row["Choice_party"]),
+            "type": normalize_whitespace(row["Candidate_Type"]),
+        }
+        previous_choice = race["choices"].get(choice_id)
+        if previous_choice is not None and previous_choice != choice:
+            raise ResultsError(
+                f"Contest {contest_id} choice {choice_id} has conflicting metadata"
+            )
+        race["choices"][choice_id] = choice
+
+        votes = parse_integer(row["Mail votes"], f"Row {row_number} Mail votes")
+        votes += parse_integer(
+            row["In-Person votes"], f"Row {row_number} In-Person votes"
+        )
+        race_group_votes[contest_id][group_key][choice_id] += votes
+        race_group_splits[contest_id][group_key].add(split_id)
+
+    if row_count == 0 or not races or not splits:
+        raise ResultsError("Precinct export contains no result records")
+
+    return ParsedExport(
+        rows=row_count,
+        races=races,
+        splits=splits,
+        group_splits=dict(group_splits),
+        race_group_votes={
+            contest_id: {
+                group: dict(choice_votes) for group, choice_votes in groups.items()
+            }
+            for contest_id, groups in race_group_votes.items()
+        },
+        race_group_splits={
+            contest_id: {group: set(split_ids) for group, split_ids in groups.items()}
+            for contest_id, groups in race_group_splits.items()
+        },
+    )
+
+
+def is_mapped_precinct(group_key: str) -> bool:
+    return bool(re.fullmatch(r"\d{2}-\d{2}", group_key))
+
+
+def turnout_row(parsed: ParsedExport, group_key: str) -> dict[str, Any]:
+    split_rows = [parsed.splits[split_id] for split_id in parsed.group_splits[group_key]]
+    registered_voters = max(row.registered_voters for row in split_rows)
+    ballots = sum(row.ballots for row in split_rows)
+    reporting_splits = sum(1 for row in split_rows if row.reporting > 0)
+    return {
+        "dp" if is_mapped_precinct(group_key) else "group": group_key,
+        "registeredVoters": registered_voters,
+        "ballots": ballots,
+        "reportingSplits": reporting_splits,
+        "totalSplits": len(split_rows),
+        "turnoutRate": round((ballots / registered_voters) * 100, 2)
+        if registered_voters
+        else 0.0,
+    }
+
+
+def result_group_row(
+    parsed: ParsedExport,
+    contest_id: str,
+    group_key: str,
+    choice_ids: list[str],
+) -> dict[str, Any]:
+    votes_by_choice = parsed.race_group_votes[contest_id][group_key]
+    votes = [votes_by_choice.get(choice_id, 0) for choice_id in choice_ids]
+    total_votes = sum(votes)
+    leaders: list[str] = []
+    if total_votes:
+        leader_votes = max(votes)
+        leaders = [
+            choice_id
+            for choice_id, choice_votes in zip(choice_ids, votes, strict=True)
+            if choice_votes == leader_votes
+        ]
+    split_ids = parsed.race_group_splits[contest_id][group_key]
+    reporting_splits = sum(
+        1 for split_id in split_ids if parsed.splits[split_id].reporting > 0
+    )
+    return {
+        "dp" if is_mapped_precinct(group_key) else "group": group_key,
+        "votes": votes,
+        "totalVotes": total_votes,
+        "leaderChoiceIds": leaders,
+        "reportingSplits": reporting_splits,
+        "totalSplits": len(split_ids),
+    }
+
+
+def build_publication(
+    parsed: ParsedExport,
+    *,
+    election_title: str,
+    report_timestamp: str,
+    source_url: str,
+    source_sha256: str,
+    source_bytes: int,
+    expected_mapped_precincts: int | None = EXPECTED_MAPPED_PRECINCTS,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    mapped_groups = sorted(
+        (group for group in parsed.group_splits if is_mapped_precinct(group)),
+        key=lambda value: tuple(int(part) for part in value.split("-")),
+    )
+    unmapped_groups = sorted(
+        group for group in parsed.group_splits if not is_mapped_precinct(group)
+    )
+    if expected_mapped_precincts is not None and len(mapped_groups) != expected_mapped_precincts:
+        raise ResultsError(
+            f"Found {len(mapped_groups)} mapped precincts; expected {expected_mapped_precincts}"
+        )
+
+    turnout_precincts = [turnout_row(parsed, group) for group in mapped_groups]
+    turnout_unmapped = [turnout_row(parsed, group) for group in unmapped_groups]
+    races: list[dict[str, Any]] = []
+    candidate_count = 0
+
+    for contest_id, race_source in parsed.races.items():
+        choice_ids = sorted(race_source["choices"], key=choice_sort_key)
+        candidate_count += len(choice_ids)
+        group_votes = parsed.race_group_votes[contest_id]
+        candidate_totals = {
+            choice_id: sum(
+                votes_by_choice.get(choice_id, 0)
+                for votes_by_choice in group_votes.values()
+            )
+            for choice_id in choice_ids
+        }
+        total_votes = sum(candidate_totals.values())
+        used_colors: set[str] = set()
+        candidates: list[dict[str, Any]] = []
+        for choice_id in choice_ids:
+            choice = race_source["choices"][choice_id]
+            color = deterministic_candidate_color(contest_id, choice_id)
+            if color in used_colors:
+                raise ResultsError(
+                    f"Contest {contest_id} generated duplicate candidate color {color}"
+                )
+            used_colors.add(color)
+            votes = candidate_totals[choice_id]
+            candidates.append(
+                {
+                    **choice,
+                    "color": color,
+                    "votes": votes,
+                    "percentage": round((votes / total_votes) * 100, 2)
+                    if total_votes
+                    else 0.0,
+                }
+            )
+
+        mapped_result_groups = sorted(
+            (group for group in group_votes if is_mapped_precinct(group)),
+            key=lambda value: tuple(int(part) for part in value.split("-")),
+        )
+        unmapped_result_groups = sorted(
+            group for group in group_votes if not is_mapped_precinct(group)
+        )
+        precincts = [
+            result_group_row(parsed, contest_id, group, choice_ids)
+            for group in mapped_result_groups
+        ]
+        other_groups = [
+            result_group_row(parsed, contest_id, group, choice_ids)
+            for group in unmapped_result_groups
+        ]
+        all_groups = [*precincts, *other_groups]
+        races.append(
+            {
+                "contestId": contest_id,
+                "title": race_source["title"],
+                "party": race_source["party"],
+                "totalVotes": total_votes,
+                "candidates": candidates,
+                "precinctGroupCount": len(all_groups),
+                "reportingGroupCount": sum(
+                    1 for group in all_groups if group["reportingSplits"] > 0
+                ),
+                "precincts": precincts,
+                "otherReportingGroups": other_groups,
+            }
+        )
+
+    races.sort(key=race_sort_key)
+    registered_voters = sum(row["registeredVoters"] for row in turnout_precincts)
+    ballots = sum(row["ballots"] for row in turnout_precincts)
+    publication = {
+        "schemaVersion": SCHEMA_VERSION,
+        "meta": {
+            "election": election_title,
+            "reportTimestamp": report_timestamp,
+            "source": "Hawaiʻi Office of Elections precinct detail text file",
+            "officialResultsPage": RESULTS_PAGE,
+            "sourceUrl": source_url,
+            "sourceSha256": source_sha256,
+            "rowCount": parsed.rows,
+            "raceCount": len(races),
+            "candidateCount": candidate_count,
+            "mappedPrecinctCount": len(mapped_groups),
+            "reportingGroupCount": len(parsed.group_splits),
+            "splitCount": len(parsed.splits),
+            "unmappedReportingGroups": unmapped_groups,
+            "turnout": {
+                "registeredVoters": registered_voters,
+                "ballots": ballots,
+                "rate": round((ballots / registered_voters) * 100, 2)
+                if registered_voters
+                else 0.0,
+            },
+        },
+        "turnout": {
+            "precincts": turnout_precincts,
+            "otherReportingGroups": turnout_unmapped,
+        },
+        "races": races,
+    }
+    manifest = {
+        "schemaVersion": SCHEMA_VERSION,
+        "election": election_title,
+        "reportTimestamp": report_timestamp,
+        "sourceUrl": source_url,
+        "sha256": source_sha256,
+        "bytes": source_bytes,
+        "rowCount": parsed.rows,
+        "raceCount": len(races),
+        "candidateCount": candidate_count,
+        "mappedPrecinctCount": len(mapped_groups),
+        "reportingGroupCount": len(parsed.group_splits),
+        "splitCount": len(parsed.splits),
+    }
+    return publication, manifest
+
+
+def fetch_bytes(url: str, *, accept: str, attempts: int = 3) -> tuple[bytes, dict[str, str]]:
+    last_error: Exception | None = None
+    for attempt in range(1, attempts + 1):
+        request = urllib.request.Request(
+            url,
+            headers={
+                "User-Agent": "HawaiiPrecinctResultsUpdater/1.0 (+https://github.com/davinaoyagi-arch/ballots)",
+                "Accept": accept,
+                "Cache-Control": "no-cache",
+                "Pragma": "no-cache",
+            },
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=45) as response:
+                if response.status != 200:
+                    raise ResultsError(f"{url}: HTTP {response.status}")
+                return response.read(), {key.lower(): value for key, value in response.headers.items()}
+        except (OSError, urllib.error.URLError, ResultsError) as exc:
+            last_error = exc
+            if attempt < attempts:
+                time.sleep(attempt * 2)
+    raise ResultsError(f"{url}: download failed after {attempts} attempts: {last_error}")
+
+
+def discover_source_url(page_html: str, election_label: str) -> str:
+    parser = ResultsPageParser()
+    parser.feed(page_html)
+    matches: list[tuple[str, str]] = []
+    for href in parser.links:
+        url = urllib.parse.urljoin(RESULTS_PAGE, href)
+        parsed = urllib.parse.urlparse(url)
+        if parsed.scheme.lower() != "https" or parsed.hostname != RESULTS_HOST:
+            continue
+        match = MEDIA_PATH_PATTERN.fullmatch(parsed.path)
+        if not match:
+            continue
+        label = urllib.parse.unquote(match.group(1))
+        encoded_path = urllib.parse.quote(parsed.path, safe="/%")
+        normalized_url = urllib.parse.urlunparse(parsed._replace(path=encoded_path))
+        matches.append((label, normalized_url))
+
+    selected = [url for label, url in matches if label.casefold() == election_label.casefold()]
+    if len(selected) != 1:
+        found = ", ".join(sorted(label for label, _ in matches)) or "none"
+        raise ResultsError(
+            f"Expected one {election_label!r} precinct text link; found {len(selected)}. "
+            f"Available media.txt labels: {found}"
+        )
+    return selected[0]
+
+
+def parse_iso_timestamp(value: str) -> datetime:
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise ResultsError(f"Invalid report timestamp {value!r}") from exc
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=HAWAII_TIME)
+    return parsed
+
+
+def source_timestamp(headers: dict[str, str]) -> datetime:
+    last_modified = headers.get("last-modified")
+    if last_modified:
+        try:
+            parsed = parsedate_to_datetime(last_modified)
+        except (TypeError, ValueError) as exc:
+            raise ResultsError(f"Invalid Last-Modified header {last_modified!r}") from exc
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=timezone.utc)
+        return parsed
+    return datetime.now(timezone.utc).replace(microsecond=0)
+
+
+def reset_diagnostics_directory(path: Path) -> None:
+    resolved = path.resolve()
+    workspace = Path.cwd().resolve()
+    try:
+        resolved.relative_to(workspace)
+    except ValueError as exc:
+        raise ResultsError("Diagnostics directory must be inside the working directory") from exc
+    if path.exists():
+        shutil.rmtree(path)
+    path.mkdir(parents=True, exist_ok=True)
+
+
+def load_source(args: argparse.Namespace) -> tuple[bytes, str, datetime, str]:
+    if args.local_file:
+        if not args.local_file.is_file():
+            raise ResultsError(f"Local source does not exist: {args.local_file}")
+        source = args.local_file.read_bytes()
+        timestamp = (
+            parse_iso_timestamp(args.report_timestamp)
+            if args.report_timestamp
+            else datetime.fromtimestamp(args.local_file.stat().st_mtime, HAWAII_TIME)
+        )
+        return source, args.local_file.resolve().as_uri(), timestamp, "local"
+
+    page_bytes, _ = fetch_bytes(
+        f"{RESULTS_PAGE}?refresh={int(time.time())}", accept="text/html,*/*;q=0.8"
+    )
+    page_html = page_bytes.decode("utf-8", errors="replace")
+    (args.diagnostics_dir / "source-page.html").write_text(page_html, encoding="utf-8")
+    url = args.source_url or discover_source_url(page_html, args.election_label)
+    parsed_url = urllib.parse.urlparse(url)
+    if parsed_url.scheme.lower() != "https" or parsed_url.hostname != RESULTS_HOST:
+        raise ResultsError("Precinct source URL must use HTTPS on elections.hawaii.gov")
+    separator = "&" if parsed_url.query else "?"
+    source, headers = fetch_bytes(
+        f"{url}{separator}refresh={int(time.time())}", accept="text/plain,*/*;q=0.8"
+    )
+    (args.diagnostics_dir / "source-media.txt").write_bytes(source)
+    return source, url, source_timestamp(headers), "network"
+
+
+def load_json(path: Path) -> dict[str, Any] | None:
+    if not path.is_file():
+        return None
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ResultsError(f"Could not read existing {path}: {exc}") from exc
+    if not isinstance(value, dict):
+        raise ResultsError(f"Existing {path} is not a JSON object")
+    return value
+
+
+def publication_keys(publication: dict[str, Any]) -> tuple[set[str], set[str]]:
+    races = publication.get("races")
+    if not isinstance(races, list):
+        raise ResultsError("Existing precinct publication has no races array")
+    contest_ids: set[str] = set()
+    choice_keys: set[str] = set()
+    for race in races:
+        if not isinstance(race, dict) or not isinstance(race.get("candidates"), list):
+            raise ResultsError("Existing precinct publication has an invalid race")
+        contest_id = str(race.get("contestId"))
+        contest_ids.add(contest_id)
+        for candidate in race["candidates"]:
+            if not isinstance(candidate, dict):
+                raise ResultsError("Existing precinct publication has an invalid candidate")
+            choice_keys.add(f"{contest_id}|{candidate.get('choiceId')}")
+    return contest_ids, choice_keys
+
+
+def validate_previous_publication(
+    previous: dict[str, Any] | None, publication: dict[str, Any]
+) -> None:
+    if not previous:
+        return
+    previous_meta = previous.get("meta")
+    current_meta = publication.get("meta")
+    if not isinstance(previous_meta, dict) or not isinstance(current_meta, dict):
+        raise ResultsError("Existing precinct publication has invalid metadata")
+    previous_timestamp = parse_iso_timestamp(str(previous_meta.get("reportTimestamp")))
+    current_timestamp = parse_iso_timestamp(str(current_meta.get("reportTimestamp")))
+    if current_timestamp < previous_timestamp:
+        raise ResultsError(
+            f"Refusing to replace newer precinct results {previous_timestamp.isoformat()} "
+            f"with {current_timestamp.isoformat()}"
+        )
+    old_contests, old_choices = publication_keys(previous)
+    new_contests, new_choices = publication_keys(publication)
+    if old_contests != new_contests or old_choices != new_choices:
+        raise ResultsError(
+            "Contest or choice keyset changed. Refusing a potentially incomplete export."
+        )
+
+
+def stable_json(value: dict[str, Any]) -> str:
+    return json.dumps(value, ensure_ascii=False, indent=2) + "\n"
+
+
+def atomic_write_if_changed(path: Path, content: str) -> bool:
+    previous = path.read_text(encoding="utf-8") if path.is_file() else None
+    if previous == content:
+        return False
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(f".{path.name}.{os.getpid()}.tmp")
+    temporary.write_text(content, encoding="utf-8", newline="\n")
+    os.replace(temporary, path)
+    return True
+
+
+def should_refresh_heartbeat(status: dict[str, Any] | None, today: date) -> bool:
+    if not status:
+        return True
+    try:
+        previous = date.fromisoformat(str(status["lastSuccessfulCheckDateHst"]))
+    except (KeyError, ValueError):
+        return True
+    return (today - previous).days >= 30
+
+
+def run(args: argparse.Namespace) -> int:
+    reset_diagnostics_directory(args.diagnostics_dir)
+    source, source_url, timestamp, mode = load_source(args)
+    parsed = parse_precinct_export(source)
+    source_hash = hashlib.sha256(source).hexdigest()
+    previous_publication = load_json(args.output)
+    report_timestamp = timestamp.isoformat(timespec="seconds")
+    if previous_publication:
+        previous_meta = previous_publication.get("meta")
+        if (
+            isinstance(previous_meta, dict)
+            and previous_meta.get("sourceSha256") == source_hash
+            and isinstance(previous_meta.get("reportTimestamp"), str)
+        ):
+            report_timestamp = previous_meta["reportTimestamp"]
+    publication, manifest = build_publication(
+        parsed,
+        election_title=args.election_title,
+        report_timestamp=report_timestamp,
+        source_url=source_url,
+        source_sha256=source_hash,
+        source_bytes=len(source),
+    )
+    validate_previous_publication(previous_publication, publication)
+
+    publication_text = stable_json(publication)
+    manifest_text = stable_json(manifest)
+    existing_publication_text = (
+        args.output.read_text(encoding="utf-8") if args.output.is_file() else None
+    )
+    existing_manifest_text = (
+        args.manifest.read_text(encoding="utf-8") if args.manifest.is_file() else None
+    )
+    data_changed = (
+        publication_text != existing_publication_text
+        or manifest_text != existing_manifest_text
+    )
+
+    previous_status = load_json(args.status)
+    today_hst = datetime.now(HAWAII_TIME).date()
+    heartbeat_due = should_refresh_heartbeat(previous_status, today_hst)
+    status_changed = data_changed or heartbeat_due
+    if status_changed:
+        status = {
+            "schemaVersion": SCHEMA_VERSION,
+            "lastSuccessfulCheckDateHst": today_hst.isoformat(),
+            "latestReportTimestamp": publication["meta"]["reportTimestamp"],
+            "sourceSha256": source_hash,
+            "raceCount": publication["meta"]["raceCount"],
+            "candidateCount": publication["meta"]["candidateCount"],
+            "mode": mode,
+        }
+        status_text = stable_json(status)
+    else:
+        status_text = args.status.read_text(encoding="utf-8")
+
+    changed_paths: list[str] = []
+    if atomic_write_if_changed(args.output, publication_text):
+        changed_paths.append(str(args.output))
+    if atomic_write_if_changed(args.manifest, manifest_text):
+        changed_paths.append(str(args.manifest))
+    if atomic_write_if_changed(args.status, status_text):
+        changed_paths.append(str(args.status))
+
+    print(
+        f"Validated {publication['meta']['raceCount']} races, "
+        f"{publication['meta']['candidateCount']} choices, and "
+        f"{publication['meta']['mappedPrecinctCount']} mapped precincts from "
+        f"{parsed.rows:,} rows."
+    )
+    if changed_paths:
+        print("Updated: " + ", ".join(changed_paths))
+    else:
+        print("No published files changed.")
+    return 0
+
+
+def main() -> int:
+    args = parse_args()
+    try:
+        return run(args)
+    except Exception as exc:
+        args.diagnostics_dir.mkdir(parents=True, exist_ok=True)
+        (args.diagnostics_dir / "error.txt").write_text(
+            f"{type(exc).__name__}: {exc}\n", encoding="utf-8"
+        )
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

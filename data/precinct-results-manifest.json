@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "election": "2026 Primary Election",
+  "reportTimestamp": "2026-08-09T05:47:40+00:00",
+  "sourceUrl": "https://elections.hawaii.gov/wp-content/results/2026%20Primary/media.txt",
+  "sha256": "964cc9a1cc979e0864af2df7d6a7801b5f2a214830c6bf597cb31473101cc697",
+  "bytes": 1978248,
+  "rowCount": 25729,
+  "raceCount": 136,
+  "candidateCount": 293,
+  "mappedPrecinctCount": 247,
+  "reportingGroupCount": 249,
+  "splitCount": 496
+}
