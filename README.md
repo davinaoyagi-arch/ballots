@@ -46,15 +46,18 @@ python automation/update_reports.py `
 
 ## Precinct election results
 
-`automation/update_precinct_results.py` discovers the current statewide
-precinct-detail text file on the Office of Elections results page. It parses the
-tab-delimited export with CSV quoting support, discovers races and choices by
-`Contest_id` and `Choice_id`, combines mail and in-person votes, and aggregates
-MAIL and VSC split records without repeating turnout counts.
+`automation/update_precinct_results.py` discovers the current statewide summary
+and precinct-detail text files on the Office of Elections results page. It
+parses both tab-delimited exports with CSV quoting support, discovers races and
+choices by contest and choice ID, and combines mail and in-person votes. Overall
+race totals come from the statewide summary as soon as they are published;
+precinct maps use the geographic detail file and aggregate MAIL and VSC split
+records without repeating turnout counts.
 
 Test a downloaded export locally:
 
 ```powershell
 python automation/update_precinct_results.py `
-  --local-file "C:\path\Precinct.txt"
+  --local-file "C:\path\Precinct.txt" `
+  --local-summary-file "C:\path\summary.txt"
 ```

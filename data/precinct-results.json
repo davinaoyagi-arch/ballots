@@ -2,12 +2,15 @@
   "schemaVersion": 1,
   "meta": {
     "election": "2026 Primary Election",
-    "reportTimestamp": "2026-08-09T05:47:40+00:00",
-    "source": "Hawaiʻi Office of Elections precinct detail text file",
+    "reportTimestamp": "2026-08-09T06:26:21+00:00",
+    "source": "Hawaiʻi Office of Elections statewide summary and precinct detail text files",
     "officialResultsPage": "https://elections.hawaii.gov/election-results/",
     "sourceUrl": "https://elections.hawaii.gov/wp-content/results/2026%20Primary/media.txt",
     "sourceSha256": "964cc9a1cc979e0864af2df7d6a7801b5f2a214830c6bf597cb31473101cc697",
+    "summarySourceUrl": "https://elections.hawaii.gov/wp-content/results/2026%20Primary/summary.txt",
+    "summarySourceSha256": "41f37ddefd822941b0d74735dae33ea42607d7b213b792d1d4388b21bbdc83e6",
     "rowCount": 25729,
+    "summaryRowCount": 293,
     "raceCount": 136,
     "candidateCount": 293,
     "mappedPrecinctCount": 247,
@@ -2026,7 +2029,10 @@
       "contestId": "115",
       "title": "At-Large Trustee",
       "party": "NON",
-      "totalVotes": 0,
+      "totalVotes": 423507,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 494,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -2034,8 +2040,8 @@
           "party": "",
           "type": "C",
           "color": "#234bb8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 15843,
+          "percentage": 3.74
         },
         {
           "choiceId": "2",
@@ -2043,8 +2049,8 @@
           "party": "",
           "type": "C",
           "color": "#dd312c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 24893,
+          "percentage": 5.88
         },
         {
           "choiceId": "4",
@@ -2052,8 +2058,8 @@
           "party": "",
           "type": "C",
           "color": "#9731d8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 16834,
+          "percentage": 3.97
         },
         {
           "choiceId": "5",
@@ -2061,8 +2067,8 @@
           "party": "",
           "type": "C",
           "color": "#bdad1f",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 7627,
+          "percentage": 1.8
         },
         {
           "choiceId": "6",
@@ -2070,8 +2076,8 @@
           "party": "",
           "type": "C",
           "color": "#28bee2",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 51909,
+          "percentage": 12.26
         },
         {
           "choiceId": "7",
@@ -2079,8 +2085,8 @@
           "party": "",
           "type": "C",
           "color": "#b82370",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 36795,
+          "percentage": 8.69
         },
         {
           "choiceId": "8",
@@ -2088,8 +2094,8 @@
           "party": "",
           "type": "C",
           "color": "#54dd2c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 48372,
+          "percentage": 11.42
         },
         {
           "choiceId": "9",
@@ -2097,8 +2103,8 @@
           "party": "",
           "type": "C",
           "color": "#261ac1",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 66834,
+          "percentage": 15.78
         },
         {
           "choiceId": "10",
@@ -2106,8 +2112,8 @@
           "party": "",
           "type": "C",
           "color": "#d86d31",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 22801,
+          "percentage": 5.38
         },
         {
           "choiceId": "11",
@@ -2115,8 +2121,8 @@
           "party": "",
           "type": "C",
           "color": "#1fbd86",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 7623,
+          "percentage": 1.8
         },
         {
           "choiceId": "12",
@@ -2124,8 +2130,8 @@
           "party": "",
           "type": "C",
           "color": "#d728e2",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 12375,
+          "percentage": 2.92
         },
         {
           "choiceId": "13",
@@ -2133,8 +2139,8 @@
           "party": "",
           "type": "C",
           "color": "#95b823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 19977,
+          "percentage": 4.72
         },
         {
           "choiceId": "14",
@@ -2142,8 +2148,8 @@
           "party": "",
           "type": "C",
           "color": "#2c80dd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 9244,
+          "percentage": 2.18
         },
         {
           "choiceId": "15",
@@ -2151,8 +2157,8 @@
           "party": "",
           "type": "C",
           "color": "#c11a39",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 63233,
+          "percentage": 14.93
         },
         {
           "choiceId": "16",
@@ -2160,8 +2166,8 @@
           "party": "",
           "type": "C",
           "color": "#31d844",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 19147,
+          "percentage": 4.52
         }
       ],
       "precinctGroupCount": 247,
@@ -8102,7 +8108,10 @@
       "contestId": "136",
       "title": "Councilmember",
       "party": "NON",
-      "totalVotes": 0,
+      "totalVotes": 72295,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 32,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -8110,8 +8119,8 @@
           "party": "",
           "type": "C",
           "color": "#237ab8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 4304,
+          "percentage": 5.95
         },
         {
           "choiceId": "2",
@@ -8119,8 +8128,8 @@
           "party": "",
           "type": "C",
           "color": "#dd2c60",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 6897,
+          "percentage": 9.54
         },
         {
           "choiceId": "3",
@@ -8128,8 +8137,8 @@
           "party": "",
           "type": "C",
           "color": "#1ac11a",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 4038,
+          "percentage": 5.59
         },
         {
           "choiceId": "4",
@@ -8137,8 +8146,8 @@
           "party": "",
           "type": "C",
           "color": "#6231d8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 6006,
+          "percentage": 8.31
         },
         {
           "choiceId": "5",
@@ -8146,8 +8155,8 @@
           "party": "",
           "type": "C",
           "color": "#bd7b1f",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1789,
+          "percentage": 2.47
         },
         {
           "choiceId": "6",
@@ -8155,8 +8164,8 @@
           "party": "",
           "type": "C",
           "color": "#28e2ca",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 844,
+          "percentage": 1.17
         },
         {
           "choiceId": "7",
@@ -8164,8 +8173,8 @@
           "party": "",
           "type": "C",
           "color": "#b8239f",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 6388,
+          "percentage": 8.84
         },
         {
           "choiceId": "8",
@@ -8173,8 +8182,8 @@
           "party": "",
           "type": "C",
           "color": "#8cdd2c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2222,
+          "percentage": 3.07
         },
         {
           "choiceId": "9",
@@ -8182,8 +8191,8 @@
           "party": "",
           "type": "C",
           "color": "#1a44c1",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3049,
+          "percentage": 4.22
         },
         {
           "choiceId": "10",
@@ -8191,8 +8200,8 @@
           "party": "",
           "type": "C",
           "color": "#d83931",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1302,
+          "percentage": 1.8
         },
         {
           "choiceId": "11",
@@ -8200,8 +8209,8 @@
           "party": "",
           "type": "C",
           "color": "#1fbd54",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3663,
+          "percentage": 5.07
         },
         {
           "choiceId": "12",
@@ -8209,8 +8218,8 @@
           "party": "",
           "type": "C",
           "color": "#9c28e2",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 697,
+          "percentage": 0.96
         },
         {
           "choiceId": "13",
@@ -8218,8 +8227,8 @@
           "party": "",
           "type": "C",
           "color": "#b8ac23",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1602,
+          "percentage": 2.22
         },
         {
           "choiceId": "14",
@@ -8227,8 +8236,8 @@
           "party": "",
           "type": "C",
           "color": "#2cb8dd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 5128,
+          "percentage": 7.09
         },
         {
           "choiceId": "15",
@@ -8236,8 +8245,8 @@
           "party": "",
           "type": "C",
           "color": "#c11a6d",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1544,
+          "percentage": 2.14
         },
         {
           "choiceId": "16",
@@ -8245,8 +8254,8 @@
           "party": "",
           "type": "C",
           "color": "#54d831",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 4395,
+          "percentage": 6.08
         },
         {
           "choiceId": "17",
@@ -8254,8 +8263,8 @@
           "party": "",
           "type": "C",
           "color": "#2c1fbd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 651,
+          "percentage": 0.9
         },
         {
           "choiceId": "18",
@@ -8263,8 +8272,8 @@
           "party": "",
           "type": "C",
           "color": "#e26e28",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 6613,
+          "percentage": 9.15
         },
         {
           "choiceId": "19",
@@ -8272,8 +8281,8 @@
           "party": "",
           "type": "C",
           "color": "#23b887",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 466,
+          "percentage": 0.64
         },
         {
           "choiceId": "20",
@@ -8281,8 +8290,8 @@
           "party": "",
           "type": "C",
           "color": "#d62cdd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1133,
+          "percentage": 1.57
         },
         {
           "choiceId": "21",
@@ -8290,8 +8299,8 @@
           "party": "",
           "type": "C",
           "color": "#97c11a",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 674,
+          "percentage": 0.93
         },
         {
           "choiceId": "22",
@@ -8299,8 +8308,8 @@
           "party": "",
           "type": "C",
           "color": "#317dd8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3019,
+          "percentage": 4.18
         },
         {
           "choiceId": "23",
@@ -8308,8 +8317,8 @@
           "party": "",
           "type": "C",
           "color": "#bd1f39",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2724,
+          "percentage": 3.77
         },
         {
           "choiceId": "25",
@@ -8317,8 +8326,8 @@
           "party": "",
           "type": "C",
           "color": "#6223b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1451,
+          "percentage": 2.01
         },
         {
           "choiceId": "26",
@@ -8326,8 +8335,8 @@
           "party": "",
           "type": "C",
           "color": "#ddaa2c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 349,
+          "percentage": 0.48
         },
         {
           "choiceId": "27",
@@ -8335,8 +8344,8 @@
           "party": "",
           "type": "C",
           "color": "#1ac0c1",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1347,
+          "percentage": 1.86
         }
       ],
       "precinctGroupCount": 16,
@@ -8909,7 +8918,10 @@
       "contestId": "354",
       "title": "Councilmember (Kahului)",
       "party": "NON",
-      "totalVotes": 0,
+      "totalVotes": 20364,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 68,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -8917,8 +8929,8 @@
           "party": "",
           "type": "C",
           "color": "#b8239f",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1636,
+          "percentage": 8.03
         },
         {
           "choiceId": "2",
@@ -8926,8 +8938,8 @@
           "party": "",
           "type": "C",
           "color": "#8cdd2c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 8097,
+          "percentage": 39.76
         },
         {
           "choiceId": "3",
@@ -8935,8 +8947,8 @@
           "party": "",
           "type": "C",
           "color": "#1a44c1",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 10631,
+          "percentage": 52.2
         }
       ],
       "precinctGroupCount": 34,
@@ -9357,7 +9369,10 @@
       "contestId": "132",
       "title": "Councilmember (Upcountry)",
       "party": "NON",
-      "totalVotes": 0,
+      "totalVotes": 20903,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 68,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "2",
@@ -9365,8 +9380,8 @@
           "party": "",
           "type": "C",
           "color": "#2cdda1",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 9979,
+          "percentage": 47.74
         },
         {
           "choiceId": "3",
@@ -9374,8 +9389,8 @@
           "party": "",
           "type": "C",
           "color": "#b91ac1",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2258,
+          "percentage": 10.8
         },
         {
           "choiceId": "4",
@@ -9383,8 +9398,8 @@
           "party": "",
           "type": "C",
           "color": "#b0d831",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 4883,
+          "percentage": 23.36
         },
         {
           "choiceId": "5",
@@ -9392,8 +9407,8 @@
           "party": "",
           "type": "C",
           "color": "#1f68bd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3783,
+          "percentage": 18.1
         }
       ],
       "precinctGroupCount": 34,
@@ -9848,7 +9863,10 @@
       "contestId": "488",
       "title": "Councilmember (Wailuku-Waihee-Waikapu)",
       "party": "NON",
-      "totalVotes": 0,
+      "totalVotes": 20976,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 68,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -9856,8 +9874,8 @@
           "party": "",
           "type": "C",
           "color": "#b8238e",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3544,
+          "percentage": 16.9
         },
         {
           "choiceId": "2",
@@ -9865,8 +9883,8 @@
           "party": "",
           "type": "C",
           "color": "#77dd2c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1183,
+          "percentage": 5.64
         },
         {
           "choiceId": "3",
@@ -9874,8 +9892,8 @@
           "party": "",
           "type": "C",
           "color": "#1a30c1",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 4682,
+          "percentage": 22.32
         },
         {
           "choiceId": "4",
@@ -9883,8 +9901,8 @@
           "party": "",
           "type": "C",
           "color": "#d84c31",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2854,
+          "percentage": 13.61
         },
         {
           "choiceId": "5",
@@ -9892,8 +9910,8 @@
           "party": "",
           "type": "C",
           "color": "#1fbd66",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 8713,
+          "percentage": 41.54
         }
       ],
       "precinctGroupCount": 34,
@@ -10382,7 +10400,10 @@
       "contestId": "152",
       "title": "Councilmember, Dist 1",
       "party": "NON",
-      "totalVotes": 0,
+      "totalVotes": 3838,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 6,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -10390,8 +10411,8 @@
           "party": "",
           "type": "C",
           "color": "#8b23b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1283,
+          "percentage": 33.43
         },
         {
           "choiceId": "2",
@@ -10399,8 +10420,8 @@
           "party": "",
           "type": "C",
           "color": "#dddb2c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2361,
+          "percentage": 61.52
         },
         {
           "choiceId": "3",
@@ -10408,8 +10429,8 @@
           "party": "",
           "type": "C",
           "color": "#1a92c1",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 194,
+          "percentage": 5.05
         }
       ],
       "precinctGroupCount": 3,
@@ -10458,7 +10479,10 @@
       "contestId": "117",
       "title": "Councilmember, Dist 2",
       "party": "NON",
-      "totalVotes": 0,
+      "totalVotes": 5188,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 12,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -10466,8 +10490,8 @@
           "party": "",
           "type": "C",
           "color": "#2373b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 943,
+          "percentage": 18.18
         },
         {
           "choiceId": "2",
@@ -10475,8 +10499,8 @@
           "party": "",
           "type": "C",
           "color": "#dd2c57",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 737,
+          "percentage": 14.21
         },
         {
           "choiceId": "3",
@@ -10484,8 +10508,8 @@
           "party": "",
           "type": "C",
           "color": "#1ac123",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2647,
+          "percentage": 51.02
         },
         {
           "choiceId": "4",
@@ -10493,8 +10517,8 @@
           "party": "",
           "type": "C",
           "color": "#6a31d8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 88,
+          "percentage": 1.7
         },
         {
           "choiceId": "5",
@@ -10502,8 +10526,8 @@
           "party": "",
           "type": "C",
           "color": "#bd831f",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 773,
+          "percentage": 14.9
         }
       ],
       "precinctGroupCount": 6,
@@ -10600,7 +10624,10 @@
       "contestId": "176",
       "title": "Councilmember, Dist 3",
       "party": "NON",
-      "totalVotes": 0,
+      "totalVotes": 4746,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 14,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -10608,8 +10635,8 @@
           "party": "",
           "type": "C",
           "color": "#b88923",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3052,
+          "percentage": 64.31
         },
         {
           "choiceId": "2",
@@ -10617,8 +10644,8 @@
           "party": "",
           "type": "C",
           "color": "#2cddd8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1694,
+          "percentage": 35.69
         }
       ],
       "precinctGroupCount": 7,
@@ -10708,7 +10735,10 @@
       "contestId": "150",
       "title": "Councilmember, Dist 4",
       "party": "NON",
-      "totalVotes": 0,
+      "totalVotes": 3597,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 4,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -10716,8 +10746,8 @@
           "party": "",
           "type": "C",
           "color": "#89b823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 637,
+          "percentage": 17.71
         },
         {
           "choiceId": "2",
@@ -10725,8 +10755,8 @@
           "party": "",
           "type": "C",
           "color": "#2c71dd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 927,
+          "percentage": 25.77
         },
         {
           "choiceId": "3",
@@ -10734,8 +10764,8 @@
           "party": "",
           "type": "C",
           "color": "#c11a2b",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1367,
+          "percentage": 38.0
         },
         {
           "choiceId": "4",
@@ -10743,8 +10773,8 @@
           "party": "",
           "type": "C",
           "color": "#31d851",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 666,
+          "percentage": 18.52
         }
       ],
       "precinctGroupCount": 2,
@@ -10783,7 +10813,10 @@
       "contestId": "209",
       "title": "Councilmember, Dist 5",
       "party": "NON",
-      "totalVotes": 0,
+      "totalVotes": 3452,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -10791,8 +10824,8 @@
           "party": "",
           "type": "C",
           "color": "#23b870",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 792,
+          "percentage": 22.94
         },
         {
           "choiceId": "2",
@@ -10800,8 +10833,8 @@
           "party": "",
           "type": "C",
           "color": "#bb2cdd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 368,
+          "percentage": 10.66
         },
         {
           "choiceId": "3",
@@ -10809,8 +10842,8 @@
           "party": "",
           "type": "C",
           "color": "#b0c11a",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 827,
+          "percentage": 23.96
         },
         {
           "choiceId": "4",
@@ -10818,8 +10851,8 @@
           "party": "",
           "type": "C",
           "color": "#3197d8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 616,
+          "percentage": 17.84
         },
         {
           "choiceId": "5",
@@ -10827,8 +10860,8 @@
           "party": "",
           "type": "C",
           "color": "#bd1f51",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 849,
+          "percentage": 24.59
         }
       ],
       "precinctGroupCount": 5,
@@ -10911,7 +10944,10 @@
       "contestId": "121",
       "title": "Councilmember, Dist 6",
       "party": "NON",
-      "totalVotes": 0,
+      "totalVotes": 3848,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -10919,8 +10955,8 @@
           "party": "",
           "type": "C",
           "color": "#b82387",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 915,
+          "percentage": 23.78
         },
         {
           "choiceId": "2",
@@ -10928,8 +10964,8 @@
           "party": "",
           "type": "C",
           "color": "#6fdd2c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 758,
+          "percentage": 19.7
         },
         {
           "choiceId": "3",
@@ -10937,8 +10973,8 @@
           "party": "",
           "type": "C",
           "color": "#1a28c1",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1208,
+          "percentage": 31.39
         },
         {
           "choiceId": "4",
@@ -10946,8 +10982,8 @@
           "party": "",
           "type": "C",
           "color": "#d85431",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 676,
+          "percentage": 17.57
         },
         {
           "choiceId": "5",
@@ -10955,8 +10991,8 @@
           "party": "",
           "type": "C",
           "color": "#1fbd6e",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 291,
+          "percentage": 7.56
         }
       ],
       "precinctGroupCount": 5,
@@ -11039,7 +11075,10 @@
       "contestId": "220",
       "title": "Councilmember, Dist 7",
       "party": "NON",
-      "totalVotes": 0,
+      "totalVotes": 3409,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 14,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -11047,8 +11086,8 @@
           "party": "",
           "type": "C",
           "color": "#3eb823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2273,
+          "percentage": 66.68
         },
         {
           "choiceId": "2",
@@ -11056,8 +11095,8 @@
           "party": "",
           "type": "C",
           "color": "#402cdd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 719,
+          "percentage": 21.09
         },
         {
           "choiceId": "3",
@@ -11065,8 +11104,8 @@
           "party": "",
           "type": "C",
           "color": "#c15d1a",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 417,
+          "percentage": 12.23
         }
       ],
       "precinctGroupCount": 7,
@@ -11163,7 +11202,10 @@
       "contestId": "123",
       "title": "Councilmember, Dist 8",
       "party": "NON",
-      "totalVotes": 0,
+      "totalVotes": 2211,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 6,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "2",
@@ -11171,8 +11213,8 @@
           "party": "",
           "type": "C",
           "color": "#2cdda9",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2211,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 3,
@@ -11215,7 +11257,10 @@
       "contestId": "124",
       "title": "Councilmember, Dist 9",
       "party": "NON",
-      "totalVotes": 0,
+      "totalVotes": 3312,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -11223,8 +11268,8 @@
           "party": "",
           "type": "C",
           "color": "#b83e23",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3312,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -11277,7 +11322,10 @@
       "contestId": "137",
       "title": "Councilmember, Dist II",
       "party": "NON",
-      "totalVotes": 0,
+      "totalVotes": 8542,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 32,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -11285,8 +11333,8 @@
           "party": "",
           "type": "C",
           "color": "#64b823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 8542,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 16,
@@ -11459,7 +11507,10 @@
       "contestId": "140",
       "title": "Councilmember, Dist IV",
       "party": "NON",
-      "totalVotes": 0,
+      "totalVotes": 24031,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 38,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -11467,8 +11518,8 @@
           "party": "",
           "type": "C",
           "color": "#8eb823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2071,
+          "percentage": 8.62
         },
         {
           "choiceId": "2",
@@ -11476,8 +11527,8 @@
           "party": "",
           "type": "C",
           "color": "#2c77dd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3341,
+          "percentage": 13.9
         },
         {
           "choiceId": "3",
@@ -11485,8 +11536,8 @@
           "party": "",
           "type": "C",
           "color": "#c11a30",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 7934,
+          "percentage": 33.02
         },
         {
           "choiceId": "4",
@@ -11494,8 +11545,8 @@
           "party": "",
           "type": "C",
           "color": "#31d84c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 10685,
+          "percentage": 44.46
         }
       ],
       "precinctGroupCount": 19,
@@ -11755,7 +11806,10 @@
       "contestId": "260",
       "title": "Councilmember, Dist VIII",
       "party": "NON",
-      "totalVotes": 0,
+      "totalVotes": 17864,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 34,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -11763,8 +11817,8 @@
           "party": "",
           "type": "C",
           "color": "#7db823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 17864,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 17,
@@ -11947,7 +12001,10 @@
       "contestId": "377",
       "title": "Governor",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 181868,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 494,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -11955,8 +12012,8 @@
           "party": "",
           "type": "C",
           "color": "#b1b823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 162951,
+          "percentage": 89.6
         },
         {
           "choiceId": "2",
@@ -11964,8 +12021,8 @@
           "party": "",
           "type": "C",
           "color": "#2ca0dd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 9203,
+          "percentage": 5.06
         },
         {
           "choiceId": "3",
@@ -11973,8 +12030,8 @@
           "party": "",
           "type": "C",
           "color": "#c11a57",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3769,
+          "percentage": 2.07
         },
         {
           "choiceId": "4",
@@ -11982,8 +12039,8 @@
           "party": "",
           "type": "C",
           "color": "#3ed831",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 5945,
+          "percentage": 3.27
         }
       ],
       "precinctGroupCount": 247,
@@ -15207,7 +15264,10 @@
       "contestId": "543",
       "title": "Governor",
       "party": "N",
-      "totalVotes": 0,
+      "totalVotes": 2531,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 494,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -15215,8 +15275,8 @@
           "party": "",
           "type": "C",
           "color": "#b82398",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 693,
+          "percentage": 27.38
         },
         {
           "choiceId": "2",
@@ -15224,8 +15284,8 @@
           "party": "",
           "type": "C",
           "color": "#83dd2c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 334,
+          "percentage": 13.2
         },
         {
           "choiceId": "3",
@@ -15233,8 +15293,8 @@
           "party": "",
           "type": "C",
           "color": "#1a3cc1",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 420,
+          "percentage": 16.59
         },
         {
           "choiceId": "4",
@@ -15242,8 +15302,8 @@
           "party": "",
           "type": "C",
           "color": "#d84131",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1084,
+          "percentage": 42.83
         }
       ],
       "precinctGroupCount": 247,
@@ -18467,7 +18527,10 @@
       "contestId": "490",
       "title": "Governor",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 37478,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 494,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "2",
@@ -18475,8 +18538,8 @@
           "party": "",
           "type": "C",
           "color": "#742cdd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 27736,
+          "percentage": 74.01
         },
         {
           "choiceId": "3",
@@ -18484,8 +18547,8 @@
           "party": "",
           "type": "C",
           "color": "#c18f1a",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 9742,
+          "percentage": 25.99
         }
       ],
       "precinctGroupCount": 247,
@@ -21215,7 +21278,10 @@
       "contestId": "415",
       "title": "Lieutenant Governor",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 185013,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 494,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "2",
@@ -21223,8 +21289,8 @@
           "party": "",
           "type": "C",
           "color": "#dd2c51",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 125020,
+          "percentage": 67.57
         },
         {
           "choiceId": "3",
@@ -21232,8 +21298,8 @@
           "party": "",
           "type": "C",
           "color": "#1ac128",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1181,
+          "percentage": 0.64
         },
         {
           "choiceId": "4",
@@ -21241,8 +21307,8 @@
           "party": "",
           "type": "C",
           "color": "#7031d8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 10890,
+          "percentage": 5.89
         },
         {
           "choiceId": "5",
@@ -21250,8 +21316,8 @@
           "party": "",
           "type": "C",
           "color": "#bd881f",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1796,
+          "percentage": 0.97
         },
         {
           "choiceId": "6",
@@ -21259,8 +21325,8 @@
           "party": "",
           "type": "C",
           "color": "#28e2da",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 46126,
+          "percentage": 24.93
         }
       ],
       "precinctGroupCount": 247,
@@ -24731,7 +24797,10 @@
       "contestId": "591",
       "title": "Lieutenant Governor",
       "party": "N",
-      "totalVotes": 0,
+      "totalVotes": 2056,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 494,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -24739,8 +24808,8 @@
           "party": "",
           "type": "C",
           "color": "#93b823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2056,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 247,
@@ -27223,7 +27292,10 @@
       "contestId": "581",
       "title": "Lieutenant Governor",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 34929,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 494,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -27231,8 +27303,8 @@
           "party": "",
           "type": "C",
           "color": "#b86923",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 6352,
+          "percentage": 18.19
         },
         {
           "choiceId": "2",
@@ -27240,8 +27312,8 @@
           "party": "",
           "type": "C",
           "color": "#2cddb2",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 7488,
+          "percentage": 21.44
         },
         {
           "choiceId": "3",
@@ -27249,8 +27321,8 @@
           "party": "",
           "type": "C",
           "color": "#c11ab9",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 8215,
+          "percentage": 23.52
         },
         {
           "choiceId": "4",
@@ -27258,8 +27330,8 @@
           "party": "",
           "type": "C",
           "color": "#9fd831",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 12874,
+          "percentage": 36.86
         }
       ],
       "precinctGroupCount": 247,
@@ -30483,7 +30555,10 @@
       "contestId": "374",
       "title": "Mayor",
       "party": "NON",
-      "totalVotes": 0,
+      "totalVotes": 14039,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 32,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -30491,8 +30566,8 @@
           "party": "",
           "type": "C",
           "color": "#64b823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 360,
+          "percentage": 2.56
         },
         {
           "choiceId": "2",
@@ -30500,8 +30575,8 @@
           "party": "",
           "type": "C",
           "color": "#2c45dd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 4784,
+          "percentage": 34.08
         },
         {
           "choiceId": "3",
@@ -30509,8 +30584,8 @@
           "party": "",
           "type": "C",
           "color": "#c1331a",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 269,
+          "percentage": 1.92
         },
         {
           "choiceId": "4",
@@ -30518,8 +30593,8 @@
           "party": "",
           "type": "C",
           "color": "#31d87b",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 6095,
+          "percentage": 43.41
         },
         {
           "choiceId": "5",
@@ -30527,8 +30602,8 @@
           "party": "",
           "type": "C",
           "color": "#931fbd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 137,
+          "percentage": 0.98
         },
         {
           "choiceId": "6",
@@ -30536,8 +30611,8 @@
           "party": "",
           "type": "C",
           "color": "#dde228",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2394,
+          "percentage": 17.05
         }
       ],
       "precinctGroupCount": 16,
@@ -30790,7 +30865,10 @@
       "contestId": "568",
       "title": "Mayor",
       "party": "NON",
-      "totalVotes": 0,
+      "totalVotes": 24324,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 68,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -30798,8 +30876,8 @@
           "party": "",
           "type": "C",
           "color": "#2389b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 92,
+          "percentage": 0.38
         },
         {
           "choiceId": "2",
@@ -30807,8 +30885,8 @@
           "party": "",
           "type": "C",
           "color": "#dd2c71",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 11510,
+          "percentage": 47.32
         },
         {
           "choiceId": "3",
@@ -30816,8 +30894,8 @@
           "party": "",
           "type": "C",
           "color": "#2bc11a",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 159,
+          "percentage": 0.65
         },
         {
           "choiceId": "4",
@@ -30825,8 +30903,8 @@
           "party": "",
           "type": "C",
           "color": "#5131d8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 133,
+          "percentage": 0.55
         },
         {
           "choiceId": "5",
@@ -30834,8 +30912,8 @@
           "party": "",
           "type": "C",
           "color": "#bd6b1f",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2647,
+          "percentage": 10.88
         },
         {
           "choiceId": "6",
@@ -30843,8 +30921,8 @@
           "party": "",
           "type": "C",
           "color": "#28e2b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 568,
+          "percentage": 2.34
         },
         {
           "choiceId": "7",
@@ -30852,8 +30930,8 @@
           "party": "",
           "type": "C",
           "color": "#b823ae",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 8814,
+          "percentage": 36.24
         },
         {
           "choiceId": "8",
@@ -30861,8 +30939,8 @@
           "party": "",
           "type": "C",
           "color": "#9ddd2c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 45,
+          "percentage": 0.19
         },
         {
           "choiceId": "9",
@@ -30870,8 +30948,8 @@
           "party": "",
           "type": "C",
           "color": "#1a54c1",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 239,
+          "percentage": 0.98
         },
         {
           "choiceId": "10",
@@ -30879,8 +30957,8 @@
           "party": "",
           "type": "C",
           "color": "#d8313b",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 117,
+          "percentage": 0.48
         }
       ],
       "precinctGroupCount": 34,
@@ -31539,7 +31617,10 @@
       "contestId": "231",
       "title": "State Representative, Dist 1",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 3378,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -31547,8 +31628,8 @@
           "party": "",
           "type": "C",
           "color": "#b8ae23",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3378,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -31601,7 +31682,10 @@
       "contestId": "156",
       "title": "State Representative, Dist 10",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 3908,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 14,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -31609,8 +31693,8 @@
           "party": "",
           "type": "C",
           "color": "#2db823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 863,
+          "percentage": 22.08
         },
         {
           "choiceId": "2",
@@ -31618,8 +31702,8 @@
           "party": "",
           "type": "C",
           "color": "#542cdd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3045,
+          "percentage": 77.92
         }
       ],
       "precinctGroupCount": 7,
@@ -31709,7 +31793,10 @@
       "contestId": "507",
       "title": "State Representative, Dist 10",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 635,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 14,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "2",
@@ -31717,8 +31804,8 @@
           "party": "",
           "type": "C",
           "color": "#2cddaf",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 635,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 7,
@@ -31801,7 +31888,10 @@
       "contestId": "271",
       "title": "State Representative, Dist 11",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 2216,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -31809,8 +31899,8 @@
           "party": "",
           "type": "C",
           "color": "#b83223",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2216,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -31863,7 +31953,10 @@
       "contestId": "396",
       "title": "State Representative, Dist 11",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 671,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "2",
@@ -31871,8 +31964,8 @@
           "party": "",
           "type": "C",
           "color": "#ddaf2c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 671,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -31925,7 +32018,10 @@
       "contestId": "188",
       "title": "State Representative, Dist 12",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 4182,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -31933,8 +32029,8 @@
           "party": "",
           "type": "C",
           "color": "#b823b3",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2434,
+          "percentage": 58.2
         },
         {
           "choiceId": "2",
@@ -31942,8 +32038,8 @@
           "party": "",
           "type": "C",
           "color": "#a3dd2c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1748,
+          "percentage": 41.8
         }
       ],
       "precinctGroupCount": 5,
@@ -32011,7 +32107,10 @@
       "contestId": "285",
       "title": "State Representative, Dist 12",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 620,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -32019,8 +32118,8 @@
           "party": "",
           "type": "C",
           "color": "#b823a4",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 620,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -32083,7 +32182,10 @@
       "contestId": "151",
       "title": "State Representative, Dist 13",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 2191,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 18,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -32091,8 +32193,8 @@
           "party": "",
           "type": "C",
           "color": "#b88923",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2191,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 9,
@@ -32195,7 +32297,10 @@
       "contestId": "330",
       "title": "State Representative, Dist 13",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 401,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 18,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -32203,8 +32308,8 @@
           "party": "",
           "type": "C",
           "color": "#32b823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 401,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 9,
@@ -32307,7 +32412,10 @@
       "contestId": "32",
       "title": "State Representative, Dist 14",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 1932,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -32315,8 +32423,8 @@
           "party": "",
           "type": "C",
           "color": "#37b823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 658,
+          "percentage": 34.06
         },
         {
           "choiceId": "2",
@@ -32324,8 +32432,8 @@
           "party": "",
           "type": "C",
           "color": "#482cdd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 554,
+          "percentage": 28.67
         },
         {
           "choiceId": "3",
@@ -32333,8 +32441,8 @@
           "party": "",
           "type": "C",
           "color": "#c1651a",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 720,
+          "percentage": 37.27
         }
       ],
       "precinctGroupCount": 5,
@@ -32407,7 +32515,10 @@
       "contestId": "493",
       "title": "State Representative, Dist 14",
       "party": "G",
-      "totalVotes": 0,
+      "totalVotes": 109,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -32415,8 +32526,8 @@
           "party": "",
           "type": "C",
           "color": "#23b8a9",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 109,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -32479,7 +32590,10 @@
       "contestId": "290",
       "title": "State Representative, Dist 14",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 495,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -32487,8 +32601,8 @@
           "party": "",
           "type": "C",
           "color": "#73b823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 495,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -32551,7 +32665,10 @@
       "contestId": "232",
       "title": "State Representative, Dist 15",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 2849,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -32559,8 +32676,8 @@
           "party": "",
           "type": "C",
           "color": "#b623b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2849,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -32623,7 +32740,10 @@
       "contestId": "204",
       "title": "State Representative, Dist 16",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 3438,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -32631,8 +32751,8 @@
           "party": "",
           "type": "C",
           "color": "#3cb823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3438,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -32695,7 +32815,10 @@
       "contestId": "323",
       "title": "State Representative, Dist 16",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 606,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "2",
@@ -32703,8 +32826,8 @@
           "party": "",
           "type": "C",
           "color": "#2cbedd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 606,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -32767,7 +32890,10 @@
       "contestId": "165",
       "title": "State Representative, Dist 17",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 3860,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 12,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "2",
@@ -32775,8 +32901,8 @@
           "party": "",
           "type": "C",
           "color": "#2cddc7",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1050,
+          "percentage": 27.2
         },
         {
           "choiceId": "3",
@@ -32784,8 +32910,8 @@
           "party": "",
           "type": "C",
           "color": "#c11aa5",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2810,
+          "percentage": 72.8
         }
       ],
       "precinctGroupCount": 6,
@@ -32864,7 +32990,10 @@
       "contestId": "300",
       "title": "State Representative, Dist 17",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 530,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 12,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -32872,8 +33001,8 @@
           "party": "",
           "type": "C",
           "color": "#55b823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 530,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 6,
@@ -32946,7 +33075,10 @@
       "contestId": "373",
       "title": "State Representative, Dist 18",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 4434,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -32954,8 +33086,8 @@
           "party": "",
           "type": "C",
           "color": "#23a4b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 4434,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -33018,7 +33150,10 @@
       "contestId": "334",
       "title": "State Representative, Dist 18",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 1040,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -33026,8 +33161,8 @@
           "party": "",
           "type": "C",
           "color": "#23b8a2",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1040,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -33090,7 +33225,10 @@
       "contestId": "36",
       "title": "State Representative, Dist 19",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 6358,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -33098,8 +33236,8 @@
           "party": "",
           "type": "C",
           "color": "#b82339",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3705,
+          "percentage": 58.27
         },
         {
           "choiceId": "2",
@@ -33107,8 +33245,8 @@
           "party": "",
           "type": "C",
           "color": "#2cdd45",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2653,
+          "percentage": 41.73
         }
       ],
       "precinctGroupCount": 4,
@@ -33165,7 +33303,10 @@
       "contestId": "153",
       "title": "State Representative, Dist 2",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 4913,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -33173,8 +33314,8 @@
           "party": "",
           "type": "C",
           "color": "#2343b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3675,
+          "percentage": 74.8
         },
         {
           "choiceId": "2",
@@ -33182,8 +33323,8 @@
           "party": "",
           "type": "C",
           "color": "#dd3a2c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1238,
+          "percentage": 25.2
         }
       ],
       "precinctGroupCount": 4,
@@ -33240,7 +33381,10 @@
       "contestId": "484",
       "title": "State Representative, Dist 2",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 600,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -33248,8 +33392,8 @@
           "party": "",
           "type": "C",
           "color": "#b8232d",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 600,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -33302,7 +33446,10 @@
       "contestId": "37",
       "title": "State Representative, Dist 20",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 3850,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -33310,8 +33457,8 @@
           "party": "",
           "type": "C",
           "color": "#61b823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3850,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -33374,7 +33521,10 @@
       "contestId": "276",
       "title": "State Representative, Dist 20",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 547,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -33382,8 +33532,8 @@
           "party": "",
           "type": "C",
           "color": "#3423b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 547,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -33446,7 +33596,10 @@
       "contestId": "167",
       "title": "State Representative, Dist 21",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 4851,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -33454,8 +33607,8 @@
           "party": "",
           "type": "C",
           "color": "#5023b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1076,
+          "percentage": 22.18
         },
         {
           "choiceId": "2",
@@ -33463,8 +33616,8 @@
           "party": "",
           "type": "C",
           "color": "#dd952c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1144,
+          "percentage": 23.58
         },
         {
           "choiceId": "3",
@@ -33472,8 +33625,8 @@
           "party": "",
           "type": "C",
           "color": "#1ac1ae",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2240,
+          "percentage": 46.18
         },
         {
           "choiceId": "4",
@@ -33481,8 +33634,8 @@
           "party": "",
           "type": "C",
           "color": "#d831bb",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 255,
+          "percentage": 5.26
         },
         {
           "choiceId": "5",
@@ -33490,8 +33643,8 @@
           "party": "",
           "type": "C",
           "color": "#73bd1f",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 136,
+          "percentage": 2.8
         }
       ],
       "precinctGroupCount": 4,
@@ -33560,7 +33713,10 @@
       "contestId": "39",
       "title": "State Representative, Dist 22",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 4378,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -33568,8 +33724,8 @@
           "party": "",
           "type": "C",
           "color": "#93b823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 4378,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -33632,7 +33788,10 @@
       "contestId": "203",
       "title": "State Representative, Dist 23",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 2571,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -33640,8 +33799,8 @@
           "party": "",
           "type": "C",
           "color": "#6b23b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2571,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -33704,7 +33863,10 @@
       "contestId": "548",
       "title": "State Representative, Dist 23",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 410,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -33712,8 +33874,8 @@
           "party": "",
           "type": "C",
           "color": "#23b89f",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 410,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -33776,7 +33938,10 @@
       "contestId": "41",
       "title": "State Representative, Dist 24",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 3162,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -33784,8 +33949,8 @@
           "party": "",
           "type": "C",
           "color": "#b86623",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2773,
+          "percentage": 87.7
         },
         {
           "choiceId": "2",
@@ -33793,8 +33958,8 @@
           "party": "",
           "type": "C",
           "color": "#2cddaf",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 389,
+          "percentage": 12.3
         }
       ],
       "precinctGroupCount": 4,
@@ -33851,7 +34016,10 @@
       "contestId": "368",
       "title": "State Representative, Dist 24",
       "party": "N",
-      "totalVotes": 0,
+      "totalVotes": 69,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -33859,8 +34027,8 @@
           "party": "",
           "type": "C",
           "color": "#b84623",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 69,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -33913,7 +34081,10 @@
       "contestId": "42",
       "title": "State Representative, Dist 25",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 3279,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -33921,8 +34092,8 @@
           "party": "",
           "type": "C",
           "color": "#23a4b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3279,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -33975,7 +34146,10 @@
       "contestId": "160",
       "title": "State Representative, Dist 26",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 4105,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -33983,8 +34157,8 @@
           "party": "",
           "type": "C",
           "color": "#b82339",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 650,
+          "percentage": 15.83
         },
         {
           "choiceId": "2",
@@ -33992,8 +34166,8 @@
           "party": "",
           "type": "C",
           "color": "#2cdd45",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1333,
+          "percentage": 32.47
         },
         {
           "choiceId": "3",
@@ -34001,8 +34175,8 @@
           "party": "",
           "type": "C",
           "color": "#631ac1",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1766,
+          "percentage": 43.02
         },
         {
           "choiceId": "4",
@@ -34010,8 +34184,8 @@
           "party": "",
           "type": "C",
           "color": "#d8aa31",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 356,
+          "percentage": 8.67
         }
       ],
       "precinctGroupCount": 4,
@@ -34076,7 +34250,10 @@
       "contestId": "530",
       "title": "State Representative, Dist 26",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 568,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "2",
@@ -34084,8 +34261,8 @@
           "party": "",
           "type": "C",
           "color": "#2cdd89",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 271,
+          "percentage": 47.71
         },
         {
           "choiceId": "3",
@@ -34093,8 +34270,8 @@
           "party": "",
           "type": "C",
           "color": "#a21ac1",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 297,
+          "percentage": 52.29
         }
       ],
       "precinctGroupCount": 4,
@@ -34151,7 +34328,10 @@
       "contestId": "44",
       "title": "State Representative, Dist 27",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 4927,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -34159,8 +34339,8 @@
           "party": "",
           "type": "C",
           "color": "#8e23b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 4927,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -34213,7 +34393,10 @@
       "contestId": "45",
       "title": "State Representative, Dist 28",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 2061,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -34221,8 +34404,8 @@
           "party": "",
           "type": "C",
           "color": "#23a2b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 211,
+          "percentage": 10.24
         },
         {
           "choiceId": "2",
@@ -34230,8 +34413,8 @@
           "party": "",
           "type": "C",
           "color": "#dd2c8f",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 500,
+          "percentage": 24.26
         },
         {
           "choiceId": "3",
@@ -34239,8 +34422,8 @@
           "party": "",
           "type": "C",
           "color": "#47c11a",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 647,
+          "percentage": 31.39
         },
         {
           "choiceId": "4",
@@ -34248,8 +34431,8 @@
           "party": "",
           "type": "C",
           "color": "#3631d8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 181,
+          "percentage": 8.78
         },
         {
           "choiceId": "5",
@@ -34257,8 +34440,8 @@
           "party": "",
           "type": "C",
           "color": "#bd511f",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 522,
+          "percentage": 25.33
         }
       ],
       "precinctGroupCount": 4,
@@ -34327,7 +34510,10 @@
       "contestId": "217",
       "title": "State Representative, Dist 29",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 2372,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -34335,8 +34521,8 @@
           "party": "",
           "type": "C",
           "color": "#4623b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1149,
+          "percentage": 48.44
         },
         {
           "choiceId": "2",
@@ -34344,8 +34530,8 @@
           "party": "",
           "type": "C",
           "color": "#dd892c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1223,
+          "percentage": 51.56
         }
       ],
       "precinctGroupCount": 4,
@@ -34402,7 +34588,10 @@
       "contestId": "270",
       "title": "State Representative, Dist 29",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 357,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -34410,8 +34599,8 @@
           "party": "",
           "type": "C",
           "color": "#b8234d",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 357,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -34464,7 +34653,10 @@
       "contestId": "201",
       "title": "State Representative, Dist 3",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 3250,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -34472,8 +34664,8 @@
           "party": "",
           "type": "C",
           "color": "#b87023",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2203,
+          "percentage": 67.78
         },
         {
           "choiceId": "2",
@@ -34481,8 +34673,8 @@
           "party": "",
           "type": "C",
           "color": "#2cddbb",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1047,
+          "percentage": 32.22
         }
       ],
       "precinctGroupCount": 5,
@@ -34550,7 +34742,10 @@
       "contestId": "404",
       "title": "State Representative, Dist 3",
       "party": "L",
-      "totalVotes": 0,
+      "totalVotes": 13,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -34558,8 +34753,8 @@
           "party": "",
           "type": "C",
           "color": "#23b846",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 13,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -34622,7 +34817,10 @@
       "contestId": "190",
       "title": "State Representative, Dist 30",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 1532,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -34630,8 +34828,8 @@
           "party": "",
           "type": "C",
           "color": "#93b823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1069,
+          "percentage": 69.78
         },
         {
           "choiceId": "2",
@@ -34639,8 +34837,8 @@
           "party": "",
           "type": "C",
           "color": "#2c7ddd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 100,
+          "percentage": 6.53
         },
         {
           "choiceId": "3",
@@ -34648,8 +34846,8 @@
           "party": "",
           "type": "C",
           "color": "#c11a36",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 363,
+          "percentage": 23.69
         }
       ],
       "precinctGroupCount": 4,
@@ -34710,7 +34908,10 @@
       "contestId": "332",
       "title": "State Representative, Dist 30",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 317,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "2",
@@ -34718,8 +34919,8 @@
           "party": "",
           "type": "C",
           "color": "#c42cdd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 180,
+          "percentage": 56.78
         },
         {
           "choiceId": "3",
@@ -34727,8 +34928,8 @@
           "party": "",
           "type": "C",
           "color": "#a8c11a",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 137,
+          "percentage": 43.22
         }
       ],
       "precinctGroupCount": 4,
@@ -34785,7 +34986,10 @@
       "contestId": "179",
       "title": "State Representative, Dist 31",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 2873,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -34793,8 +34997,8 @@
           "party": "",
           "type": "C",
           "color": "#23b87f",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2873,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -34847,7 +35051,10 @@
       "contestId": "291",
       "title": "State Representative, Dist 31",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 494,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -34855,8 +35062,8 @@
           "party": "",
           "type": "C",
           "color": "#2339b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 494,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -34909,7 +35116,10 @@
       "contestId": "211",
       "title": "State Representative, Dist 32",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 2482,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "2",
@@ -34917,8 +35127,8 @@
           "party": "",
           "type": "C",
           "color": "#2cc4dd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2482,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -34981,7 +35191,10 @@
       "contestId": "313",
       "title": "State Representative, Dist 32",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 724,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -34989,8 +35202,8 @@
           "party": "",
           "type": "C",
           "color": "#23b82b",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 724,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -35053,7 +35266,10 @@
       "contestId": "173",
       "title": "State Representative, Dist 33",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 4762,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -35061,8 +35277,8 @@
           "party": "",
           "type": "C",
           "color": "#b82326",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 4762,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -35115,7 +35331,10 @@
       "contestId": "166",
       "title": "State Representative, Dist 34",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 3767,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -35123,8 +35342,8 @@
           "party": "",
           "type": "C",
           "color": "#b82384",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3767,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -35177,7 +35396,10 @@
       "contestId": "324",
       "title": "State Representative, Dist 34",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 716,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "2",
@@ -35185,8 +35407,8 @@
           "party": "",
           "type": "C",
           "color": "#5d2cdd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 716,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -35239,7 +35461,10 @@
       "contestId": "52",
       "title": "State Representative, Dist 35",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 2779,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 12,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -35247,8 +35472,8 @@
           "party": "",
           "type": "C",
           "color": "#b82398",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2779,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 6,
@@ -35321,7 +35546,10 @@
       "contestId": "53",
       "title": "State Representative, Dist 36",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 1927,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -35329,8 +35557,8 @@
           "party": "",
           "type": "C",
           "color": "#b84d23",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 328,
+          "percentage": 17.02
         },
         {
           "choiceId": "2",
@@ -35338,8 +35566,8 @@
           "party": "",
           "type": "C",
           "color": "#2cdd92",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 682,
+          "percentage": 35.39
         },
         {
           "choiceId": "3",
@@ -35347,8 +35575,8 @@
           "party": "",
           "type": "C",
           "color": "#ab1ac1",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 917,
+          "percentage": 47.59
         }
       ],
       "precinctGroupCount": 4,
@@ -35409,7 +35637,10 @@
       "contestId": "54",
       "title": "State Representative, Dist 37",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 5835,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -35417,8 +35648,8 @@
           "party": "",
           "type": "C",
           "color": "#b83023",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 4724,
+          "percentage": 80.96
         },
         {
           "choiceId": "2",
@@ -35426,8 +35657,8 @@
           "party": "",
           "type": "C",
           "color": "#2cdd6f",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1111,
+          "percentage": 19.04
         }
       ],
       "precinctGroupCount": 4,
@@ -35484,7 +35715,10 @@
       "contestId": "511",
       "title": "State Representative, Dist 37",
       "party": "N",
-      "totalVotes": 0,
+      "totalVotes": 52,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -35492,8 +35726,8 @@
           "party": "",
           "type": "C",
           "color": "#23b866",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 52,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -35546,7 +35780,10 @@
       "contestId": "305",
       "title": "State Representative, Dist 38",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 1120,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -35554,8 +35791,8 @@
           "party": "",
           "type": "C",
           "color": "#b84d23",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1120,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -35608,7 +35845,10 @@
       "contestId": "56",
       "title": "State Representative, Dist 39",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 3142,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 12,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -35616,8 +35856,8 @@
           "party": "",
           "type": "C",
           "color": "#4823b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1980,
+          "percentage": 63.02
         },
         {
           "choiceId": "2",
@@ -35625,8 +35865,8 @@
           "party": "",
           "type": "C",
           "color": "#dd8c2c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1162,
+          "percentage": 36.98
         }
       ],
       "precinctGroupCount": 6,
@@ -35705,7 +35945,10 @@
       "contestId": "320",
       "title": "State Representative, Dist 39",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 1003,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 12,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -35713,8 +35956,8 @@
           "party": "",
           "type": "C",
           "color": "#5ab823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 634,
+          "percentage": 63.21
         },
         {
           "choiceId": "2",
@@ -35722,8 +35965,8 @@
           "party": "",
           "type": "C",
           "color": "#2c3add",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 369,
+          "percentage": 36.79
         }
       ],
       "precinctGroupCount": 6,
@@ -35802,7 +36045,10 @@
       "contestId": "183",
       "title": "State Representative, Dist 4",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 3208,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -35810,8 +36056,8 @@
           "party": "",
           "type": "C",
           "color": "#23b89f",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2158,
+          "percentage": 67.27
         },
         {
           "choiceId": "2",
@@ -35819,8 +36065,8 @@
           "party": "",
           "type": "C",
           "color": "#dd2cc7",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1050,
+          "percentage": 32.73
         }
       ],
       "precinctGroupCount": 4,
@@ -35877,7 +36123,10 @@
       "contestId": "346",
       "title": "State Representative, Dist 4",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 608,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -35885,8 +36134,8 @@
           "party": "",
           "type": "C",
           "color": "#b82373",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 608,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -35939,7 +36188,10 @@
       "contestId": "57",
       "title": "State Representative, Dist 40",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 1712,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -35947,8 +36199,8 @@
           "party": "",
           "type": "C",
           "color": "#2390b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1712,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -36001,7 +36253,10 @@
       "contestId": "312",
       "title": "State Representative, Dist 40",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 933,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -36009,8 +36264,8 @@
           "party": "",
           "type": "C",
           "color": "#23b826",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 933,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -36063,7 +36318,10 @@
       "contestId": "296",
       "title": "State Representative, Dist 41",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 986,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -36071,8 +36329,8 @@
           "party": "",
           "type": "C",
           "color": "#2369b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 986,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -36135,7 +36393,10 @@
       "contestId": "59",
       "title": "State Representative, Dist 42",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 1733,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -36143,8 +36404,8 @@
           "party": "",
           "type": "C",
           "color": "#8223b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1733,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -36197,7 +36458,10 @@
       "contestId": "301",
       "title": "State Representative, Dist 42",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 716,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -36205,8 +36469,8 @@
           "party": "",
           "type": "C",
           "color": "#2387b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 716,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -36259,7 +36523,10 @@
       "contestId": "289",
       "title": "State Representative, Dist 43",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 1300,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "2",
@@ -36267,8 +36534,8 @@
           "party": "",
           "type": "C",
           "color": "#512cdd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 590,
+          "percentage": 45.38
         },
         {
           "choiceId": "3",
@@ -36276,8 +36543,8 @@
           "party": "",
           "type": "C",
           "color": "#c16e1a",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 710,
+          "percentage": 54.62
         }
       ],
       "precinctGroupCount": 4,
@@ -36334,7 +36601,10 @@
       "contestId": "61",
       "title": "State Representative, Dist 44",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 1745,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -36342,8 +36612,8 @@
           "party": "",
           "type": "C",
           "color": "#23b828",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 206,
+          "percentage": 11.81
         },
         {
           "choiceId": "2",
@@ -36351,8 +36621,8 @@
           "party": "",
           "type": "C",
           "color": "#662cdd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1539,
+          "percentage": 88.19
         }
       ],
       "precinctGroupCount": 4,
@@ -36409,7 +36679,10 @@
       "contestId": "419",
       "title": "State Representative, Dist 44",
       "party": "N",
-      "totalVotes": 0,
+      "totalVotes": 34,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -36417,8 +36690,8 @@
           "party": "",
           "type": "C",
           "color": "#23b870",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 34,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -36471,7 +36744,10 @@
       "contestId": "463",
       "title": "State Representative, Dist 44",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 674,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "2",
@@ -36479,8 +36755,8 @@
           "party": "",
           "type": "C",
           "color": "#dd692c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 674,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -36533,7 +36809,10 @@
       "contestId": "247",
       "title": "State Representative, Dist 45",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 1228,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -36541,8 +36820,8 @@
           "party": "",
           "type": "C",
           "color": "#2d23b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1228,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -36595,7 +36874,10 @@
       "contestId": "303",
       "title": "State Representative, Dist 45",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 678,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "2",
@@ -36603,8 +36885,8 @@
           "party": "",
           "type": "C",
           "color": "#2c34dd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 678,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -36657,7 +36939,10 @@
       "contestId": "62",
       "title": "State Representative, Dist 46",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 2535,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 14,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -36665,8 +36950,8 @@
           "party": "",
           "type": "C",
           "color": "#b8239d",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2535,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 7,
@@ -36749,7 +37034,10 @@
       "contestId": "314",
       "title": "State Representative, Dist 46",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 914,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 14,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -36757,8 +37045,8 @@
           "party": "",
           "type": "C",
           "color": "#b8a923",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 703,
+          "percentage": 76.91
         },
         {
           "choiceId": "2",
@@ -36766,8 +37054,8 @@
           "party": "",
           "type": "C",
           "color": "#2cbbdd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 211,
+          "percentage": 23.09
         }
       ],
       "precinctGroupCount": 7,
@@ -36857,7 +37145,10 @@
       "contestId": "215",
       "title": "State Representative, Dist 47",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 1551,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -36865,8 +37156,8 @@
           "party": "",
           "type": "C",
           "color": "#237ab8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1551,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -36919,7 +37210,10 @@
       "contestId": "288",
       "title": "State Representative, Dist 47",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 844,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -36927,8 +37221,8 @@
           "party": "",
           "type": "C",
           "color": "#2382b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 844,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -36981,7 +37275,10 @@
       "contestId": "172",
       "title": "State Representative, Dist 48",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 3968,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -36989,8 +37286,8 @@
           "party": "",
           "type": "C",
           "color": "#b823b3",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3968,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -37053,7 +37350,10 @@
       "contestId": "65",
       "title": "State Representative, Dist 49",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 4036,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 12,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "2",
@@ -37061,8 +37361,8 @@
           "party": "",
           "type": "C",
           "color": "#512cdd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 4036,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 6,
@@ -37135,7 +37435,10 @@
       "contestId": "306",
       "title": "State Representative, Dist 49",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 894,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 12,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -37143,8 +37446,8 @@
           "party": "",
           "type": "C",
           "color": "#23b8a9",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 894,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 6,
@@ -37217,7 +37520,10 @@
       "contestId": "283",
       "title": "State Representative, Dist 5",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 3461,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 20,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -37225,8 +37531,8 @@
           "party": "",
           "type": "C",
           "color": "#b82339",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1050,
+          "percentage": 30.34
         },
         {
           "choiceId": "2",
@@ -37234,8 +37540,8 @@
           "party": "",
           "type": "C",
           "color": "#2cdd45",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2411,
+          "percentage": 69.66
         }
       ],
       "precinctGroupCount": 10,
@@ -37358,7 +37664,10 @@
       "contestId": "467",
       "title": "State Representative, Dist 5",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 679,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 20,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -37366,8 +37675,8 @@
           "party": "",
           "type": "C",
           "color": "#239ab8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 679,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 10,
@@ -37480,7 +37789,10 @@
       "contestId": "66",
       "title": "State Representative, Dist 50",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 4341,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -37488,8 +37800,8 @@
           "party": "",
           "type": "C",
           "color": "#b87823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 4341,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -37552,7 +37864,10 @@
       "contestId": "356",
       "title": "State Representative, Dist 50",
       "party": "G",
-      "totalVotes": 0,
+      "totalVotes": 22,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -37560,8 +37875,8 @@
           "party": "",
           "type": "C",
           "color": "#b82366",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 22,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -37624,7 +37939,10 @@
       "contestId": "154",
       "title": "State Representative, Dist 51",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 4477,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -37632,8 +37950,8 @@
           "party": "",
           "type": "C",
           "color": "#b8a723",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1149,
+          "percentage": 25.66
         },
         {
           "choiceId": "2",
@@ -37641,8 +37959,8 @@
           "party": "",
           "type": "C",
           "color": "#2cbedd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3122,
+          "percentage": 69.73
         },
         {
           "choiceId": "3",
@@ -37650,8 +37968,8 @@
           "party": "",
           "type": "C",
           "color": "#c11a73",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 206,
+          "percentage": 4.6
         }
       ],
       "precinctGroupCount": 5,
@@ -37724,7 +38042,10 @@
       "contestId": "331",
       "title": "State Representative, Dist 6",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 2915,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -37732,8 +38053,8 @@
           "party": "",
           "type": "C",
           "color": "#b8a723",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2915,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -37786,7 +38107,10 @@
       "contestId": "297",
       "title": "State Representative, Dist 7",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 2125,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 14,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -37794,8 +38118,8 @@
           "party": "",
           "type": "C",
           "color": "#23b8b3",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2125,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 7,
@@ -37878,7 +38202,10 @@
       "contestId": "273",
       "title": "State Representative, Dist 8",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 3022,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -37886,8 +38213,8 @@
           "party": "",
           "type": "C",
           "color": "#7ab823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3022,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 4,
@@ -37940,7 +38267,10 @@
       "contestId": "566",
       "title": "State Representative, Dist 8",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 790,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 8,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -37948,8 +38278,8 @@
           "party": "",
           "type": "C",
           "color": "#b84623",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 624,
+          "percentage": 78.99
         },
         {
           "choiceId": "2",
@@ -37957,8 +38287,8 @@
           "party": "",
           "type": "C",
           "color": "#2cdd89",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 166,
+          "percentage": 21.01
         }
       ],
       "precinctGroupCount": 4,
@@ -38015,7 +38345,10 @@
       "contestId": "27",
       "title": "State Representative, Dist 9",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 2510,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 10,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -38023,8 +38356,8 @@
           "party": "",
           "type": "C",
           "color": "#b87f23",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2510,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 5,
@@ -38087,7 +38420,10 @@
       "contestId": "409",
       "title": "State Senator, Dist 10",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 8136,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 22,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -38095,8 +38431,8 @@
           "party": "",
           "type": "C",
           "color": "#b86123",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2756,
+          "percentage": 33.87
         },
         {
           "choiceId": "2",
@@ -38104,8 +38440,8 @@
           "party": "",
           "type": "C",
           "color": "#2cdda9",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 5380,
+          "percentage": 66.13
         }
       ],
       "precinctGroupCount": 11,
@@ -38239,7 +38575,10 @@
       "contestId": "547",
       "title": "State Senator, Dist 11",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 7709,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 18,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -38247,8 +38586,8 @@
           "party": "",
           "type": "C",
           "color": "#23b8ac",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 7709,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 9,
@@ -38351,7 +38690,10 @@
       "contestId": "469",
       "title": "State Senator, Dist 13",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 7430,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 12,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -38359,8 +38701,8 @@
           "party": "",
           "type": "C",
           "color": "#23b828",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1637,
+          "percentage": 22.03
         },
         {
           "choiceId": "2",
@@ -38368,8 +38710,8 @@
           "party": "",
           "type": "C",
           "color": "#662cdd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3979,
+          "percentage": 53.55
         },
         {
           "choiceId": "3",
@@ -38377,8 +38719,8 @@
           "party": "",
           "type": "C",
           "color": "#c1811a",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 201,
+          "percentage": 2.71
         },
         {
           "choiceId": "4",
@@ -38386,8 +38728,8 @@
           "party": "",
           "type": "C",
           "color": "#31d8c9",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1134,
+          "percentage": 15.26
         },
         {
           "choiceId": "5",
@@ -38395,8 +38737,8 @@
           "party": "",
           "type": "C",
           "color": "#bd1f9d",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 479,
+          "percentage": 6.45
         }
       ],
       "precinctGroupCount": 6,
@@ -38493,7 +38835,10 @@
       "contestId": "501",
       "title": "State Senator, Dist 13",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 862,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 12,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -38501,8 +38846,8 @@
           "party": "",
           "type": "C",
           "color": "#84b823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 862,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 6,
@@ -38575,7 +38920,10 @@
       "contestId": "495",
       "title": "State Senator, Dist 14",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 5500,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 20,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -38583,8 +38931,8 @@
           "party": "",
           "type": "C",
           "color": "#b8233e",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2450,
+          "percentage": 44.55
         },
         {
           "choiceId": "2",
@@ -38592,8 +38940,8 @@
           "party": "",
           "type": "C",
           "color": "#2cdd40",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3050,
+          "percentage": 55.45
         }
       ],
       "precinctGroupCount": 10,
@@ -38716,7 +39064,10 @@
       "contestId": "477",
       "title": "State Senator, Dist 15",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 4457,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 24,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "2",
@@ -38724,8 +39075,8 @@
           "party": "",
           "type": "C",
           "color": "#2c54dd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 4457,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 12,
@@ -38858,7 +39209,10 @@
       "contestId": "498",
       "title": "State Senator, Dist 17",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 8100,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 14,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -38866,8 +39220,8 @@
           "party": "",
           "type": "C",
           "color": "#2db823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 6022,
+          "percentage": 74.35
         },
         {
           "choiceId": "2",
@@ -38875,8 +39229,8 @@
           "party": "",
           "type": "C",
           "color": "#542cdd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2078,
+          "percentage": 25.65
         }
       ],
       "precinctGroupCount": 7,
@@ -38966,7 +39320,10 @@
       "contestId": "202",
       "title": "State Senator, Dist 19 Vacancy",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 4841,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 16,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -38974,8 +39331,8 @@
           "party": "",
           "type": "C",
           "color": "#b83223",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1257,
+          "percentage": 25.97
         },
         {
           "choiceId": "2",
@@ -38983,8 +39340,8 @@
           "party": "",
           "type": "C",
           "color": "#2cdd72",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3584,
+          "percentage": 74.03
         }
       ],
       "precinctGroupCount": 8,
@@ -39085,7 +39442,10 @@
       "contestId": "436",
       "title": "State Senator, Dist 19 Vacancy",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 984,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 16,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -39093,8 +39453,8 @@
           "party": "",
           "type": "C",
           "color": "#2328b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 984,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 8,
@@ -39187,7 +39547,10 @@
       "contestId": "567",
       "title": "State Senator, Dist 2",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 6221,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 18,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -39195,8 +39558,8 @@
           "party": "",
           "type": "C",
           "color": "#b823b6",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 4644,
+          "percentage": 74.65
         },
         {
           "choiceId": "2",
@@ -39204,8 +39567,8 @@
           "party": "",
           "type": "C",
           "color": "#a6dd2c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1577,
+          "percentage": 25.35
         }
       ],
       "precinctGroupCount": 9,
@@ -39317,7 +39680,10 @@
       "contestId": "454",
       "title": "State Senator, Dist 2",
       "party": "L",
-      "totalVotes": 0,
+      "totalVotes": 34,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 18,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -39325,8 +39691,8 @@
           "party": "",
           "type": "C",
           "color": "#5223b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 34,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 9,
@@ -39429,7 +39795,10 @@
       "contestId": "402",
       "title": "State Senator, Dist 20",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 3276,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 16,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -39437,8 +39806,8 @@
           "party": "",
           "type": "C",
           "color": "#23b3b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3276,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 8,
@@ -39531,7 +39900,10 @@
       "contestId": "442",
       "title": "State Senator, Dist 20",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 2226,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 16,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -39539,8 +39911,8 @@
           "party": "",
           "type": "C",
           "color": "#3723b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 297,
+          "percentage": 13.34
         },
         {
           "choiceId": "2",
@@ -39548,8 +39920,8 @@
           "party": "",
           "type": "C",
           "color": "#dd772c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 931,
+          "percentage": 41.82
         },
         {
           "choiceId": "3",
@@ -39557,8 +39929,8 @@
           "party": "",
           "type": "C",
           "color": "#1ac192",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 998,
+          "percentage": 44.83
         }
       ],
       "precinctGroupCount": 8,
@@ -39667,7 +40039,10 @@
       "contestId": "406",
       "title": "State Senator, Dist 21",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 3234,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 18,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "2",
@@ -39675,8 +40050,8 @@
           "party": "",
           "type": "C",
           "color": "#dd742c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3234,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 9,
@@ -39779,7 +40154,10 @@
       "contestId": "387",
       "title": "State Senator, Dist 25",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 9681,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 24,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -39787,8 +40165,8 @@
           "party": "",
           "type": "C",
           "color": "#b823a7",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 8243,
+          "percentage": 85.15
         },
         {
           "choiceId": "2",
@@ -39796,8 +40174,8 @@
           "party": "",
           "type": "C",
           "color": "#95dd2c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1438,
+          "percentage": 14.85
         }
       ],
       "precinctGroupCount": 12,
@@ -39942,7 +40320,10 @@
       "contestId": "175",
       "title": "State Senator, Dist 5",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 6293,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 22,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -39950,8 +40331,8 @@
           "party": "",
           "type": "C",
           "color": "#b823b1",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 6293,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 11,
@@ -40074,7 +40455,10 @@
       "contestId": "447",
       "title": "State Senator, Dist 8",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 9055,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 32,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -40082,8 +40466,8 @@
           "party": "",
           "type": "C",
           "color": "#3cb823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 9055,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 16,
@@ -40256,7 +40640,10 @@
       "contestId": "592",
       "title": "State Senator, Dist 9",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 8835,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 16,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -40264,8 +40651,8 @@
           "party": "",
           "type": "C",
           "color": "#2326b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 8835,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 8,
@@ -40358,7 +40745,10 @@
       "contestId": "505",
       "title": "State Senator, Dist 9",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 1415,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 16,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -40366,8 +40756,8 @@
           "party": "",
           "type": "C",
           "color": "#2346b8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1415,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 8,
@@ -40460,7 +40850,10 @@
       "contestId": "266",
       "title": "U.S. Representative, Dist I",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 97059,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 223,
+      "officialCountedPrecincts": 1,
       "candidates": [
         {
           "choiceId": "1",
@@ -40468,8 +40861,8 @@
           "party": "",
           "type": "C",
           "color": "#23b86b",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2123,
+          "percentage": 2.19
         },
         {
           "choiceId": "2",
@@ -40477,8 +40870,8 @@
           "party": "",
           "type": "C",
           "color": "#b52cdd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 58393,
+          "percentage": 60.16
         },
         {
           "choiceId": "3",
@@ -40486,8 +40879,8 @@
           "party": "",
           "type": "C",
           "color": "#b6c11a",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 34878,
+          "percentage": 35.93
         },
         {
           "choiceId": "4",
@@ -40495,8 +40888,8 @@
           "party": "",
           "type": "C",
           "color": "#319cd8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 819,
+          "percentage": 0.84
         },
         {
           "choiceId": "5",
@@ -40504,8 +40897,8 @@
           "party": "",
           "type": "C",
           "color": "#bd1f56",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 846,
+          "percentage": 0.87
         }
       ],
       "precinctGroupCount": 112,
@@ -42087,7 +42480,10 @@
       "contestId": "364",
       "title": "U.S. Representative, Dist I",
       "party": "G",
-      "totalVotes": 0,
+      "totalVotes": 358,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 223,
+      "officialCountedPrecincts": 1,
       "candidates": [
         {
           "choiceId": "1",
@@ -42095,8 +42491,8 @@
           "party": "",
           "type": "C",
           "color": "#50b823",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 358,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 112,
@@ -43230,7 +43626,10 @@
       "contestId": "338",
       "title": "U.S. Representative, Dist I",
       "party": "N",
-      "totalVotes": 0,
+      "totalVotes": 859,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 223,
+      "officialCountedPrecincts": 1,
       "candidates": [
         {
           "choiceId": "1",
@@ -43238,8 +43637,8 @@
           "party": "",
           "type": "C",
           "color": "#b8239f",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 859,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 112,
@@ -44373,7 +44772,10 @@
       "contestId": "104",
       "title": "U.S. Representative, Dist I",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 15224,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 223,
+      "officialCountedPrecincts": 1,
       "candidates": [
         {
           "choiceId": "2",
@@ -44381,8 +44783,8 @@
           "party": "",
           "type": "C",
           "color": "#2cdd80",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 15224,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 112,
@@ -45516,7 +45918,10 @@
       "contestId": "70",
       "title": "U.S. Representative, Dist II",
       "party": "D",
-      "totalVotes": 0,
+      "totalVotes": 85993,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 273,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "2",
@@ -45524,8 +45929,8 @@
           "party": "",
           "type": "C",
           "color": "#d52cdd",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 3314,
+          "percentage": 3.85
         },
         {
           "choiceId": "3",
@@ -45533,8 +45938,8 @@
           "party": "",
           "type": "C",
           "color": "#97c11a",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 1263,
+          "percentage": 1.47
         },
         {
           "choiceId": "4",
@@ -45542,8 +45947,8 @@
           "party": "",
           "type": "C",
           "color": "#317ed8",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 78900,
+          "percentage": 91.75
         },
         {
           "choiceId": "5",
@@ -45551,8 +45956,8 @@
           "party": "",
           "type": "C",
           "color": "#bd1f39",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 2516,
+          "percentage": 2.93
         }
       ],
       "precinctGroupCount": 137,
@@ -47347,7 +47752,10 @@
       "contestId": "336",
       "title": "U.S. Representative, Dist II",
       "party": "N",
-      "totalVotes": 0,
+      "totalVotes": 1569,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 273,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -47355,8 +47763,8 @@
           "party": "",
           "type": "C",
           "color": "#b82382",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 609,
+          "percentage": 38.81
         },
         {
           "choiceId": "2",
@@ -47364,8 +47772,8 @@
           "party": "",
           "type": "C",
           "color": "#69dd2c",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 960,
+          "percentage": 61.19
         }
       ],
       "precinctGroupCount": 137,
@@ -48886,7 +49294,10 @@
       "contestId": "269",
       "title": "U.S. Representative, Dist II",
       "party": "R",
-      "totalVotes": 0,
+      "totalVotes": 19832,
+      "overallTotalsSource": "statewide-summary",
+      "officialTotalPrecincts": 273,
+      "officialCountedPrecincts": 0,
       "candidates": [
         {
           "choiceId": "1",
@@ -48894,8 +49305,8 @@
           "party": "",
           "type": "C",
           "color": "#23b8b3",
-          "votes": 0,
-          "percentage": 0.0
+          "votes": 19832,
+          "percentage": 100.0
         }
       ],
       "precinctGroupCount": 137,

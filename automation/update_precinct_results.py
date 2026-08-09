@@ -44,6 +44,9 @@ EXCEL_DATE_PRECINCT_PATTERN = re.compile(r"^(\d{1,2})-([A-Za-z]{3})$")
 MEDIA_PATH_PATTERN = re.compile(
     r"^/wp-content/results/([^/]+)/media\.txt$", re.IGNORECASE
 )
+SUMMARY_PATH_PATTERN = re.compile(
+    r"^/wp-content/results/([^/]+)/summary\.txt$", re.IGNORECASE
+)
 REQUIRED_COLUMNS = (
     "Precinct_Name",
     "Split_Name",
@@ -60,6 +63,20 @@ REQUIRED_COLUMNS = (
     "Candidate_Type",
     "Mail votes",
     "In-Person votes",
+)
+SUMMARY_REQUIRED_COLUMNS = (
+    "Contest ID",
+    "Contest Title",
+    "Contest Party",
+    "Registered Voters",
+    "Total Precincts",
+    "Counted Precincts",
+    "Candidate ID",
+    "Candidate Name",
+    "Candidate Party",
+    "Mail Votes",
+    "In-Person Votes",
+    "Total Votes",
 )
 
 
@@ -101,6 +118,23 @@ class ParsedExport:
     race_group_splits: dict[str, dict[str, set[str]]]
 
 
+@dataclass
+class ParsedSummary:
+    rows: int
+    races: dict[str, dict[str, Any]]
+
+
+@dataclass(frozen=True)
+class LoadedSources:
+    precinct: bytes
+    precinct_url: str
+    precinct_timestamp: datetime
+    summary: bytes | None
+    summary_url: str | None
+    summary_timestamp: datetime | None
+    mode: str
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -133,8 +167,17 @@ def parse_args() -> argparse.Namespace:
         help="Parse a downloaded Precinct.txt instead of the network source.",
     )
     parser.add_argument(
+        "--local-summary-file",
+        type=Path,
+        help="Optional statewide summary text file to merge with a local precinct file.",
+    )
+    parser.add_argument(
         "--source-url",
         help="Use this source URL instead of discovering media.txt on the results page.",
+    )
+    parser.add_argument(
+        "--summary-source-url",
+        help="Use this statewide summary URL instead of discovering summary.txt.",
     )
     parser.add_argument(
         "--report-timestamp",
@@ -355,8 +398,158 @@ def parse_precinct_export(source: bytes) -> ParsedExport:
     )
 
 
+def parse_summary_export(source: bytes) -> ParsedSummary:
+    text = decode_export(source)
+    reader = csv.reader(io.StringIO(text, newline=""), delimiter="\t")
+    try:
+        preamble = next(reader)
+        raw_headers = next(reader)
+    except StopIteration as exc:
+        raise ResultsError("Summary export is missing its preamble or header") from exc
+
+    if not preamble or normalize_whitespace(preamble[0]) != "#FormatVersion 1":
+        raise ResultsError("Summary export has an unsupported format version")
+    headers = [normalize_header(value) for value in raw_headers]
+    missing = [column for column in SUMMARY_REQUIRED_COLUMNS if column not in headers]
+    if missing:
+        raise ResultsError(f"Summary export is missing columns: {', '.join(missing)}")
+
+    races: dict[str, dict[str, Any]] = {}
+    logical_keys: set[tuple[str, str]] = set()
+    row_count = 0
+    for row_number, values in enumerate(reader, start=3):
+        if not values or all(not value.strip() for value in values):
+            continue
+        if len(values) != len(headers):
+            raise ResultsError(
+                f"Summary row {row_number}: found {len(values)} columns; "
+                f"expected {len(headers)}"
+            )
+        row_count += 1
+        row = dict(zip(headers, values, strict=True))
+        contest_id = normalize_whitespace(row["Contest ID"])
+        choice_id = normalize_whitespace(row["Candidate ID"])
+        if not contest_id or not choice_id:
+            raise ResultsError(
+                f"Summary row {row_number}: contest or candidate ID is blank"
+            )
+        logical_key = (contest_id, choice_id)
+        if logical_key in logical_keys:
+            raise ResultsError(
+                f"Summary row {row_number}: duplicate contest/candidate record "
+                f"{logical_key}"
+            )
+        logical_keys.add(logical_key)
+
+        title = normalize_whitespace(row["Contest Title"])
+        party = normalize_whitespace(row["Contest Party"])
+        total_precincts = parse_integer(
+            row["Total Precincts"], f"Summary row {row_number} Total Precincts"
+        )
+        counted_precincts = parse_integer(
+            row["Counted Precincts"], f"Summary row {row_number} Counted Precincts"
+        )
+        registered_voters = parse_integer(
+            row["Registered Voters"],
+            f"Summary row {row_number} Registered Voters",
+        )
+        race = races.setdefault(
+            contest_id,
+            {
+                "contestId": contest_id,
+                "title": title,
+                "party": party,
+                "registeredVoters": registered_voters,
+                "totalPrecincts": total_precincts,
+                "countedPrecincts": counted_precincts,
+                "choices": {},
+            },
+        )
+        expected_metadata = (
+            title,
+            party,
+            registered_voters,
+            total_precincts,
+            counted_precincts,
+        )
+        actual_metadata = (
+            race["title"],
+            race["party"],
+            race["registeredVoters"],
+            race["totalPrecincts"],
+            race["countedPrecincts"],
+        )
+        if actual_metadata != expected_metadata:
+            raise ResultsError(
+                f"Summary contest {contest_id} has conflicting race metadata"
+            )
+
+        mail_votes = parse_integer(
+            row["Mail Votes"], f"Summary row {row_number} Mail Votes"
+        )
+        in_person_votes = parse_integer(
+            row["In-Person Votes"],
+            f"Summary row {row_number} In-Person Votes",
+        )
+        total_votes = parse_integer(
+            row["Total Votes"], f"Summary row {row_number} Total Votes"
+        )
+        if total_votes != mail_votes + in_person_votes:
+            raise ResultsError(
+                f"Summary row {row_number}: Total Votes does not equal mail plus "
+                "in-person votes"
+            )
+        race["choices"][choice_id] = {
+            "choiceId": choice_id,
+            "name": normalize_whitespace(row["Candidate Name"]),
+            "party": normalize_whitespace(row["Candidate Party"]),
+            "mailVotes": mail_votes,
+            "inPersonVotes": in_person_votes,
+            "votes": mail_votes + in_person_votes,
+        }
+
+    if row_count == 0 or not races:
+        raise ResultsError("Summary export contains no result records")
+    return ParsedSummary(rows=row_count, races=races)
+
+
 def is_mapped_precinct(group_key: str) -> bool:
     return bool(re.fullmatch(r"\d{2}-\d{2}", group_key))
+
+
+def validate_summary_export(parsed: ParsedExport, summary: ParsedSummary) -> None:
+    precinct_contests = set(parsed.races)
+    summary_contests = set(summary.races)
+    if precinct_contests != summary_contests:
+        missing = sorted(precinct_contests - summary_contests, key=choice_sort_key)
+        extra = sorted(summary_contests - precinct_contests, key=choice_sort_key)
+        raise ResultsError(
+            "Summary contest keyset does not match precinct detail "
+            f"(missing={missing}, extra={extra})"
+        )
+
+    for contest_id, precinct_race in parsed.races.items():
+        summary_race = summary.races[contest_id]
+        if (
+            precinct_race["title"] != summary_race["title"]
+            or precinct_race["party"] != summary_race["party"]
+        ):
+            raise ResultsError(
+                f"Summary contest {contest_id} title or party does not match precinct detail"
+            )
+        precinct_choices = set(precinct_race["choices"])
+        summary_choices = set(summary_race["choices"])
+        if precinct_choices != summary_choices:
+            raise ResultsError(
+                f"Summary choices for contest {contest_id} do not match precinct detail"
+            )
+        for choice_id, precinct_choice in precinct_race["choices"].items():
+            summary_choice = summary_race["choices"][choice_id]
+            if precinct_choice["name"] != summary_choice["name"]:
+                raise ResultsError(
+                    f"Summary contest {contest_id} choice {choice_id} name does not "
+                    "match precinct detail"
+                )
 
 
 def turnout_row(parsed: ParsedExport, group_key: str) -> dict[str, Any]:
@@ -410,13 +603,19 @@ def result_group_row(
 def build_publication(
     parsed: ParsedExport,
     *,
+    summary: ParsedSummary | None = None,
     election_title: str,
     report_timestamp: str,
     source_url: str,
     source_sha256: str,
     source_bytes: int,
+    summary_source_url: str | None = None,
+    summary_source_sha256: str | None = None,
+    summary_source_bytes: int | None = None,
     expected_mapped_precincts: int | None = EXPECTED_MAPPED_PRECINCTS,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
+    if summary is not None:
+        validate_summary_export(parsed, summary)
     mapped_groups = sorted(
         (group for group in parsed.group_splits if is_mapped_precinct(group)),
         key=lambda value: tuple(int(part) for part in value.split("-")),
@@ -438,13 +637,22 @@ def build_publication(
         choice_ids = sorted(race_source["choices"], key=choice_sort_key)
         candidate_count += len(choice_ids)
         group_votes = parsed.race_group_votes[contest_id]
-        candidate_totals = {
+        precinct_candidate_totals = {
             choice_id: sum(
                 votes_by_choice.get(choice_id, 0)
                 for votes_by_choice in group_votes.values()
             )
             for choice_id in choice_ids
         }
+        summary_race = summary.races[contest_id] if summary is not None else None
+        candidate_totals = (
+            {
+                choice_id: summary_race["choices"][choice_id]["votes"]
+                for choice_id in choice_ids
+            }
+            if summary_race is not None
+            else precinct_candidate_totals
+        )
         total_votes = sum(candidate_totals.values())
         used_colors: set[str] = set()
         candidates: list[dict[str, Any]] = []
@@ -490,6 +698,15 @@ def build_publication(
                 "title": race_source["title"],
                 "party": race_source["party"],
                 "totalVotes": total_votes,
+                "overallTotalsSource": (
+                    "statewide-summary" if summary_race is not None else "precinct-detail"
+                ),
+                "officialTotalPrecincts": (
+                    summary_race["totalPrecincts"] if summary_race is not None else None
+                ),
+                "officialCountedPrecincts": (
+                    summary_race["countedPrecincts"] if summary_race is not None else None
+                ),
                 "candidates": candidates,
                 "precinctGroupCount": len(all_groups),
                 "reportingGroupCount": sum(
@@ -508,11 +725,18 @@ def build_publication(
         "meta": {
             "election": election_title,
             "reportTimestamp": report_timestamp,
-            "source": "Hawaiʻi Office of Elections precinct detail text file",
+            "source": (
+                "Hawaiʻi Office of Elections statewide summary and precinct detail text files"
+                if summary is not None
+                else "Hawaiʻi Office of Elections precinct detail text file"
+            ),
             "officialResultsPage": RESULTS_PAGE,
             "sourceUrl": source_url,
             "sourceSha256": source_sha256,
+            "summarySourceUrl": summary_source_url,
+            "summarySourceSha256": summary_source_sha256,
             "rowCount": parsed.rows,
+            "summaryRowCount": summary.rows if summary is not None else 0,
             "raceCount": len(races),
             "candidateCount": candidate_count,
             "mappedPrecinctCount": len(mapped_groups),
@@ -540,7 +764,11 @@ def build_publication(
         "sourceUrl": source_url,
         "sha256": source_sha256,
         "bytes": source_bytes,
+        "summarySourceUrl": summary_source_url,
+        "summarySha256": summary_source_sha256,
+        "summaryBytes": summary_source_bytes,
         "rowCount": parsed.rows,
+        "summaryRowCount": summary.rows if summary is not None else 0,
         "raceCount": len(races),
         "candidateCount": candidate_count,
         "mappedPrecinctCount": len(mapped_groups),
@@ -574,31 +802,46 @@ def fetch_bytes(url: str, *, accept: str, attempts: int = 3) -> tuple[bytes, dic
     raise ResultsError(f"{url}: download failed after {attempts} attempts: {last_error}")
 
 
-def discover_source_url(page_html: str, election_label: str) -> str:
+def discover_source_urls(page_html: str, election_label: str) -> tuple[str, str]:
     parser = ResultsPageParser()
     parser.feed(page_html)
-    matches: list[tuple[str, str]] = []
+    matches: dict[str, list[tuple[str, str]]] = {"media": [], "summary": []}
     for href in parser.links:
         url = urllib.parse.urljoin(RESULTS_PAGE, href)
         parsed = urllib.parse.urlparse(url)
         if parsed.scheme.lower() != "https" or parsed.hostname != RESULTS_HOST:
             continue
-        match = MEDIA_PATH_PATTERN.fullmatch(parsed.path)
-        if not match:
+        media_match = MEDIA_PATH_PATTERN.fullmatch(parsed.path)
+        summary_match = SUMMARY_PATH_PATTERN.fullmatch(parsed.path)
+        match = media_match or summary_match
+        if match is None:
             continue
         label = urllib.parse.unquote(match.group(1))
         encoded_path = urllib.parse.quote(parsed.path, safe="/%")
         normalized_url = urllib.parse.urlunparse(parsed._replace(path=encoded_path))
-        matches.append((label, normalized_url))
-
-    selected = [url for label, url in matches if label.casefold() == election_label.casefold()]
-    if len(selected) != 1:
-        found = ", ".join(sorted(label for label, _ in matches)) or "none"
-        raise ResultsError(
-            f"Expected one {election_label!r} precinct text link; found {len(selected)}. "
-            f"Available media.txt labels: {found}"
+        matches["media" if media_match is not None else "summary"].append(
+            (label, normalized_url)
         )
-    return selected[0]
+
+    selected_urls: dict[str, str] = {}
+    for kind in ("media", "summary"):
+        selected = [
+            url
+            for label, url in matches[kind]
+            if label.casefold() == election_label.casefold()
+        ]
+        if len(selected) != 1:
+            found = ", ".join(sorted(label for label, _ in matches[kind])) or "none"
+            raise ResultsError(
+                f"Expected one {election_label!r} {kind}.txt link; found "
+                f"{len(selected)}. Available labels: {found}"
+            )
+        selected_urls[kind] = selected[0]
+    return selected_urls["media"], selected_urls["summary"]
+
+
+def discover_source_url(page_html: str, election_label: str) -> str:
+    return discover_source_urls(page_html, election_label)[0]
 
 
 def parse_iso_timestamp(value: str) -> datetime:
@@ -636,33 +879,88 @@ def reset_diagnostics_directory(path: Path) -> None:
     path.mkdir(parents=True, exist_ok=True)
 
 
-def load_source(args: argparse.Namespace) -> tuple[bytes, str, datetime, str]:
+def validate_official_source_url(url: str, label: str) -> None:
+    parsed_url = urllib.parse.urlparse(url)
+    if parsed_url.scheme.lower() != "https" or parsed_url.hostname != RESULTS_HOST:
+        raise ResultsError(
+            f"{label} source URL must use HTTPS on elections.hawaii.gov"
+        )
+
+
+def load_sources(args: argparse.Namespace) -> LoadedSources:
     if args.local_file:
         if not args.local_file.is_file():
             raise ResultsError(f"Local source does not exist: {args.local_file}")
-        source = args.local_file.read_bytes()
-        timestamp = (
+        precinct = args.local_file.read_bytes()
+        precinct_timestamp = (
             parse_iso_timestamp(args.report_timestamp)
             if args.report_timestamp
             else datetime.fromtimestamp(args.local_file.stat().st_mtime, HAWAII_TIME)
         )
-        return source, args.local_file.resolve().as_uri(), timestamp, "local"
+        summary: bytes | None = None
+        summary_url: str | None = None
+        summary_timestamp: datetime | None = None
+        if args.local_summary_file:
+            if not args.local_summary_file.is_file():
+                raise ResultsError(
+                    f"Local summary source does not exist: {args.local_summary_file}"
+                )
+            summary = args.local_summary_file.read_bytes()
+            summary_url = args.local_summary_file.resolve().as_uri()
+            summary_timestamp = (
+                parse_iso_timestamp(args.report_timestamp)
+                if args.report_timestamp
+                else datetime.fromtimestamp(
+                    args.local_summary_file.stat().st_mtime, HAWAII_TIME
+                )
+            )
+        return LoadedSources(
+            precinct=precinct,
+            precinct_url=args.local_file.resolve().as_uri(),
+            precinct_timestamp=precinct_timestamp,
+            summary=summary,
+            summary_url=summary_url,
+            summary_timestamp=summary_timestamp,
+            mode="local",
+        )
+    if args.local_summary_file:
+        raise ResultsError("--local-summary-file requires --local-file")
 
     page_bytes, _ = fetch_bytes(
         f"{RESULTS_PAGE}?refresh={int(time.time())}", accept="text/html,*/*;q=0.8"
     )
     page_html = page_bytes.decode("utf-8", errors="replace")
     (args.diagnostics_dir / "source-page.html").write_text(page_html, encoding="utf-8")
-    url = args.source_url or discover_source_url(page_html, args.election_label)
-    parsed_url = urllib.parse.urlparse(url)
-    if parsed_url.scheme.lower() != "https" or parsed_url.hostname != RESULTS_HOST:
-        raise ResultsError("Precinct source URL must use HTTPS on elections.hawaii.gov")
-    separator = "&" if parsed_url.query else "?"
-    source, headers = fetch_bytes(
-        f"{url}{separator}refresh={int(time.time())}", accept="text/plain,*/*;q=0.8"
+    discovered_precinct_url, discovered_summary_url = discover_source_urls(
+        page_html, args.election_label
     )
-    (args.diagnostics_dir / "source-media.txt").write_bytes(source)
-    return source, url, source_timestamp(headers), "network"
+    precinct_url = args.source_url or discovered_precinct_url
+    summary_url = args.summary_source_url or discovered_summary_url
+    validate_official_source_url(precinct_url, "Precinct")
+    validate_official_source_url(summary_url, "Summary")
+
+    def refreshed(url: str) -> str:
+        parsed_url = urllib.parse.urlparse(url)
+        separator = "&" if parsed_url.query else "?"
+        return f"{url}{separator}refresh={int(time.time())}"
+
+    precinct, precinct_headers = fetch_bytes(
+        refreshed(precinct_url), accept="text/plain,*/*;q=0.8"
+    )
+    summary, summary_headers = fetch_bytes(
+        refreshed(summary_url), accept="text/plain,*/*;q=0.8"
+    )
+    (args.diagnostics_dir / "source-media.txt").write_bytes(precinct)
+    (args.diagnostics_dir / "source-summary.txt").write_bytes(summary)
+    return LoadedSources(
+        precinct=precinct,
+        precinct_url=precinct_url,
+        precinct_timestamp=source_timestamp(precinct_headers),
+        summary=summary,
+        summary_url=summary_url,
+        summary_timestamp=source_timestamp(summary_headers),
+        mode="network",
+    )
 
 
 def load_json(path: Path) -> dict[str, Any] | None:
@@ -746,26 +1044,42 @@ def should_refresh_heartbeat(status: dict[str, Any] | None, today: date) -> bool
 
 def run(args: argparse.Namespace) -> int:
     reset_diagnostics_directory(args.diagnostics_dir)
-    source, source_url, timestamp, mode = load_source(args)
-    parsed = parse_precinct_export(source)
-    source_hash = hashlib.sha256(source).hexdigest()
+    sources = load_sources(args)
+    parsed = parse_precinct_export(sources.precinct)
+    summary = parse_summary_export(sources.summary) if sources.summary is not None else None
+    source_hash = hashlib.sha256(sources.precinct).hexdigest()
+    summary_hash = (
+        hashlib.sha256(sources.summary).hexdigest()
+        if sources.summary is not None
+        else None
+    )
     previous_publication = load_json(args.output)
-    report_timestamp = timestamp.isoformat(timespec="seconds")
+    timestamps = [sources.precinct_timestamp]
+    if sources.summary_timestamp is not None:
+        timestamps.append(sources.summary_timestamp)
+    report_timestamp = max(timestamps).isoformat(timespec="seconds")
     if previous_publication:
         previous_meta = previous_publication.get("meta")
         if (
             isinstance(previous_meta, dict)
             and previous_meta.get("sourceSha256") == source_hash
+            and previous_meta.get("summarySourceSha256") == summary_hash
             and isinstance(previous_meta.get("reportTimestamp"), str)
         ):
             report_timestamp = previous_meta["reportTimestamp"]
     publication, manifest = build_publication(
         parsed,
+        summary=summary,
         election_title=args.election_title,
         report_timestamp=report_timestamp,
-        source_url=source_url,
+        source_url=sources.precinct_url,
         source_sha256=source_hash,
-        source_bytes=len(source),
+        source_bytes=len(sources.precinct),
+        summary_source_url=sources.summary_url,
+        summary_source_sha256=summary_hash,
+        summary_source_bytes=(
+            len(sources.summary) if sources.summary is not None else None
+        ),
     )
     validate_previous_publication(previous_publication, publication)
 
@@ -792,9 +1106,10 @@ def run(args: argparse.Namespace) -> int:
             "lastSuccessfulCheckDateHst": today_hst.isoformat(),
             "latestReportTimestamp": publication["meta"]["reportTimestamp"],
             "sourceSha256": source_hash,
+            "summarySourceSha256": summary_hash,
             "raceCount": publication["meta"]["raceCount"],
             "candidateCount": publication["meta"]["candidateCount"],
-            "mode": mode,
+            "mode": sources.mode,
         }
         status_text = stable_json(status)
     else:
