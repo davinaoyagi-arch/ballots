@@ -1,9 +1,11 @@
 {
   "schemaVersion": 1,
-  "lastSuccessfulCheckDateHst": "2026-08-14",
-  "latestReportTimestamp": "2026-08-09T18:37:21+00:00",
-  "sourceSha256": "d223cf7daf542587282d4f04fdf1e7db66e089034e04d0d45d067e0ea313afa8",
-  "summarySourceSha256": "744724253cd0017dd7457614fe1a091f3a225060ea4e6ba81967e158ad6aa856",
+  "lastSuccessfulCheckDateHst": "2026-08-17",
+  "latestReportTimestamp": "2026-08-17T20:01:20+00:00",
+  "sourceSha256": "874b6deafb6420a8870dd415416c6fb83a418dc84154aba701807948fa1f4bb4",
+  "summarySourceSha256": "68098ad3b57dfddfd9e07f724045d50f3ac30eaa27e238724ece2ee8661fc277",
+  "pdfSourceSha256": "25ad6aeec27bb9be1d033e4f4876274da457e44bb422740325473f06cded0a08",
+  "reportStatus": "final",
   "raceCount": 136,
   "candidateCount": 293,
   "mode": "network"

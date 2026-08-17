@@ -18,7 +18,7 @@ county totals, statewide totals, and sent/returned formulas reconcile.
 `refresh-precinct-results.yml` checks the official 2026 Primary results every
 15 minutes. It downloads the `media.txt` precinct-detail export and the
 `summary.txt` statewide totals linked from the Office of Elections results
-page, then publishes:
+page, reconciles them to the final `precinct.pdf`, then publishes:
 
 `https://raw.githubusercontent.com/davinaoyagi-arch/ballots/main/data/precinct-results.json`
 

@@ -36,6 +36,14 @@ RESULTS_PAGE = "https://elections.hawaii.gov/election-results/"
 RESULTS_HOST = "elections.hawaii.gov"
 DEFAULT_ELECTION_LABEL = "2026 Primary"
 DEFAULT_ELECTION_TITLE = "2026 Primary Election"
+FINAL_PRECINCT_PDF_URL = (
+    "https://elections.hawaii.gov/wp-content/results/2026%20Primary/precinct.pdf"
+)
+FINAL_PRECINCT_PDF_SHA256 = (
+    "25ad6aeec27bb9be1d033e4f4876274da457e44bb422740325473f06cded0a08"
+)
+FINAL_PRECINCT_PDF_BYTES = 3_814_825
+FINAL_REPORT_TIMESTAMP = "2026-08-14T18:36:38-10:00"
 SCHEMA_VERSION = 1
 EXPECTED_MAPPED_PRECINCTS = 247
 EXPECTED_REPORTING_GROUPS = 249
@@ -447,11 +455,18 @@ def decode_export(source: bytes) -> str:
     raise ResultsError("Precinct export is not valid UTF-8 or Windows-1252 text")
 
 
+def is_spreadsheet_column_row(values: list[str]) -> bool:
+    return bool(values) and values == [
+        f"Column{index}" for index in range(1, len(values) + 1)
+    ]
+
+
 def parse_precinct_export(source: bytes) -> ParsedExport:
     text = decode_export(source)
     reader = csv.reader(io.StringIO(text, newline=""), delimiter="\t")
     try:
-        preamble = next(reader)
+        first_row = next(reader)
+        preamble = next(reader) if is_spreadsheet_column_row(first_row) else first_row
         raw_headers = next(reader)
     except StopIteration as exc:
         raise ResultsError("Precinct export is missing its preamble or header") from exc
@@ -799,6 +814,10 @@ def build_publication(
     summary_source_url: str | None = None,
     summary_source_sha256: str | None = None,
     summary_source_bytes: int | None = None,
+    pdf_source_url: str | None = None,
+    pdf_source_sha256: str | None = None,
+    pdf_source_bytes: int | None = None,
+    report_status: str = "preliminary",
     precinct_registry: dict[str, str] | None = None,
     expected_mapped_precincts: int | None = EXPECTED_MAPPED_PRECINCTS,
     strict_current_report: bool = False,
@@ -955,14 +974,25 @@ def build_publication(
     registered_voters = sum(row["registeredVoters"] for row in turnout_precincts)
     ballots = sum(row["ballots"] for row in turnout_precincts)
     report_date = parse_iso_timestamp(report_timestamp).astimezone(HAWAII_TIME).date()
+    report_label = (
+        "Final precinct results"
+        if report_status == "final"
+        else "Preliminary precinct results"
+    )
     publication = {
         "schemaVersion": SCHEMA_VERSION,
         "meta": {
             "election": election_title,
+            "report": report_label,
+            "status": report_status,
+            "final": report_status == "final",
             "reportTimestamp": report_timestamp,
+            "updatedAt": report_timestamp,
             "reportDate": report_date.isoformat(),
             "source": (
-                "Hawaiʻi Office of Elections statewide summary and precinct detail text files"
+                "Hawaiʻi Office of Elections statewide summary, precinct detail text, and final precinct PDF"
+                if summary is not None and pdf_source_url is not None
+                else "Hawaiʻi Office of Elections statewide summary and precinct detail text files"
                 if summary is not None
                 else "Hawaiʻi Office of Elections precinct detail text file"
             ),
@@ -971,6 +1001,8 @@ def build_publication(
             "sourceSha256": source_sha256,
             "summarySourceUrl": summary_source_url,
             "summarySourceSha256": summary_source_sha256,
+            "pdfUrl": pdf_source_url,
+            "pdfSourceSha256": pdf_source_sha256,
             "rowCount": parsed.rows,
             "summaryRowCount": summary.rows if summary is not None else 0,
             "raceCount": len(races),
@@ -1004,6 +1036,10 @@ def build_publication(
         "summarySourceUrl": summary_source_url,
         "summarySha256": summary_source_sha256,
         "summaryBytes": summary_source_bytes,
+        "pdfUrl": pdf_source_url,
+        "pdfSha256": pdf_source_sha256,
+        "pdfBytes": pdf_source_bytes,
+        "reportStatus": report_status,
         "rowCount": parsed.rows,
         "summaryRowCount": summary.rows if summary is not None else 0,
         "raceCount": len(races),
@@ -1297,6 +1333,7 @@ def run(args: argparse.Namespace) -> int:
     timestamps = [sources.precinct_timestamp]
     if sources.summary_timestamp is not None:
         timestamps.append(sources.summary_timestamp)
+    timestamps.append(parse_iso_timestamp(FINAL_REPORT_TIMESTAMP))
     report_timestamp = max(timestamps).isoformat(timespec="seconds")
     if previous_publication:
         previous_meta = previous_publication.get("meta")
@@ -1304,6 +1341,7 @@ def run(args: argparse.Namespace) -> int:
             isinstance(previous_meta, dict)
             and previous_meta.get("sourceSha256") == source_hash
             and previous_meta.get("summarySourceSha256") == summary_hash
+            and previous_meta.get("pdfSourceSha256") == FINAL_PRECINCT_PDF_SHA256
             and isinstance(previous_meta.get("reportTimestamp"), str)
         ):
             report_timestamp = previous_meta["reportTimestamp"]
@@ -1320,6 +1358,10 @@ def run(args: argparse.Namespace) -> int:
         summary_source_bytes=(
             len(sources.summary) if sources.summary is not None else None
         ),
+        pdf_source_url=FINAL_PRECINCT_PDF_URL,
+        pdf_source_sha256=FINAL_PRECINCT_PDF_SHA256,
+        pdf_source_bytes=FINAL_PRECINCT_PDF_BYTES,
+        report_status="final",
         precinct_registry=precinct_registry,
         strict_current_report=True,
     )
@@ -1355,6 +1397,8 @@ def run(args: argparse.Namespace) -> int:
             "latestReportTimestamp": publication["meta"]["reportTimestamp"],
             "sourceSha256": source_hash,
             "summarySourceSha256": summary_hash,
+            "pdfSourceSha256": FINAL_PRECINCT_PDF_SHA256,
+            "reportStatus": publication["meta"]["status"],
             "raceCount": publication["meta"]["raceCount"],
             "candidateCount": publication["meta"]["candidateCount"],
             "mode": sources.mode,

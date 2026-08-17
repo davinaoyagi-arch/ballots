@@ -253,6 +253,15 @@ class PrecinctResultsParserTests(unittest.TestCase):
             parsed.races["10"]["choices"]["1"]["name"], "DOE, Jane (JJ)"
         )
 
+    def test_final_export_spreadsheet_column_row_is_accepted(self) -> None:
+        column_row = "\t".join(
+            f"Column{index}" for index in range(1, len(HEADERS) + 1)
+        ).encode("utf-8")
+        parsed = results.parse_precinct_export(column_row + b"\r\n" + self.fixture())
+
+        self.assertEqual(parsed.rows, 5)
+        self.assertEqual(set(parsed.races), {"10", "11"})
+
     def test_mail_and_vsc_splits_are_aggregated_once(self) -> None:
         parsed = results.parse_precinct_export(self.fixture())
         publication, _ = results.build_publication(
@@ -302,6 +311,34 @@ class PrecinctResultsParserTests(unittest.TestCase):
         self.assertEqual(mayor["officialCountedPrecincts"], 1)
         self.assertEqual(mayor["precincts"][0]["votes"], [23, 12])
         self.assertEqual(publication["meta"]["summaryRowCount"], 3)
+
+    def test_final_precinct_pdf_metadata_is_published(self) -> None:
+        parsed = results.parse_precinct_export(self.fixture())
+        publication, manifest = results.build_publication(
+            parsed,
+            election_title="Fixture Election",
+            report_timestamp="2026-08-14T18:36:38-10:00",
+            source_url="file:///fixture/Precinct.txt",
+            source_sha256="precinct-fixture",
+            source_bytes=len(self.fixture()),
+            pdf_source_url=results.FINAL_PRECINCT_PDF_URL,
+            pdf_source_sha256=results.FINAL_PRECINCT_PDF_SHA256,
+            pdf_source_bytes=results.FINAL_PRECINCT_PDF_BYTES,
+            report_status="final",
+            expected_mapped_precincts=None,
+        )
+
+        self.assertEqual(publication["meta"]["report"], "Final precinct results")
+        self.assertEqual(publication["meta"]["status"], "final")
+        self.assertTrue(publication["meta"]["final"])
+        self.assertEqual(publication["meta"]["reportDate"], "2026-08-14")
+        self.assertEqual(publication["meta"]["pdfUrl"], results.FINAL_PRECINCT_PDF_URL)
+        self.assertEqual(
+            publication["meta"]["pdfSourceSha256"],
+            results.FINAL_PRECINCT_PDF_SHA256,
+        )
+        self.assertEqual(manifest["pdfBytes"], results.FINAL_PRECINCT_PDF_BYTES)
+        self.assertEqual(manifest["reportStatus"], "final")
 
     def test_summary_candidate_totals_must_match_precinct_detail(self) -> None:
         parsed = results.parse_precinct_export(self.fixture())
