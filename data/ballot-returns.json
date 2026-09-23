@@ -1,32 +1,32 @@
 {
   "schemaVersion": 1,
   "meta": {
-    "reportDate": "2026-09-22",
-    "reportTimestamp": "2026-09-22T03:12:14-10:00",
+    "reportDate": "2026-09-23",
+    "reportTimestamp": "2026-09-23T03:12:07-10:00",
     "source": "Hawaiʻi Office of Elections absentee reconciliation reports",
     "officialReportPage": "https://elections.hawaii.gov/resources/absentee-voting-report/",
     "totals": {
       "statewide": {
         "precincts": 247,
-        "sent": 465730,
-        "returned": 35,
+        "sent": 465747,
+        "returned": 58,
         "invalid": 0,
         "rate": 0.01
       },
       "counties": {
         "HAWAII": {
           "precincts": 42,
-          "sent": 226,
-          "returned": 35,
+          "sent": 234,
+          "returned": 38,
           "invalid": 0,
-          "rate": 15.49
+          "rate": 16.24
         },
         "MAUI": {
           "precincts": 35,
-          "sent": 184,
-          "returned": 0,
+          "sent": 193,
+          "returned": 20,
           "invalid": 0,
-          "rate": 0.0
+          "rate": 10.36
         },
         "KAUAI": {
           "precincts": 16,
@@ -68,11 +68,11 @@
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
-      "mailSent": 1,
+      "mailSent": 3,
       "mailReturned": 0,
       "mailInvalid": 0,
       "returned": 0,
-      "sent": 5,
+      "sent": 7,
       "invalid": 0,
       "rate": 0.0
     },
@@ -80,16 +80,16 @@
       "county": "HAWAII",
       "dp": "01-03",
       "electronicSent": 16,
-      "electronicReturned": 0,
+      "electronicReturned": 2,
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 0,
       "mailReturned": 0,
       "mailInvalid": 0,
-      "returned": 0,
+      "returned": 2,
       "sent": 16,
       "invalid": 0,
-      "rate": 0.0
+      "rate": 12.5
     },
     {
       "county": "HAWAII",
@@ -139,7 +139,7 @@
     {
       "county": "HAWAII",
       "dp": "02-03",
-      "electronicSent": 5,
+      "electronicSent": 6,
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
@@ -147,7 +147,7 @@
       "mailReturned": 0,
       "mailInvalid": 0,
       "returned": 0,
-      "sent": 9,
+      "sent": 10,
       "invalid": 0,
       "rate": 0.0
     },
@@ -259,7 +259,7 @@
     {
       "county": "HAWAII",
       "dp": "04-02",
-      "electronicSent": 5,
+      "electronicSent": 7,
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
@@ -267,7 +267,7 @@
       "mailReturned": 0,
       "mailInvalid": 0,
       "returned": 0,
-      "sent": 6,
+      "sent": 8,
       "invalid": 0,
       "rate": 0.0
     },
@@ -275,16 +275,16 @@
       "county": "HAWAII",
       "dp": "04-03",
       "electronicSent": 22,
-      "electronicReturned": 6,
+      "electronicReturned": 7,
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 2,
       "mailReturned": 0,
       "mailInvalid": 0,
-      "returned": 6,
+      "returned": 7,
       "sent": 24,
       "invalid": 0,
-      "rate": 25.0
+      "rate": 29.17
     },
     {
       "county": "HAWAII",
@@ -364,7 +364,7 @@
     {
       "county": "HAWAII",
       "dp": "05-05",
-      "electronicSent": 5,
+      "electronicSent": 6,
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
@@ -372,7 +372,7 @@
       "mailReturned": 0,
       "mailInvalid": 0,
       "returned": 0,
-      "sent": 5,
+      "sent": 6,
       "invalid": 0,
       "rate": 0.0
     },
@@ -484,7 +484,7 @@
     {
       "county": "HAWAII",
       "dp": "06-03",
-      "electronicSent": 28,
+      "electronicSent": 30,
       "electronicReturned": 5,
       "electronicInvalid": 0,
       "earlyReturned": 0,
@@ -492,9 +492,9 @@
       "mailReturned": 0,
       "mailInvalid": 0,
       "returned": 5,
-      "sent": 29,
+      "sent": 31,
       "invalid": 0,
-      "rate": 17.24
+      "rate": 16.13
     },
     {
       "county": "HAWAII",
@@ -785,6 +785,21 @@
       "county": "MAUI",
       "dp": "10-03",
       "electronicSent": 2,
+      "electronicReturned": 1,
+      "electronicInvalid": 0,
+      "earlyReturned": 0,
+      "mailSent": 1,
+      "mailReturned": 0,
+      "mailInvalid": 0,
+      "returned": 1,
+      "sent": 3,
+      "invalid": 0,
+      "rate": 33.33
+    },
+    {
+      "county": "MAUI",
+      "dp": "10-04",
+      "electronicSent": 2,
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
@@ -793,21 +808,6 @@
       "mailInvalid": 0,
       "returned": 0,
       "sent": 3,
-      "invalid": 0,
-      "rate": 0.0
-    },
-    {
-      "county": "MAUI",
-      "dp": "10-04",
-      "electronicSent": 1,
-      "electronicReturned": 0,
-      "electronicInvalid": 0,
-      "earlyReturned": 0,
-      "mailSent": 1,
-      "mailReturned": 0,
-      "mailInvalid": 0,
-      "returned": 0,
-      "sent": 2,
       "invalid": 0,
       "rate": 0.0
     },
@@ -829,7 +829,7 @@
     {
       "county": "MAUI",
       "dp": "10-06",
-      "electronicSent": 1,
+      "electronicSent": 2,
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
@@ -837,7 +837,7 @@
       "mailReturned": 0,
       "mailInvalid": 0,
       "returned": 0,
-      "sent": 1,
+      "sent": 2,
       "invalid": 0,
       "rate": 0.0
     },
@@ -859,47 +859,47 @@
     {
       "county": "MAUI",
       "dp": "11-01",
-      "electronicSent": 16,
-      "electronicReturned": 0,
+      "electronicSent": 17,
+      "electronicReturned": 6,
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 6,
       "mailReturned": 0,
       "mailInvalid": 0,
-      "returned": 0,
-      "sent": 22,
+      "returned": 6,
+      "sent": 23,
       "invalid": 0,
-      "rate": 0.0
+      "rate": 26.09
     },
     {
       "county": "MAUI",
       "dp": "11-02",
-      "electronicSent": 9,
-      "electronicReturned": 0,
+      "electronicSent": 10,
+      "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 2,
       "mailReturned": 0,
       "mailInvalid": 0,
-      "returned": 0,
-      "sent": 11,
+      "returned": 1,
+      "sent": 12,
       "invalid": 0,
-      "rate": 0.0
+      "rate": 8.33
     },
     {
       "county": "MAUI",
       "dp": "11-03",
-      "electronicSent": 8,
-      "electronicReturned": 0,
+      "electronicSent": 9,
+      "electronicReturned": 2,
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 0,
       "mailReturned": 0,
       "mailInvalid": 0,
-      "returned": 0,
-      "sent": 8,
+      "returned": 2,
+      "sent": 9,
       "invalid": 0,
-      "rate": 0.0
+      "rate": 22.22
     },
     {
       "county": "MAUI",
@@ -919,7 +919,7 @@
     {
       "county": "MAUI",
       "dp": "12-01",
-      "electronicSent": 2,
+      "electronicSent": 3,
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
@@ -927,7 +927,7 @@
       "mailReturned": 0,
       "mailInvalid": 0,
       "returned": 0,
-      "sent": 2,
+      "sent": 3,
       "invalid": 0,
       "rate": 0.0
     },
@@ -964,17 +964,17 @@
     {
       "county": "MAUI",
       "dp": "12-04",
-      "electronicSent": 19,
-      "electronicReturned": 0,
+      "electronicSent": 20,
+      "electronicReturned": 3,
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 2,
       "mailReturned": 0,
       "mailInvalid": 0,
-      "returned": 0,
-      "sent": 21,
+      "returned": 3,
+      "sent": 22,
       "invalid": 0,
-      "rate": 0.0
+      "rate": 13.64
     },
     {
       "county": "MAUI",
@@ -995,31 +995,31 @@
       "county": "MAUI",
       "dp": "13-01",
       "electronicSent": 7,
-      "electronicReturned": 0,
+      "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 0,
       "mailReturned": 0,
       "mailInvalid": 0,
-      "returned": 0,
+      "returned": 1,
       "sent": 7,
       "invalid": 0,
-      "rate": 0.0
+      "rate": 14.29
     },
     {
       "county": "MAUI",
       "dp": "13-02",
-      "electronicSent": 24,
-      "electronicReturned": 0,
+      "electronicSent": 25,
+      "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 5,
       "mailReturned": 0,
       "mailInvalid": 0,
-      "returned": 0,
-      "sent": 29,
+      "returned": 1,
+      "sent": 30,
       "invalid": 0,
-      "rate": 0.0
+      "rate": 3.33
     },
     {
       "county": "MAUI",
@@ -1040,16 +1040,16 @@
       "county": "MAUI",
       "dp": "13-04",
       "electronicSent": 1,
-      "electronicReturned": 0,
+      "electronicReturned": 1,
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 0,
       "mailReturned": 0,
       "mailInvalid": 0,
-      "returned": 0,
+      "returned": 1,
       "sent": 1,
       "invalid": 0,
-      "rate": 0.0
+      "rate": 100.0
     },
     {
       "county": "MAUI",
@@ -1099,7 +1099,7 @@
     {
       "county": "MAUI",
       "dp": "13-08",
-      "electronicSent": 0,
+      "electronicSent": 1,
       "electronicReturned": 0,
       "electronicInvalid": 0,
       "earlyReturned": 0,
@@ -1107,7 +1107,7 @@
       "mailReturned": 0,
       "mailInvalid": 0,
       "returned": 0,
-      "sent": 0,
+      "sent": 1,
       "invalid": 0,
       "rate": 0.0
     },
@@ -1130,16 +1130,16 @@
       "county": "MAUI",
       "dp": "14-01",
       "electronicSent": 7,
-      "electronicReturned": 0,
+      "electronicReturned": 2,
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 2,
       "mailReturned": 0,
       "mailInvalid": 0,
-      "returned": 0,
+      "returned": 2,
       "sent": 9,
       "invalid": 0,
-      "rate": 0.0
+      "rate": 22.22
     },
     {
       "county": "MAUI",
@@ -1175,16 +1175,16 @@
       "county": "MAUI",
       "dp": "14-04",
       "electronicSent": 17,
-      "electronicReturned": 0,
+      "electronicReturned": 2,
       "electronicInvalid": 0,
       "earlyReturned": 0,
       "mailSent": 2,
       "mailReturned": 0,
       "mailInvalid": 0,
-      "returned": 0,
+      "returned": 2,
       "sent": 19,
       "invalid": 0,
-      "rate": 0.0
+      "rate": 10.53
     },
     {
       "county": "MAUI",
