@@ -70,6 +70,7 @@ BALLOT_FIELDS = (
     "mailReturned",
     "mailInvalid",
 )
+MAX_STATEWIDE_MAIL_SENT_DISCREPANCY = 1
 
 
 class ReportError(RuntimeError):
@@ -579,6 +580,55 @@ def totals_object(summary: list[int], precincts: int) -> dict[str, int | float]:
     }
 
 
+def reconcile_statewide_county_summary(
+    county: str,
+    county_summary: list[int],
+    statewide_summary: list[int],
+) -> dict[str, Any] | None:
+    """Validate a statewide row against its precinct-derived county total.
+
+    The Office of Elections occasionally publishes a tiny MAIL Sent mismatch
+    between the statewide summary and the detailed county D/P report. Returned
+    and invalid ballot fields must still match exactly. The public map always
+    uses the detailed D/P totals so its statewide cards reconcile to its 247
+    mapped precinct records.
+    """
+
+    exact_match_indexes = (0, 1, 2, 3, 5, 6, 7)
+    if any(
+        county_summary[index] != statewide_summary[index]
+        for index in exact_match_indexes
+    ):
+        raise ReportError(
+            f"{county}: county PDF summary {county_summary} does not match "
+            f"statewide PDF {statewide_summary}"
+        )
+
+    mail_sent_difference = statewide_summary[4] - county_summary[4]
+    total_sent_difference = statewide_summary[8] - county_summary[8]
+    if mail_sent_difference != total_sent_difference:
+        raise ReportError(
+            f"{county}: statewide MAIL Sent difference {mail_sent_difference} "
+            f"does not explain TOTAL difference {total_sent_difference}"
+        )
+    if abs(mail_sent_difference) > MAX_STATEWIDE_MAIL_SENT_DISCREPANCY:
+        raise ReportError(
+            f"{county}: statewide MAIL Sent differs from county D/P detail by "
+            f"{mail_sent_difference}, exceeding the permitted "
+            f"{MAX_STATEWIDE_MAIL_SENT_DISCREPANCY}-ballot discrepancy"
+        )
+    if mail_sent_difference == 0:
+        return None
+    return {
+        "county": county,
+        "field": "mailSent",
+        "countyDetail": county_summary[4],
+        "statewideSummary": statewide_summary[4],
+        "difference": mail_sent_difference,
+        "publishedUsing": "county D/P detail",
+    }
+
+
 def stable_json(value: dict[str, Any]) -> str:
     return json.dumps(value, ensure_ascii=False, indent=2) + "\n"
 
@@ -603,6 +653,7 @@ def build_publication(
     records: list[dict[str, Any]] = []
     county_summaries: dict[str, list[int]] = {}
     timestamps: list[datetime] = []
+    reconciliation_warnings: list[dict[str, Any]] = []
 
     for county in COUNTY_ORDER:
         county_records, summary, timestamp = parse_county_pdf(paths[county], county)
@@ -611,18 +662,17 @@ def build_publication(
         timestamps.append(timestamp)
 
     if "STATEWIDE" in paths:
-        statewide_rows, statewide_total, statewide_timestamp = parse_statewide_pdf(
+        statewide_rows, _statewide_total, statewide_timestamp = parse_statewide_pdf(
             paths["STATEWIDE"]
         )
         timestamps.append(statewide_timestamp)
         for county in COUNTY_ORDER:
-            if statewide_rows[county] != county_summaries[county]:
-                raise ReportError(
-                    f"{county}: county PDF summary {county_summaries[county]} does not "
-                    f"match statewide PDF {statewide_rows[county]}"
-                )
-    else:
-        statewide_total = add_vectors(county_summaries.values())
+            warning = reconcile_statewide_county_summary(
+                county, county_summaries[county], statewide_rows[county]
+            )
+            if warning:
+                reconciliation_warnings.append(warning)
+    statewide_total = add_vectors(county_summaries.values())
 
     timestamp_dates = {timestamp.date() for timestamp in timestamps}
     if timestamp_dates != {report_date}:
@@ -667,6 +717,7 @@ def build_publication(
         "reportTimestamp": report_timestamp.isoformat(),
         "officialPageDisplayedDate": displayed_date.isoformat() if displayed_date else None,
         "recordCount": len(records),
+        "reconciliationWarnings": reconciliation_warnings,
         "sourceFiles": {
             kind: sources[kind] for kind in ("STATEWIDE", *COUNTY_ORDER) if kind in sources
         },
