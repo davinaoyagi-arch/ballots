@@ -1,9 +1,16 @@
 import unittest
 
-from automation.update_reports import ReportError, reconcile_statewide_county_summary
+from automation.update_reports import (
+    ReportError,
+    calculate_rate,
+    reconcile_statewide_county_summary,
+)
 
 
 class StatewideReconciliationTests(unittest.TestCase):
+    def test_rate_rounds_half_up_like_the_browser(self) -> None:
+        self.assertEqual(calculate_rate(33, 800), 4.13)
+
     def test_exact_county_summary_needs_no_warning(self) -> None:
         summary = [466, 127, 0, 0, 111182, 6890, 51, 7017, 111648]
         self.assertIsNone(

@@ -172,6 +172,15 @@ def add_vectors(vectors: Iterable[list[int]]) -> list[int]:
     return total
 
 
+def calculate_rate(returned: int, sent: int) -> float:
+    """Round a nonnegative return rate to two decimals like the browser."""
+
+    if not sent:
+        return 0.0
+    hundredths_of_percent = (returned * 20_000 + sent) // (2 * sent)
+    return hundredths_of_percent / 100
+
+
 def parse_pdf_timestamp(text: str, label: str) -> datetime:
     match = TIMESTAMP_PATTERN.search(text)
     if not match:
@@ -229,11 +238,7 @@ def parse_county_pdf(path: Path, county: str) -> tuple[list[dict[str, Any]], lis
                                     "returned": computed[7],
                                     "sent": computed[8],
                                     "invalid": values[2] + values[6],
-                                    "rate": round(
-                                        (computed[7] / computed[8]) * 100, 2
-                                    )
-                                    if computed[8]
-                                    else 0.0,
+                                    "rate": calculate_rate(computed[7], computed[8]),
                                 }
                             )
                             records.append(record)
@@ -576,7 +581,7 @@ def totals_object(summary: list[int], precincts: int) -> dict[str, int | float]:
         "sent": sent,
         "returned": returned,
         "invalid": summary[2] + summary[6],
-        "rate": round((returned / sent) * 100, 2) if sent else 0.0,
+        "rate": calculate_rate(returned, sent),
     }
 
 
