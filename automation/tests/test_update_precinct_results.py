@@ -374,6 +374,41 @@ class PrecinctResultsParserTests(unittest.TestCase):
         self.assertEqual(federal["district"], "2")
         self.assertEqual(federal["partyLabel"], "Democratic")
 
+    def test_general_election_classifications(self) -> None:
+        registry = {"01-01": "HAWAII", "02-01": "OAHU"}
+        cases = [
+            ("Governor and Lieutenant Governor", "governor", "statewide"),
+            ("Hawaii Resident Trustee", "oha-trustee", "oha"),
+            ("Question #1", "ballot-measure", "statewide"),
+            ("Relating to public funds", "ballot-measure", "statewide"),
+        ]
+        for title, category, level in cases:
+            with self.subTest(title=title):
+                metadata = results.classify_race(title, "", registry, registry)
+                self.assertEqual(metadata["category"], category)
+                self.assertEqual(metadata["level"], level)
+                self.assertEqual(metadata["displayTitle"], title)
+        for title in ["Charter Question #1", "Maui: Question", "1. Hawai'i: Question"]:
+            metadata = results.classify_race(title, "", ["01-01"], registry)
+            self.assertEqual(metadata["county"], "HAWAII")
+            self.assertEqual(metadata["level"], "county")
+
+    def test_election_rollover_and_keyset_guards(self) -> None:
+        def publication(election, timestamp, contest):
+            return {"meta": {"election": election, "reportTimestamp": timestamp},
+                    "races": [{"contestId": contest, "candidates": [{"choiceId": "1"}]}]}
+        primary = publication("2026 Primary Election", "2026-08-08T20:00:00-10:00", "1")
+        general = publication("2026 General Election", "2026-11-03T20:00:00-10:00", "2")
+        results.validate_previous_publication(primary, general)
+        with self.assertRaisesRegex(results.ResultsError, "keyset changed"):
+            results.validate_previous_publication(general, publication(
+                "2026 General Election", "2026-11-03T21:00:00-10:00", "3"))
+        with self.assertRaisesRegex(results.ResultsError, "newer precinct results"):
+            results.validate_previous_publication(general, primary)
+        with self.assertRaisesRegex(results.ResultsError, "unexpected election change"):
+            results.validate_previous_publication(general, publication(
+                "2028 General Election", "2028-11-03T20:00:00-10:00", "3"))
+
     def test_candidate_colors_are_stable_and_unique(self) -> None:
         colors = [
             results.deterministic_candidate_color("136", str(choice_id))

@@ -52,9 +52,10 @@ parses both tab-delimited exports with CSV quoting support, discovers races and
 choices by contest and choice ID, and combines mail and in-person votes. Overall
 race totals come from the statewide summary as soon as they are published;
 precinct maps use the geographic detail file and aggregate MAIL and VSC split
-records without repeating turnout counts. The publication is reconciled to the
-Office of Elections final precinct PDF printed August 14, 2026 and links that
-report as its official human-readable source.
+records without repeating turnout counts. The current feed follows the November
+3, 2026 General Election and remains preliminary pending certification. Every
+contest and choice must reconcile between the official summary and precinct
+exports before either the main feed or public fallback is replaced.
 
 Test a downloaded export locally:
 

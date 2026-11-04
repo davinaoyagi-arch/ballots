@@ -34,8 +34,8 @@ from typing import Any, Iterable
 
 RESULTS_PAGE = "https://elections.hawaii.gov/election-results/"
 RESULTS_HOST = "elections.hawaii.gov"
-DEFAULT_ELECTION_LABEL = "2026 Primary"
-DEFAULT_ELECTION_TITLE = "2026 Primary Election"
+DEFAULT_ELECTION_LABEL = "2026 General"
+DEFAULT_ELECTION_TITLE = "2026 General Election"
 FINAL_PRECINCT_PDF_URL = (
     "https://elections.hawaii.gov/wp-content/results/2026%20Primary/precinct.pdf"
 )
@@ -348,7 +348,7 @@ def classify_race(
         if not match:
             raise ResultsError(f"Could not parse congressional district from {title!r}")
         district = roman_to_number(match.group(1))
-    elif title == "Governor":
+    elif title in {"Governor", "Governor and Lieutenant Governor"}:
         level, category = "statewide", "governor"
     elif title == "Lieutenant Governor":
         level, category = "statewide", "lieutenant-governor"
@@ -366,6 +366,8 @@ def classify_race(
         district = match.group(1)
     elif title == "At-Large Trustee":
         level, category, district = "oha", "oha-trustee", "At-Large"
+    elif title.endswith(" Resident Trustee"):
+        level, category, district = "oha", "oha-trustee", title.split(" Resident Trustee")[0]
     elif title == "Mayor" or title.startswith("Councilmember"):
         level = "county"
         category = "mayor" if title == "Mayor" else "county-council"
@@ -390,15 +392,29 @@ def classify_race(
             district = place_match.group(1)
         elif title == "Councilmember":
             district = "At-Large"
+    elif (
+        title.startswith("Question #")
+        or title.startswith("Charter Question #")
+        or title.startswith("Maui:")
+        or title.startswith("1. Hawai'i:")
+        or title.startswith("Relating to ")
+    ):
+        category = "ballot-measure"
+        level = "statewide"
+        if precinct_registry is not None:
+            counties = {precinct_registry[group] for group in mapped_groups}
+            if len(counties) == 1:
+                level = "county"
+                county = next(iter(counties))
     else:
         raise ResultsError(f"Unclassified contest title {title!r}")
 
-    party_label = PARTY_LABELS.get(party)
+    party_label = "Nonpartisan" if party == "" else PARTY_LABELS.get(party)
     if party_label is None:
         raise ResultsError(f"Unsupported contest party {party!r} for {title!r}")
     if county is not None:
         display_title = f"{title} — {COUNTY_LABELS[county]}"
-    elif party not in {"NON"}:
+    elif party not in {"NON", ""}:
         display_title = f"{title} — {party_label}"
     else:
         display_title = title
@@ -1284,6 +1300,18 @@ def validate_previous_publication(
             f"Refusing to replace newer precinct results {previous_timestamp.isoformat()} "
             f"with {current_timestamp.isoformat()}"
         )
+    old_election = previous_meta.get("election")
+    new_election = current_meta.get("election")
+    if old_election != new_election:
+        if (
+            old_election == "2026 Primary Election"
+            and new_election == "2026 General Election"
+        ):
+            # An election change necessarily changes contest and choice IDs.
+            return
+        raise ResultsError(
+            f"Refusing unexpected election change: {old_election!r} to {new_election!r}"
+        )
     old_contests, old_choices = publication_keys(previous)
     new_contests, new_choices = publication_keys(publication)
     if old_contests != new_contests or old_choices != new_choices:
@@ -1333,7 +1361,6 @@ def run(args: argparse.Namespace) -> int:
     timestamps = [sources.precinct_timestamp]
     if sources.summary_timestamp is not None:
         timestamps.append(sources.summary_timestamp)
-    timestamps.append(parse_iso_timestamp(FINAL_REPORT_TIMESTAMP))
     report_timestamp = max(timestamps).isoformat(timespec="seconds")
     if previous_publication:
         previous_meta = previous_publication.get("meta")
@@ -1341,7 +1368,7 @@ def run(args: argparse.Namespace) -> int:
             isinstance(previous_meta, dict)
             and previous_meta.get("sourceSha256") == source_hash
             and previous_meta.get("summarySourceSha256") == summary_hash
-            and previous_meta.get("pdfSourceSha256") == FINAL_PRECINCT_PDF_SHA256
+            and previous_meta.get("pdfSourceSha256") is None
             and isinstance(previous_meta.get("reportTimestamp"), str)
         ):
             report_timestamp = previous_meta["reportTimestamp"]
@@ -1358,12 +1385,12 @@ def run(args: argparse.Namespace) -> int:
         summary_source_bytes=(
             len(sources.summary) if sources.summary is not None else None
         ),
-        pdf_source_url=FINAL_PRECINCT_PDF_URL,
-        pdf_source_sha256=FINAL_PRECINCT_PDF_SHA256,
-        pdf_source_bytes=FINAL_PRECINCT_PDF_BYTES,
-        report_status="final",
+        pdf_source_url=None,
+        pdf_source_sha256=None,
+        pdf_source_bytes=None,
+        report_status="preliminary",
         precinct_registry=precinct_registry,
-        strict_current_report=True,
+        strict_current_report=False,
     )
     validate_previous_publication(previous_publication, publication)
 
@@ -1397,7 +1424,7 @@ def run(args: argparse.Namespace) -> int:
             "latestReportTimestamp": publication["meta"]["reportTimestamp"],
             "sourceSha256": source_hash,
             "summarySourceSha256": summary_hash,
-            "pdfSourceSha256": FINAL_PRECINCT_PDF_SHA256,
+            "pdfSourceSha256": None,
             "reportStatus": publication["meta"]["status"],
             "raceCount": publication["meta"]["raceCount"],
             "candidateCount": publication["meta"]["candidateCount"],
