@@ -64,3 +64,11 @@ python automation/update_precinct_results.py `
   --local-file "C:\path\Precinct.txt" `
   --local-summary-file "C:\path\summary.txt"
 ```
+
+### General election report metadata
+
+The precinct updater also fetches the matching official `histatewide.pdf`. It verifies every candidate total against the summary text before publishing. `meta.reportTimestamp` is the report's printed HST time; `meta.updatedAt` is the time this source revision was processed and stays stable on unchanged checks. `meta.reportNumber` and `meta.officialSummaryPdfUrl` identify the report. Results remain preliminary until certification.
+
+`meta.summaryTurnout` contains statewide registration and turnout from that PDF, including `mailBallots` and `inPersonBallots`. The existing `meta.turnout` and precinct turnout rows retain the raw precinct export totals. `meta.turnoutReconciliation` records any difference without changing either source. Each candidate retains `mailVotes` and `inPersonVotes`; each race includes `blankVotes`, `overVotes`, and `invalidVotes`. The candidate `percentage` remains the share of valid candidate or choice votes. A primary contest identified in the official PDF keeps that designation in `displayTitle` and `electionType`.
+
+For a local reproduction, add `--local-summary-pdf <histatewide.pdf>` to the existing local text-file command and supply the official URLs with `--source-url`, `--summary-source-url`, and `--summary-pdf-url`.

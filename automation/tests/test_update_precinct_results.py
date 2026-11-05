@@ -359,6 +359,40 @@ class PrecinctResultsParserTests(unittest.TestCase):
                 expected_mapped_precincts=None,
             )
 
+    def test_voting_method_totals_must_reconcile_even_when_combined_total_matches(self) -> None:
+        parsed = results.parse_precinct_export(self.fixture())
+        mismatched = self.summary_fixture().replace(
+            b"\t20\t3\t23\r\n", b"\t21\t2\t23\r\n", 1
+        )
+        summary = results.parse_summary_export(mismatched)
+        with self.assertRaisesRegex(results.ResultsError, "mailVotes"):
+            results.validate_summary_export(parsed, summary)
+
+    def test_summary_pdf_metadata_requires_matching_candidate_totals(self) -> None:
+        summary = results.parse_summary_export(self.summary_fixture())
+        text = """Printed on: 11/04/2026 at 09:43:14 pm
+REPORT 4
+DOE, Jane (JJ) 23
+SMITH, Alex 12
+LEE, Taylor 4
+TOTAL REGISTRATION 100
+TOTAL TURNOUT 45
+Mail TURNOUT 40
+In-Person TURNOUT 5
+State Representative, Dist 43, Primary Election
+"""
+        report = results.parse_summary_pdf_text(text, summary)
+        self.assertEqual(report["reportNumber"], 4)
+        self.assertEqual(report["reportTimestamp"], "2026-11-04T21:43:14-10:00")
+        self.assertEqual(report["summaryTurnout"]["ballots"], 45)
+        self.assertEqual(report["primaryElectionTitles"], ["State Representative, Dist 43"])
+        with self.assertRaisesRegex(results.ResultsError, "does not match"):
+            results.parse_summary_pdf_text(text.replace("SMITH, Alex 12", "SMITH, Alex 13"), summary)
+        with self.assertRaisesRegex(results.ResultsError, "inconsistent report metadata"):
+            results.parse_summary_pdf_text(text + "REPORT 5\n", summary)
+        with self.assertRaisesRegex(results.ResultsError, "turnout does not reconcile"):
+            results.parse_summary_pdf_text(text.replace("TOTAL TURNOUT 45", "TOTAL TURNOUT 46"), summary)
+
     def test_race_classification_includes_levels_and_counties(self) -> None:
         registry = {"01-01": "KAUAI"}
         metadata = results.classify_race("Mayor", "NON", ["01-01"], registry)

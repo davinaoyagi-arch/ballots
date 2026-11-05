@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "election": "2026 General Election",
-  "reportTimestamp": "2026-11-04T20:42:11+00:00",
+  "reportTimestamp": "2026-11-04T21:43:14-10:00",
   "sourceUrl": "https://elections.hawaii.gov/wp-content/results/2026%20General/media.txt",
-  "sha256": "9c2fc3e3f56ba5bf5d618f4b5f2a993671d33fd2bc7fbceda624d23e87c36ab7",
-  "bytes": 1883986,
+  "sha256": "340d7861c77008efcb651453b1c16113ad92976cfc7a408ec7159903bd6112e3",
+  "bytes": 1885035,
   "summarySourceUrl": "https://elections.hawaii.gov/wp-content/results/2026%20General/summary.txt",
-  "summarySha256": "cc700741c7918f10ec4b1c04680ba0a6939972251ec34e30244c804bf8534e84",
-  "summaryBytes": 22003,
+  "summarySha256": "e3cdfcd52551119d1c63a62ed59412e5b2c0311c3e47ae14efcb5046ed3bcd28",
+  "summaryBytes": 22026,
   "pdfUrl": null,
   "pdfSha256": null,
   "pdfBytes": null,
@@ -18,5 +18,9 @@
   "candidateCount": 202,
   "mappedPrecinctCount": 247,
   "reportingGroupCount": 249,
-  "splitCount": 496
+  "splitCount": 496,
+  "reportNumber": 4,
+  "officialSummaryPdfUrl": "https://elections.hawaii.gov/wp-content/results/2026%20General/histatewide.pdf",
+  "officialSummaryPdfSha256": "9a265c8cef52542490a40363b173a7cbbecf6402527deb57027afda75a0b2519",
+  "officialSummaryPdfBytes": 40135
 }

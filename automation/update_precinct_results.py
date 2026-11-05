@@ -153,6 +153,7 @@ class ParsedExport:
     group_splits: dict[str, set[str]]
     race_group_votes: dict[str, dict[str, dict[str, int]]]
     race_group_splits: dict[str, dict[str, set[str]]]
+    race_method_votes: dict[str, dict[str, dict[str, int]]]
 
 
 @dataclass
@@ -170,6 +171,8 @@ class LoadedSources:
     summary_url: str | None
     summary_timestamp: datetime | None
     mode: str
+    summary_pdf: bytes | None = None
+    summary_pdf_url: str | None = None
 
 
 def parse_args() -> argparse.Namespace:
@@ -219,6 +222,15 @@ def parse_args() -> argparse.Namespace:
         "--local-summary-file",
         type=Path,
         help="Optional statewide summary text file to merge with a local precinct file.",
+    )
+    parser.add_argument(
+        "--local-summary-pdf",
+        type=Path,
+        help="Official statewide summary PDF matching the local text files.",
+    )
+    parser.add_argument(
+        "--summary-pdf-url",
+        help="Official statewide summary PDF URL; defaults to histatewide.pdf.",
     )
     parser.add_argument(
         "--source-url",
@@ -503,6 +515,9 @@ def parse_precinct_export(source: bytes) -> ParsedExport:
     race_group_splits: dict[str, dict[str, set[str]]] = defaultdict(
         lambda: defaultdict(set)
     )
+    race_method_votes: dict[str, dict[str, dict[str, int]]] = defaultdict(
+        lambda: defaultdict(lambda: {"mailVotes": 0, "inPersonVotes": 0})
+    )
     logical_keys: set[tuple[str, str, str]] = set()
     row_count = 0
 
@@ -578,11 +593,13 @@ def parse_precinct_export(source: bytes) -> ParsedExport:
             )
         race["choices"][choice_id] = choice
 
-        votes = parse_integer(row["Mail votes"], f"Row {row_number} Mail votes")
-        votes += parse_integer(
+        mail_votes = parse_integer(row["Mail votes"], f"Row {row_number} Mail votes")
+        in_person_votes = parse_integer(
             row["In-Person votes"], f"Row {row_number} In-Person votes"
         )
-        race_group_votes[contest_id][group_key][choice_id] += votes
+        race_method_votes[contest_id][choice_id]["mailVotes"] += mail_votes
+        race_method_votes[contest_id][choice_id]["inPersonVotes"] += in_person_votes
+        race_group_votes[contest_id][group_key][choice_id] += mail_votes + in_person_votes
         race_group_splits[contest_id][group_key].add(split_id)
 
     if row_count == 0 or not races or not splits:
@@ -599,6 +616,7 @@ def parse_precinct_export(source: bytes) -> ParsedExport:
             }
             for contest_id, groups in race_group_votes.items()
         },
+        race_method_votes={contest_id: dict(choices) for contest_id, choices in race_method_votes.items()},
         race_group_splits={
             contest_id: {group: set(split_ids) for group, split_ids in groups.items()}
             for contest_id, groups in race_group_splits.items()
@@ -661,12 +679,20 @@ def parse_summary_export(source: bytes) -> ParsedSummary:
             row["Registered Voters"],
             f"Summary row {row_number} Registered Voters",
         )
+        ballot_exclusions = {}
+        for field, label in (("blankVotes", "Blank"), ("overVotes", "Over"), ("invalidVotes", "Invalid")):
+            values = [row.get(f"{method} {label} Votes") for method in ("Mail", "In-Person")]
+            ballot_exclusions[field] = (
+                sum(parse_integer(value, f"Summary row {row_number} {label} Votes") for value in values)
+                if all(value is not None for value in values) else None
+            )
         race = races.setdefault(
             contest_id,
             {
                 "contestId": contest_id,
                 "title": title,
                 "party": party,
+                **ballot_exclusions,
                 "registeredVoters": registered_voters,
                 "totalPrecincts": total_precincts,
                 "countedPrecincts": counted_precincts,
@@ -687,7 +713,9 @@ def parse_summary_export(source: bytes) -> ParsedSummary:
             race["totalPrecincts"],
             race["countedPrecincts"],
         )
-        if actual_metadata != expected_metadata:
+        if actual_metadata != expected_metadata or any(
+            race[field] != value for field, value in ballot_exclusions.items()
+        ):
             raise ResultsError(
                 f"Summary contest {contest_id} has conflicting race metadata"
             )
@@ -719,6 +747,64 @@ def parse_summary_export(source: bytes) -> ParsedSummary:
     if row_count == 0 or not races:
         raise ResultsError("Summary export contains no result records")
     return ParsedSummary(rows=row_count, races=races)
+
+
+def parse_summary_pdf(source: bytes, summary: ParsedSummary | None) -> dict[str, Any]:
+    """Read the official printed time and turnout and verify the matching text export."""
+    import pdfplumber
+
+    if summary is None:
+        raise ResultsError("The summary PDF requires a matching statewide text export")
+    try:
+        with pdfplumber.open(io.BytesIO(source)) as pdf:
+            text = "\n".join(page.extract_text() or "" for page in pdf.pages)
+    except Exception as exc:
+        raise ResultsError(f"Could not read the official summary PDF: {exc}") from exc
+    return parse_summary_pdf_text(text, summary)
+
+
+def parse_summary_pdf_text(text: str, summary: ParsedSummary) -> dict[str, Any]:
+    report_numbers = set(re.findall(r"^REPORT\s+(\d+)\s*$", text, re.MULTILINE))
+    timestamps = set(re.findall(
+        r"Printed on:\s*(\d{2}/\d{2}/\d{4}) at (\d{2}:\d{2}:\d{2} [ap]m)", text
+    ))
+    if len(report_numbers) != 1 or len(timestamps) != 1:
+        raise ResultsError("Summary PDF has missing or inconsistent report metadata")
+    printed_date, printed_time = next(iter(timestamps))
+    printed = datetime.strptime(f"{printed_date} {printed_time}", "%m/%d/%Y %I:%M:%S %p")
+    printed = printed.replace(tzinfo=HAWAII_TIME).isoformat(timespec="seconds")
+    normalized = normalize_whitespace(text)
+    for race in summary.races.values():
+        for choice in race["choices"].values():
+            # The PDF puts the governor's ticket names on separate lines below the count.
+            name = choice["name"].split(" For GOVERNOR")[0]
+            phrase = f"{name} {choice['votes']:,}"
+            if phrase not in normalized:
+                raise ResultsError(f"Summary PDF does not match the text export: {phrase}")
+
+    values = {}
+    for field, label in (("registeredVoters", "TOTAL REGISTRATION"),
+                         ("ballots", "TOTAL TURNOUT"),
+                         ("mailBallots", "Mail TURNOUT"),
+                         ("inPersonBallots", "In-Person TURNOUT")):
+        match = re.search(rf"{re.escape(label)}\s+([\d,]+)", text)
+        if match is None:
+            raise ResultsError(f"Summary PDF is missing {label}")
+        values[field] = int(match.group(1).replace(",", ""))
+    if values["ballots"] != values["mailBallots"] + values["inPersonBallots"]:
+        raise ResultsError("Summary PDF turnout does not reconcile by voting method")
+    if values["registeredVoters"] <= 0 or values["ballots"] > values["registeredVoters"]:
+        raise ResultsError("Summary PDF has invalid registration or turnout")
+    values["rate"] = round(values["ballots"] / values["registeredVoters"] * 100, 2)
+    values["source"] = "official-summary-pdf"
+    return {
+        "reportNumber": int(next(iter(report_numbers))),
+        "reportTimestamp": printed,
+        "summaryTurnout": values,
+        "primaryElectionTitles": sorted(set(re.findall(
+            r"(State Representative, Dist \d+), Primary Election", text
+        ))),
+    }
 
 
 def is_mapped_precinct(group_key: str) -> bool:
@@ -762,6 +848,12 @@ def validate_summary_export(parsed: ParsedExport, summary: ParsedSummary) -> Non
                 group_votes.get(choice_id, 0)
                 for group_votes in parsed.race_group_votes[contest_id].values()
             )
+            for method, method_total in parsed.race_method_votes[contest_id][choice_id].items():
+                if method_total != summary_choice[method]:
+                    raise ResultsError(
+                        f"Summary contest {contest_id} choice {choice_id} {method} "
+                        f"reports {summary_choice[method]}; precinct detail totals {method_total}"
+                    )
             if precinct_total != summary_choice["votes"]:
                 raise ResultsError(
                     f"Summary contest {contest_id} choice {choice_id} reports "
@@ -834,6 +926,11 @@ def build_publication(
     pdf_source_sha256: str | None = None,
     pdf_source_bytes: int | None = None,
     report_status: str = "preliminary",
+    report_details: dict[str, Any] | None = None,
+    summary_pdf_source_url: str | None = None,
+    summary_pdf_source_sha256: str | None = None,
+    summary_pdf_source_bytes: int | None = None,
+    updated_at: str | None = None,
     precinct_registry: dict[str, str] | None = None,
     expected_mapped_precincts: int | None = EXPECTED_MAPPED_PRECINCTS,
     strict_current_report: bool = False,
@@ -923,6 +1020,7 @@ def build_publication(
                 {
                     **choice,
                     "color": color,
+                    **parsed.race_method_votes[contest_id][choice_id],
                     "votes": votes,
                     "percentage": round((votes / total_votes) * 100, 2)
                     if total_votes
@@ -955,6 +1053,9 @@ def build_publication(
             mapped_result_groups,
             precinct_registry,
         )
+        if report_details and race_source["title"] in report_details.get("primaryElectionTitles", []):
+            classification["displayTitle"] = f"{race_source['title']}, Primary Election"
+            classification["electionType"] = "primary"
         races.append(
             {
                 "contestId": contest_id,
@@ -962,6 +1063,8 @@ def build_publication(
                 "party": race_source["party"],
                 **classification,
                 "totalVotes": total_votes,
+                **({field: summary_race[field] for field in ("blankVotes", "overVotes", "invalidVotes")}
+                   if summary_race is not None else {}),
                 "overallTotalsSource": (
                     "statewide-summary" if summary_race is not None else "precinct-detail"
                 ),
@@ -995,6 +1098,8 @@ def build_publication(
         if report_status == "final"
         else "Preliminary precinct results"
     )
+    if report_details and report_details.get("reportNumber") is not None:
+        report_label = f"Report {report_details['reportNumber']} · {'Final' if report_status == 'final' else 'Preliminary'} results"
     publication = {
         "schemaVersion": SCHEMA_VERSION,
         "meta": {
@@ -1003,10 +1108,12 @@ def build_publication(
             "status": report_status,
             "final": report_status == "final",
             "reportTimestamp": report_timestamp,
-            "updatedAt": report_timestamp,
+            "updatedAt": updated_at or report_timestamp,
             "reportDate": report_date.isoformat(),
             "source": (
-                "Hawaiʻi Office of Elections statewide summary, precinct detail text, and final precinct PDF"
+                "Hawaiʻi Office of Elections statewide summary and precinct detail text files, with report metadata and turnout from the official summary PDF"
+                if report_details is not None
+                else "Hawaiʻi Office of Elections statewide summary, precinct detail text, and final precinct PDF"
                 if summary is not None and pdf_source_url is not None
                 else "Hawaiʻi Office of Elections statewide summary and precinct detail text files"
                 if summary is not None
@@ -1064,6 +1171,25 @@ def build_publication(
         "reportingGroupCount": len(parsed.group_splits),
         "splitCount": len(parsed.splits),
     }
+    if report_details:
+        summary_turnout = report_details["summaryTurnout"]
+        publication["meta"].update({
+            "reportNumber": report_details["reportNumber"],
+            "officialSummaryPdfUrl": summary_pdf_source_url,
+            "officialSummaryPdfSha256": summary_pdf_source_sha256,
+            "summaryTurnout": summary_turnout,
+            "turnoutReconciliation": {
+                "precinctBallots": ballots,
+                "summaryBallots": summary_turnout["ballots"],
+                "difference": ballots - summary_turnout["ballots"],
+            },
+        })
+        manifest.update({
+            "reportNumber": report_details["reportNumber"],
+            "officialSummaryPdfUrl": summary_pdf_source_url,
+            "officialSummaryPdfSha256": summary_pdf_source_sha256,
+            "officialSummaryPdfBytes": summary_pdf_source_bytes,
+        })
     return publication, manifest
 
 
@@ -1213,9 +1339,12 @@ def load_sources(args: argparse.Namespace) -> LoadedSources:
             summary_url=summary_url,
             summary_timestamp=summary_timestamp,
             mode="local",
+            summary_pdf=args.local_summary_pdf.read_bytes() if args.local_summary_pdf else None,
+            summary_pdf_url=(args.summary_pdf_url or urllib.parse.urljoin(summary_url, "histatewide.pdf"))
+                if args.local_summary_pdf and summary_url else None,
         )
-    if args.local_summary_file:
-        raise ResultsError("--local-summary-file requires --local-file")
+    if args.local_summary_file or args.local_summary_pdf:
+        raise ResultsError("Local summary files require --local-file")
 
     page_bytes, _ = fetch_bytes(
         f"{RESULTS_PAGE}?refresh={int(time.time())}", accept="text/html,*/*;q=0.8"
@@ -1241,6 +1370,10 @@ def load_sources(args: argparse.Namespace) -> LoadedSources:
     summary, summary_headers = fetch_bytes(
         refreshed(summary_url), accept="text/plain,*/*;q=0.8"
     )
+    summary_pdf_url = args.summary_pdf_url or urllib.parse.urljoin(summary_url, "histatewide.pdf")
+    validate_official_source_url(summary_pdf_url, "Summary PDF")
+    summary_pdf, _ = fetch_bytes(refreshed(summary_pdf_url), accept="application/pdf")
+    (args.diagnostics_dir / "source-summary.pdf").write_bytes(summary_pdf)
     (args.diagnostics_dir / "source-media.txt").write_bytes(precinct)
     (args.diagnostics_dir / "source-summary.txt").write_bytes(summary)
     return LoadedSources(
@@ -1251,6 +1384,8 @@ def load_sources(args: argparse.Namespace) -> LoadedSources:
         summary_url=summary_url,
         summary_timestamp=source_timestamp(summary_headers),
         mode="network",
+        summary_pdf=summary_pdf,
+        summary_pdf_url=summary_pdf_url,
     )
 
 
@@ -1357,11 +1492,16 @@ def run(args: argparse.Namespace) -> int:
         if sources.summary is not None
         else None
     )
+    summary_pdf_hash = hashlib.sha256(sources.summary_pdf).hexdigest() if sources.summary_pdf else None
+    report_details = parse_summary_pdf(sources.summary_pdf, summary) if sources.summary_pdf else None
     previous_publication = load_json(args.output)
     timestamps = [sources.precinct_timestamp]
     if sources.summary_timestamp is not None:
         timestamps.append(sources.summary_timestamp)
     report_timestamp = max(timestamps).isoformat(timespec="seconds")
+    updated_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    if report_details:
+        report_timestamp = report_details["reportTimestamp"]
     if previous_publication:
         previous_meta = previous_publication.get("meta")
         if (
@@ -1369,9 +1509,12 @@ def run(args: argparse.Namespace) -> int:
             and previous_meta.get("sourceSha256") == source_hash
             and previous_meta.get("summarySourceSha256") == summary_hash
             and previous_meta.get("pdfSourceSha256") is None
+            and previous_meta.get("officialSummaryPdfSha256") == summary_pdf_hash
             and isinstance(previous_meta.get("reportTimestamp"), str)
         ):
-            report_timestamp = previous_meta["reportTimestamp"]
+            if not report_details:
+                report_timestamp = previous_meta["reportTimestamp"]
+            updated_at = previous_meta.get("updatedAt", updated_at)
     publication, manifest = build_publication(
         parsed,
         summary=summary,
@@ -1389,6 +1532,11 @@ def run(args: argparse.Namespace) -> int:
         pdf_source_sha256=None,
         pdf_source_bytes=None,
         report_status="preliminary",
+        report_details=report_details,
+        summary_pdf_source_url=sources.summary_pdf_url,
+        summary_pdf_source_sha256=summary_pdf_hash,
+        summary_pdf_source_bytes=len(sources.summary_pdf) if sources.summary_pdf else None,
+        updated_at=updated_at,
         precinct_registry=precinct_registry,
         strict_current_report=False,
     )
@@ -1425,6 +1573,7 @@ def run(args: argparse.Namespace) -> int:
             "sourceSha256": source_hash,
             "summarySourceSha256": summary_hash,
             "pdfSourceSha256": None,
+            "officialSummaryPdfSha256": summary_pdf_hash,
             "reportStatus": publication["meta"]["status"],
             "raceCount": publication["meta"]["raceCount"],
             "candidateCount": publication["meta"]["candidateCount"],
