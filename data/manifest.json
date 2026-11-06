@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "reportDate": "2026-11-05",
-  "reportTimestamp": "2026-11-05T03:12:20-10:00",
-  "officialPageDisplayedDate": "2026-11-05",
+  "reportDate": "2026-11-06",
+  "reportTimestamp": "2026-11-06T03:12:26-10:00",
+  "officialPageDisplayedDate": "2026-11-06",
   "recordCount": 247,
   "reconciliationWarnings": [
     {
@@ -24,29 +24,29 @@
   ],
   "sourceFiles": {
     "STATEWIDE": {
-      "url": "https://elections.hawaii.gov/wp-content/uploads/AbsenteeReconState-20261105.pdf",
-      "sha256": "3d1203e6b62284ddbf8753aa0943f109a01d9d6c22d57f5743d1a0ae13bd583a",
-      "bytes": 72091
+      "url": "https://elections.hawaii.gov/wp-content/uploads/AbsenteeReconState-20261106.pdf",
+      "sha256": "9f71cceff58bc2db00d515bfdb73bddc2c3f150890327a2ba91f3e1362e526bd",
+      "bytes": 72072
     },
     "HAWAII": {
-      "url": "https://elections.hawaii.gov/wp-content/uploads/AbsenteeReconDP-02-20261105.pdf",
-      "sha256": "1a989dbba8a98c81745f79108742ae8e1fac363b7232da0f70611ec283b2df4c",
-      "bytes": 91051
+      "url": "https://elections.hawaii.gov/wp-content/uploads/AbsenteeReconDP-02-20261106.pdf",
+      "sha256": "ee18584ae4cf1d647bcf9a5e02f827708c1d1c41cea57a55211a01c967f324b1",
+      "bytes": 91030
     },
     "MAUI": {
-      "url": "https://elections.hawaii.gov/wp-content/uploads/AbsenteeReconDP-04-20261105.pdf",
-      "sha256": "85b9e5ccba58bf5b6e1af610e1f5ca602a6d757a3269402159a47479e5ed0107",
-      "bytes": 86794
+      "url": "https://elections.hawaii.gov/wp-content/uploads/AbsenteeReconDP-04-20261106.pdf",
+      "sha256": "cb46704d4456f2a56c9a6764151ded5e0a352bb2bf6eae521c612f1750aec087",
+      "bytes": 86757
     },
     "KAUAI": {
-      "url": "https://elections.hawaii.gov/wp-content/uploads/AbsenteeReconDP-03-20261105.pdf",
-      "sha256": "f47b927b74595f6a2719d713f3a60a5f27cfd2adf89b8815b5c3e8485fe031df",
-      "bytes": 77292
+      "url": "https://elections.hawaii.gov/wp-content/uploads/AbsenteeReconDP-03-20261106.pdf",
+      "sha256": "94e638b25c9063f1b0b0ee4565d8992a805ec45989140cf647805cd44eacd044",
+      "bytes": 77286
     },
     "OAHU": {
-      "url": "https://elections.hawaii.gov/wp-content/uploads/AbsenteeReconDP-01-20261105.pdf",
-      "sha256": "144d3c590f83ccd6a3f24b57c001eac28178883ccbd13a18b4b60488dbf30c67",
-      "bytes": 146986
+      "url": "https://elections.hawaii.gov/wp-content/uploads/AbsenteeReconDP-01-20261106.pdf",
+      "sha256": "535fb1fee823d57e60d33f14e1f834fb9d1d3cbd41f42cbfd13fa0ebfe7a560f",
+      "bytes": 146993
     }
   }
 }
